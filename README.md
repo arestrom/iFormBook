@@ -1,2 +1,2 @@
 # iFormBook
-Manual for building mobile forms for spawning ground surveys
+First attempt at a manual for building mobile forms for spawning ground surveys.
