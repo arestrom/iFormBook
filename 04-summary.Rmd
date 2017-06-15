@@ -1,0 +1,19 @@
+# Notes on bookdown
+
+## Files needed to build basic book:
+
+* .gitignore
+* .Rbuildignore
+* Index and 01-0n.Rmd files
+* _build.sh (enables the build all command)
+* book.bib
+
+## Building these files generates:
+
+* book.bib
+* _book (folder)
+    * .html files (generated from Index and 01-0n.Rmd files)
+    * search_index.json
+    * libs (folder)
+        * gitbook-2.6.7 (folder)
+        * jquery-2.2.3 (folder)

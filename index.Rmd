@@ -1,0 +1,29 @@
+--- 
+title: "Mobile iForms for spawning ground surveys"
+author: "Are Strom"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: arestrom/iFormBook
+description: " Building mobile forms for spawning ground surveys using iFormBuilder."
+---
+
+# Preface {-}
+
+After a few years of relatively quiet experimentation, use of mobile technology for spawning ground surveys is poised for rapid expansion at The Washington Department of Fish and Wildlife (WDFW). The advantages, both in terms of efficency and ability to capture a *richer* set of data, is hard to overstate. This in turn requires better systems to store, retrieve, and analyze an expanding flow of data. Making sure these systems are well integrated is becoming increasingly important. A new spawning ground database has been constructed to absorb the flow on the backend. Integration on the front-end is still a work in progress. This book was motivated by the need for guidelines and standards at the mobile device end. 
+
+Building mobile forms is not always easy. Once you start adding conditional logic and validation to your forms you will need to write some code. A formalized set of guidelines, along with step-by-step instructions, can help ease the pain. Standardizing the general structure of mobile forms can also help enable a smooth flow of data from field to back-end database. Although survey protocols vary throughout the state and from region to region, in general, survey procedures are similar enough that there is much to be gained from copying what works and learning from each other. 
+
+To simplify the process of building mobile forms this book takes a highly opinionated approach. As you gain experience in form building, feel free to customize as needed. But please keep in mind that core elements need to be present in order to enable downloading and processing data so it can be integrated into our corporate *spawning ground* database. These core elements will be emphasized in the sections that follow. 
+
+Please consider contributing your own solutions, corrections, or edits to this book. All source code is available at [**iFormBook**](https://github.com/arestrom/iFormBook). It is written using the **bookdown** package [@R-bookdown]. The **bookdown** package is based on [**rmarkdown**](http://rmarkdown.rstudio.com/). For contributors, a handy [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is also available. 
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib')
+```
