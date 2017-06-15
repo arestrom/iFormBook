@@ -46,7 +46,7 @@ In the bottom portion of the parent form you are asked to enter some legacy *can
 
 You are next asked if the survey was completed. If not, then you are asked to explain why. Toggle between answering **Completed survey** and any other option. Notice that the label for the **Survey comments** field will change from **(optional)** to **(required)**. In addition, a note will appear reminding you that an explantion is needed. This is a good example of using **Dynamic lables**. Additional details will be provided in Chapter 3. 
 
-# The final two question allow you to enter general comments on the survey, and the time the survey was finished. Both questions are technically set as optional, but remember that you will still need to enter an explanation if you did not answer **Completed survey** above. This demonstrates how optional fields can conditionally be set to required, without explicitly toggling the **Required** setting.  
+The final two question allow you to enter general comments on the survey, and the time the survey was finished. Both questions are technically set as optional, but remember that you will still need to enter an explanation if you did not answer **Completed survey** above. This demonstrates how optional fields can conditionally be set to required, without explicitly toggling the **Required** setting.  
 
 ## A brief tour: Observations subform
 
