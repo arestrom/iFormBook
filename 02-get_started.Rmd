@@ -46,17 +46,21 @@ In the bottom portion of the parent form you are asked to enter some legacy *can
 
 You are next asked if the survey was completed. If not, then you are asked to explain why. Toggle between answering **Completed survey** and any other option. Notice that the label for the **Survey comments** field will change from **(optional)** to **(required)**. In addition, a note will appear reminding you that an explantion is needed. This is a good example of using **Dynamic lables**. Additional details will be provided in Chapter 3. 
 
-The final two question allow you to enter general comments on the survey, and the time the survey was finished. Both questions are technically set as optional, but remember that you will still need to enter an explanation if you did not answer **Completed survey** above. This demonstrates how optional fields can conditionally be set to required, without explicitly toggling the **Required** setting.  
+The final two question allow you to enter general comments on the survey, and the time the survey was finished. Both questions are technically set as optional, but remember that you will still need to enter an explanation if you did not answer **Completed survey** above. This demonstrates how optional fields can conditionally be set to required, without explicitly toggling the **Required** setting in form builder.  
 
 ## A brief tour: Observations subform
 
 Go back to the question **Did you see any fish or fish redds** and click **Yes:**. The **Observation subform** will be displayed. Click on the *Observation subform** to allow entering data for individual observations and counts of fish and redds. 
 
-After opening the subform you will need to specify if the **Observation type** was for live fish, dead fish, or redds. Depending on your answers a different set of questions will be displayed. After you enter **Species** toggle between **Fish redd** and the other two options to see how the questions near the bottom of the screen vary. 
+After opening the subform you will need to specify if the **Observation type** was for live fish, dead fish, or redds. Depending on your answers a different set of questions will be displayed. After you enter **Observation type** and **Species** toggle between **Fish redd** and the other two options in **Observation type** to see how the questions near the bottom of the screen vary. 
 
-The initial set of questions after selecting **Observation type** and **Species** will be identical. They will ask about run year, and survey type. Each of these are core questions that are required in the form, and must be anwered in order to enter the data to our corporate database. In our example **Run year** is set to the current year. You could also use JavaScript to generate different values depending on species and current date. Survey type can vary depending on species and survey protocol. This is why survey type is included at the subform level. For example, during a fall Chinook **index** survey, Pink salmon encounters may need to be entered as **supplemental**. 
+The initial set of questions after selecting **Observation type** and **Species** will be identical. They will ask about run year, and survey type. Each of these are core questions that are required in the form, and must be anwered in order to enter the data to our corporate database. 
 
-Note that depending on the species selected, the text for subsequent questions will be altered to include the species name. This is another example of **Dynamic labels**. 
+In our example **Run year** is set to the current year. You could also use JavaScript to auto-generate different values depending on species and current date. You can manually edit **Run year** as needed. Survey type can vary depending on species and survey protocol. This is why survey type is included at the subform level. For example, during a fall Chinook **index** survey, Pink salmon encounters may need to be entered as **supplemental**. 
+
+Note that depending on the species selected, the text for subsequent questions will be altered to include the species name. This is another example of **Dynamic labels**.
+
+Go back to **Observation type** and select **Live fish**, then select **Chinook** as **Species**. A relatively simple set of form elements will be displayed. You can enter a **count** of how many fish you saw, there is an option to enter the **location**, along with **Sex and maturity** and **Adipose clip status**. Enter some arbitraty values for these fields and click the **Done** button. As soon as the form saves the record it will cycle right back to the start and you can
 
  
 
