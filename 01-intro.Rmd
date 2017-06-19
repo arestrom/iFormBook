@@ -1,6 +1,6 @@
 # Introduction {#intro}
 
-The Fish Program at WDFW currently uses [iFormBuilder](https://www.zerionsoftware.com/iformbuilder/) as a platform for building and deploying mobile forms. Although there are numerous alternative mobile platforms, both commercial and open-source, among the benefits of iFormBuilder is an easy-to-use form building application, a robust system for syncing between forms and devices, and an excellent application programming interface (API). The [API](http://docs.iformbuilder.apiary.io/#) is particulary useful, as it allows us to automate many of the most burdensome aspects of building forms and managing data flows.
+The Fish Program at WDFW currently uses [iFormBuilder](https://www.zerionsoftware.com/iformbuilder/) as a platform for building and deploying mobile forms. Although there are numerous alternative mobile platforms, both commercial and open-source, among the benefits of iFormBuilder are an easy-to-use form building application, a robust system for syncing between forms and devices, and an excellent application programming interface (API). The [API](http://docs.iformbuilder.apiary.io/#) is particulary useful, as it allows us to automate many of the most burdensome aspects of building forms and managing data flows.
 
 ## API
 
@@ -8,7 +8,7 @@ One case where the API can avoid a great deal of pain is in constructing large f
 
 ## Profiles
 
-Since this book is hosted on a public website, I will not go into detail on purchasing or setting up devices, assigning AppleIDs, Google Play store accounts, or connecting to our iFormBuider account. The only prerequiste that needs to be stressed here is that you will want to get a separate iFormBuilder **Profile** set up for your workgroup. The main benefit is that it keeps your forms and option lists segregated from other groups, and makes it less likely you will lose data because someone accidentally edited your form...or deleted an option list. Contact me if you need help to get this set up.
+Since the source code for book is hosted on a public website, I will not go into detail on purchasing or setting up devices, assigning AppleIDs, Google Play store accounts, or connecting to our iFormBuider account. The only prerequiste that needs to be stressed here is that you will want to get a separate iFormBuilder **Profile** set up for your workgroup. The main benefit is that it keeps your forms and option lists segregated from other groups, and makes it less likely you will lose data because someone accidentally edited your form...or deleted an option list. Contact me if you need help to get this set up.
 
 ## Useful tips
 
