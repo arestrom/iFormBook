@@ -10,11 +10,11 @@ The quickest way to get started with form building is by example.
 
 3. In the **Package Importer** screen, click **Choose File**, navigate to where you downloaded the **Package_spawning_ground.json** file, and click **Import**. If you have existing forms in your profile you will want to select the **Keep Both** options in the **Conflict Mode** screen.  
 
-4. After you have imported the form click on the **Forms** tab, then **Form Assignment**. You should see two new forms: **spawning_ground_p** and **spawning_ground_s**.
+4. After you have imported the form click on the **Forms** tab, then **Form Assignment**. You should see two new forms: **spawning_ground_p** and **spawning_ground_s**. The underscore p indicates the *parent* form. The underscore s indicates the *subform*.
 
 5. Highlight the row for **spawning_ground_s** then click **Assign** in the upper left corner. 
 
-6. Uncheck the boxes for **Collect** and **View**. Then scroll to the bottom and click **Update**. You should never have anything but the parent form (**_p**) assigned. 
+6. Uncheck the boxes for **Collect** and **View**. Then scroll to the bottom and click **Update**. You should never have anything but the parent form assigned. 
 
 7. Open the iFormBuilder application on your mobile device. 
 
@@ -26,7 +26,7 @@ After you have synced **Spawning Ground** to your device, click to launch. You s
 
 Note the asterisks next to the labels for each element. This indicates **required** fields. If you fail to fill any of these out you will be reminded when you hit the **Done** button. You will not be allowed to save or submit your data until all required fields are filled in. 
 
-The **Data entry real-time or post-survey** field illustrates how you can set up rules to show or hide elements in your form based on an initial conditions. For example, if you have some old paper data to enter and you need to use the mobile form as a post-survey data entry screen, then we know we don't need to show widgets for recording GPS locations at a later stage. In addition, we probably won't need to show widgets for capturing barcodes, or taking pictures. These can all be hidden unless data entry type is set as **real-time**. 
+The **Data entry real-time or post-survey** field illustrates how you can set up rules to show or hide elements in your form based on an initial conditions. For example, if you have some old paper data to enter and you need to use the mobile form as a post-survey data entry screen, then we know we don't need to show widgets for recording GPS locations at a later stage. In addition, we probably won't need to show widgets for capturing barcodes, or taking pictures. These can all be hidden if data entry type is set to **post_survey**. 
 
 Notice that for the **Data entry real-time or post-survey** and **Survey method** elements we have pre-selected default values of **Real-time** and **Foot** respectively. For **Survey start date & time** we can set a default value of the current date and time by using a JavaScript function ``new Date()``. Setting default values is a good way to help speed up data entry in the field. Details on how to set this up is included in Chapter 3. 
 
