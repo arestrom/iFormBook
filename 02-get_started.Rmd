@@ -50,7 +50,7 @@ For an example of data validation, click on the **Water temperature (degree C)**
 
 ### Automated entry of zero counts
 
-The **Target species** multiselect widget is intended as an automated way to enter zero counts. For example, if your survey is specifically targeted for Coho and Chinook, and your survey will be used to calculate population estimates, entering zero counts is crucial. By entering Coho and Chinook as target species, a zero count can automatically be entered on the backend for these species. The alternative would be to manually enter a count of zero for each species targeted. This can speed up data entry in the field. 
+The **Target species** multiselect widget is intended as an automated way to enter zero counts. For example, if your survey is specifically targeted for Coho and Chinook, and your survey will be used to calculate population estimates, entering zero counts is crucial. By entering Coho and Chinook as target species, a zero count can automatically be entered on the backend for these species. The alternative would be to manually enter a count of zero for each species targeted. Automating this aspect can speed up data entry in the field. 
 
 The follow-up question immediately below asks you to specify the categories of counts where zeros should be entered. Depending on the type of survey, this question allows you to specify if zero counts should be entered for fish counts, redds counts, or both. If you are strictly conducting a redd survey you would only want zeros entered for redds. If you are only doing a carcass survey, you will want to specify **Fish only**. If you are conducting a complete survey, including redd, live, and carcass counts, you will want to zero counts entered for **Both fish and redds**.
 
@@ -82,12 +82,42 @@ Note that depending on the species selected, the text for subsequent questions w
 
 ### Live fish
 
-Go back to **Observation type** and select **Live fish**, then select **Chinook** as **Species**. A relatively simple set of form elements will be displayed. You can enter a **count** of how many fish you saw. There is an option to enter the **location**, along with **Sex and maturity** and **Adipose clip status**. Enter some arbitraty values for these fields and click the **Done** button. As soon as the form saves the record it will cycle right back to the start of the **Observation subform** and you can enter the next observation. The ability of the subform to cycle back to the start after saving a record is a feature you can specify when designing the form. It is called **SUBFORM_BATCH_MODE**. Details will be provided in Chapter 3. 
+Go back to **Observation type** and select **Live fish**, then select **Chinook** as **Species**. A relatively simple set of form elements will be displayed. After you enter a **count** of how many fish you saw you will see options to enter the **location**, along with **Sex and maturity** and **Adipose clip status**. Enter some arbitrary values for these fields and click the **Done** button. As soon as the form saves the record it will cycle right back to the start of the **Observation subform** and you can enter the next observation. The ability of the subform to cycle back to the start after saving a record is a feature you can specify when designing the form. It is called **SUBFORM_BATCH_MODE**. Details will be provided in Chapter 3. 
 
-### Dead fish
+Notice also that the form is *sticky* in the sense that after you press the **Done** button, it remembers the **Species** and **Survey type** you entered last, and initiates the new observation with the values you used most recently. This *stickiness* can be useful if you typically encounter the same species repeatedly during a survey. Chapter 3 will detail how to code this behavior in the **dynamic value** box of a field. 
 
- 
+Change the **Species** to **Pink** and notice that the option to enter **Adipose clip status** dissapears. Using conditional logic you can first make a list of the species likely to have clipped fins, and then only display the **Adipose clip status** question when one of those species is encountered.
 
+### Carcass
+
+Click the **Done** button and cycle back to the top of the subform to enter a new observation. This time select **Carcass** as the **Observation type** and **Chinook** as the **Species**. The initial set of questions will look the same as for live fish. But if you enter a count of 2 or more for the **Number of Chinook counted** you will see a note reminding you that you must enter a count of 1 if you also want to enter additional biological data that is typically associated with individual fish, such as spawn condition, length measurements, or scale samples. This forces data for individual fish to be entered one fish at a time to our corporate database. If otoliths, or tissue samples for DNA analaysis are taken, the form will also assign a unique ID (UUID) that allows a single fish to be tracked in our data systems as a unique entity.
+
+If you now edit the **Number of Chinook counted** and enter 1, you will see a question appear asking: **Did you take a sample?**. If you select either **Otolith** or **Tissue** a UUID will be generated in a hidden field. You are also given the option to manually enter a **Sample number**. This will be appended to the front of the UUID and enables additional flexibility in tracking individual fish and sample numbers.
+
+If you enter either **Beep** or **No beep** in the **Did you detect a CWT in the Chinook** a new question will appear asking what **Detection method** you used. Also, if you selected **Adult female** or **Sub-adult female** for the **Sex and maturity** question, you will be asked an optional question regarding **Spawn condition** of the fish. 
+
+Length measurements are sometimes required when tissue samples are taken for DNA analyses. In our example form you will be asked to enter a fish length if you select either **Otolith** or **Tissue** for the **Did you take a sample?** question. If you enter a length you will also be asked what type of length measurement was taken. As always, both the selection of length types, and the triggers for when this question is asked, can be customized to your individual survey protocols. 
+
+Go back to **Number of Chinook counted** and edit your answer to a number greater than one. You will still have the ability to enter a location for where you saw the group of fish. You can also enter **Sex and maturity**, **Adipose clip status**, and whether you detected coded-wire tags in the group of fish. If you answer **Beep** or **No Beep** to the question **Did you detect a CWT in the Chinook** you will also be asked about **Detection method**. However, if you detect a CWT and need to record a **CWT head label number** this should be done separately for each individual fish. You will only have the ability to enter a **CWT head label number** if **Number of Chinook counted** is 1.  
+
+### Fish redd
+
+Click the **Done** button and cycle back to the top of the subform to enter a new observation. This time select **Fish redd** as the **Observation type** and **Steelhead** as the **Species**. Once again the first set of questions look similar, but you will now be asked to enter the **Number of redds observed**. If you enter a count greater than zero, you will also be asked to enter a **Redd location**. Notice that we have now set the **Redd location** question to required, as indicated by the asterisk. After you enter the location a hidden field will be generated in the background that will include only the latitude and longitude portions of the location output. For example:
+
+```
+47.065892: -122.887961
+```
+This is a good example of how you can pull out just the parts you need from a given data element and combine those parts in arbitrary ways to generate custom data elements.  
+
+If you enter a count greater than zero for **Number of redds observed** you will also be asked about the **Redd status**. The typical options are listed, but if your protocols require additional categories, those can easily be added. You will also be asked if there were **Any live Steelhead associated with the redd?**. If you answer **Yes** you will then have the option to enter the number of Steelhead seen, the **Sex and maturity**, and the **Adipose clip status**. 
+
+Unlike the carcass data, there are no requirements to enter data for redds on an individual basis. However, if you wanted to add questions to your form that typically require individual entries, such as redd shape, tailspill height, or substrate type, then you would need to condition those question on **Redd count** and only show the question if the count was one. 
+
+## Additional options
+
+Our tour of the example **spawning_ground** form includes most of the basic elements that would typically be needed for spawning ground surveys, but there are many other questions that could be added. For example, you may want to record data on gill condition, egg retention, marks or tags, etc. The relatively simple structure outlined above, consisting of one parent form and one subform, could easily incorporate additional data elements. You could also add additional subforms, but keep in mind that the simpler the structure of the form, the simpler it is to reason about any conditional logic you may need to code. Simpler is nearly always better. 
+
+Before you add additional data elements to your form please take a look at the [**Data dictionary**](https://github.com/arestrom/iFormBook) for the *spawning_ground* database. This includes tables listing nearly all data elements you will ever need. If any are missing they can most likely be added. Feel free to contact me for any questions. 
 
 
 
