@@ -8,6 +8,8 @@
 
 4. Demonstrate how to download data?
 
+5. Write up steps to create and activate branch in remote
+
 # Notes on bookdown
 
 ## Files needed to build basic book:
