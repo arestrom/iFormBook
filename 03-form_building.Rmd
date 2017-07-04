@@ -58,7 +58,7 @@ Multi-select widgets allow you to select one or more of the options listed. If m
 
 ## Data submitter
 
-The **data_submitter** element is another hidden field that is not required, but good practice to include. It can allow you to identify the person who was logged into the mobile device when the the **Done** button was clicked. This can all be done in the background using some default meta-data provided by iFormBuilder. To create this element you set the 
+The **data_submitter** element is another hidden field that is not required, but good practice to include. It can allow you to identify the person who was logged into the mobile device when the the **Done** button was clicked. This can all be done in the background using some default meta-data provided by iFormBuilder. To create this element you set the ...new blather
 
 
 
