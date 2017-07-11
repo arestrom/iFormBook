@@ -8,4 +8,4 @@ bookdown::gitbook:
       link: https://github.com/arestrom/iFormBook/edit/master/%s
       text: "Edit"
     sharing: no
-  css: r4ds.css
+  css: mf4ss.css

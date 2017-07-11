@@ -8,7 +8,9 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: arestrom/iFormBook
-description: " Building mobile forms for salmon surveys using iFormBuilder."
+description: null
+graphics: yes
+coverpage: cover.png
 ---
 
 # Preface {-}
