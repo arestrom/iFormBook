@@ -1,6 +1,6 @@
 # Build a form
 
-The sections below use the [**Package_spawning_ground.json**](https://github.com/arestrom/iFormBook) example form to illustrate how to build a mobile form on the iFormBuilder platform. If you have not done so already, please see the instructions in chapter 2 to load this package to your profile. Then click on *Forms > Form Builder > spawning_ground_p* to load the example form. This will provide a working example of how data elements can be defined, given default values, conditionally hidden, and validated. 
+The sections below use the [**Package_spawning_ground.json**](https://github.com/arestrom/iFormBook) example form to illustrate how to build a mobile form on the iFormBuilder platform. If you have not done so already, please see the instructions in chapter 2 to load this package to your profile. Then open the iFormBuilder web interface, click on *Forms > Form Builder > spawning_ground_p* to load the example form. This will provide a working example of how data elements can be defined, how elements can be given default values, and how they can be conditionally hidden and validated. 
 
 There will be special emphasis below on the core data elements that need to be present in any mobile form intended to be submitted to our corporate spawning ground database. If a core element is missing it will not be possible to upload any of the data from your mobile form to our central database.  
 
