@@ -1,0 +1,11 @@
+bookdown::gitbook:
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><strong><a href="./">Mobile forms</a></strong></li>
+    edit:
+      link: https://github.com/arestrom/iFormBook/edit/master/%s
+      text: "Edit"
+    sharing: no
+  css: r4ds.css
