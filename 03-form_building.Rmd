@@ -1,0 +1,77 @@
+# Build a form
+
+The sections below use the [**Package_spawning_ground.json**](https://github.com/arestrom/iFormBook) example form to illustrate how to build a mobile form on the iFormBuilder platform. If you have not done so already, please see the instructions in chapter 2 to load this package to your profile. Then open the iFormBuilder web interface, click on *Forms > Form Builder > spawning_ground_p* to load the example form. This will provide a working example of how data elements can be defined, how elements can be given default values, and how they can be conditionally hidden and validated. 
+
+There will be special emphasis below on the core data elements that need to be present in any mobile form intended to be submitted to our corporate spawning ground database. If a core element is missing it will not be possible to upload any of the data from your mobile form to our central database.  
+
+## Survey ID (core element)
+
+The **first element** in the parent form of any mobile form used for spawning ground surveys should be a **unique survey ID**. Although iFormBuilder has a widget titled *Unique ID* this is not a good choice for our purposes. Their *Unique ID* widget is merely a combination of a constant prefix and an integer value that increments each time you start filling out a new form. For example, D16-1, D16-2, etc. 
+
+The reason that iFormBuilder's solution is not a good choice is that it may result in generating IDs that conflict over time. For example, if after a season of using a form you decide to amend the structure, retire the old form and deploy the new version, you may end up with identical IDs for different surveys unless you also make sure to edit the prefix to some value never previously used. An alternate scenario is that you may want to create dedicated forms for different type of surveys, such as for fall Chinook, or spring Steelhead. To enfore uniqueness statewide there would need to be coordination in assigning prefixes over WDFW districts and regions, otherwise new forms may start incrementing overlapping IDs.  
+
+An even more important reason for adding a truly unique survey ID element to our forms is that it can then be used as a primary key in our corporate database. To that end what we need is a unique identifier that is (virtually) guaranteed to always be unique. The solution is to use a random uuid (universally unique ID). A version 4 uuid can be generated using the JavaScript code below. See the *Briguy37* answer at [Stackoverflow](https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript).  
+
+```{javascript, eval = FALSE}
+function generateUUID () { // Public Domain/MIT
+    var d = new Date().getTime();
+    if (typeof performance !== 'undefined' && typeof performance.now === 'function'){
+        d += performance.now(); //use high-precision timer if available
+    }
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
+```
+
+Copy and paste the code block above directly into the JavaScript panel of your parent form. You can access the JavaScript panel by clicking on the curly braces icon:  
+
+<span style="color:#89BD48; font-size: 1.9em;">{}</span> 
+
+in the top right corner of the Forms page when using the online Form Builder application. Make sure you paste it into the JavaScript panel for your parent form. 
+
+You then create a read-only element in you parent form by clicking on the *Read Only* widget in the left-hand pane. The name of the element should be **survey_uuid**. Enter **Unique survey ID** as the label. In the **Dynamic Value** box in the *Element Properties* pane on the right-hand side enter the following: 
+
+```{javascript, eval = FALSE}
+generateUUID() 
+```
+
+Leave the **Condition Value** set to **false**. That way it will be invisible to the surveyor. The **survey_uuid** element will generate a universally unique ID every time a form is initiated that will look something like: 
+
+```
+33b78489-7ad3-4482-9455-3988e05bfb28
+```
+
+There are 2^122^ possible combinations for a randomly generated version 4 uuid. In practical terms this means that if you generate one billion UUIDs every second for approximately 85 years, the probability that two identical uuids will be generated is still only about 50%. See article at [Wikipedia](https://en.wikipedia.org/wiki/Universally_unique_identifier). 
+
+## Data source (core element)
+
+Click on the *Data source* label in the form view on the left-hand side of the form-builder pane. Then examine the *Element Properties* in the right-hand pane. The **data_source** element will typically be another read-only field. It can be hard-coded as "wdfw" in the **Dynamic Value** box of the Smart Control. You can set the **Condition Value** to false to hide it from view. On the off-chance that your form will be shared with other organizations, you can also change this element to a select widget. You will then need to create an option list that includes all organizations using the form. Examples of how to create option lists and use select values are provided in the sections below. For now, let's just assume **data_source** will be a hidden, read-only data element. 
+
+## Observers
+
+Click on *Observers* in the form view. Although **observers** is not a core required element it is highly recommended that you include this multi-select widget. In the example form it has been set to *Required* in the *Attributes* section of the *Element properties* pane. Click on the green **Option lists** button to see the observers currently listed. 
+
+Multi-select widgets allow you to select one or more of the options listed. If more than one is selected the last names (Key Value) will be concatenated together, separated by commas and a space. Feel free to edit the names in the option list to meet your own needs. If you choose to edit the names, make sure to hit the Save icon in the upper-right corner before you close out the window. 
+
+## Data submitter
+
+The **data_submitter** element is another hidden field that is not required, but good practice to include. It can allow you to identify the person who was logged into the mobile device when the the **Done** button was clicked. This can all be done in the background using some default meta-data provided by iFormBuilder. To create this element you set the ...new blather
+
+
+
+
+
+
+
+
+
+
+
+
+
+Notice the **Sort Order** column in the option list. You can use these values to specify a default value that you want to use to initialize the option list. If you select 0 you will select Travis Butterfield. If you select -1 you will initialize the 
+
+In the **Smart Control** pane set the **Dynamic Value** to -1. I normally use a set of braces to enclose the -1, but this is not essential. Setting an dynamic value of -1 is an explicit way to say the data is currently missing. It is good practice to always initialize select, multi-select, or pick-list widgets. 

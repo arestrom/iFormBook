@@ -1,3 +1,15 @@
+# ToDo
+
+1. Finish iformr package. Text indicates a package. 
+
+2. Finish spawning ground form. Link to new json package. 
+
+3. Discuss subform batch mode
+
+4. Demonstrate how to download data?
+
+5. Write up steps to create and activate branch in remote
+
 # Notes on bookdown
 
 ## Files needed to build basic book:

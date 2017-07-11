@@ -10,60 +10,118 @@ The quickest way to get started with form building is by example.
 
 3. In the **Package Importer** screen, click **Choose File**, navigate to where you downloaded the **Package_spawning_ground.json** file, and click **Import**. If you have existing forms in your profile you will want to select the **Keep Both** options in the **Conflict Mode** screen.  
 
-4. After you have imported the form click on the **Forms** tab, then **Form Assignment**. You should see two new forms: **spawning_ground_p** and **spawning_ground_s**.
+4. After you have imported the form click on the **Forms** tab, then **Form Assignment**. You should see two new forms: **spawning_ground_p** and **spawning_ground_s**. The underscore p indicates the *parent* form. The underscore s indicates the *subform*.
 
 5. Highlight the row for **spawning_ground_s** then click **Assign** in the upper left corner. 
 
-6. Uncheck the boxes for **Collect** and **View**. Then scroll to the bottom and click **Update**. You should never have anything but the parent form (**_p**) assigned. 
+6. Uncheck the boxes for **Collect** and **View**. Then scroll to the bottom and click **Update**. You should never have anything but the parent form assigned. 
 
 7. Open the iFormBuilder application on your mobile device. 
 
 ## A brief tour: Parent form
 
-The parent form is where you would enter information that only needs to be entered once per survey. This is typically the *header* information you would see at the top of a paper form. Any repeating lines of data (individual observations) will be entered to a subform. The sections below assume that you have a device loaded with the example **Spawning Ground** form. If not, please do so now. 
+The parent form is where you would record information that only needs to be entered once per survey. This is typically the *header* information you would see at the top of a paper form. Any repeating lines of data (individual observations) will be entered to a subform. The sections below assume that you have a device loaded with the example **Spawning Ground** form. If not, please do so now.
 
-After you have synced **Spawning Ground** to your device, click on it to launch. You should see a fairly bare form. The only items showing will be some basic header information. Items include a multiselect dropdown widget for **Observers**, a set of select buttons for **Data entry real-time or post-survey**,  a **Survey start date & time** widget, a set of **Survey method** select buttons, a dropdown widget for **Stream**, and a **Done** button. The reason that you only see a few elements at first is that we have hidden the others using conditional logic. Hidden elements will only be revealed after prerequisite fields have been filled out. Selectively hiding elements in a form is a highly effective tool for reducing clutter and simplifying form structure. 
+### Hiding questions
+
+After you have synced the **Spawning Ground** form to your device, click to launch. You should see a fairly bare form. The only items showing will be some basic header information. Items include a multiselect dropdown widget for **Observers**, a set of select buttons for **Data entry real-time or post-survey**,  a **Survey start date & time** widget, a set of **Survey method** select buttons, a dropdown widget for **Stream**, and a **Done** button. The reason that you only see a few elements at first is that we have hidden the others using conditional logic. Hidden elements will only be revealed after prerequisite fields have been filled out. Selectively hiding elements in a form is a highly effective tool for reducing clutter and simplifying form structure. 
+
+### Required fields
 
 Note the asterisks next to the labels for each element. This indicates **required** fields. If you fail to fill any of these out you will be reminded when you hit the **Done** button. You will not be allowed to save or submit your data until all required fields are filled in. 
 
-The **Data entry real-time or post-survey** field illustrates how you can set up rules to show or hide elements in your form based on an initial conditions. For example, if you have some old paper data to enter and you need to use the mobile form as a post-survey data entry screen, then we know we don't need to show widgets for recording GPS locations at a later stage. In addition, we probably won't need to show widgets for capturing barcodes, or taking pictures. These can all be hidden unless data entry type is set as **real-time**. 
+### Real-time or post-survey
+
+The **Data entry real-time or post-survey** field illustrates how you can set up rules to show or hide elements in your form based on an initial conditions. For example, if you have some old paper data to enter and you need to use the mobile form as a post-survey data entry screen, then we know we don't need to show widgets for recording GPS locations at a later stage. In addition, we probably won't need to show widgets for capturing barcodes, or taking pictures. These can all be hidden if data entry type is set to **post_survey**. 
+
+### Default values
 
 Notice that for the **Data entry real-time or post-survey** and **Survey method** elements we have pre-selected default values of **Real-time** and **Foot** respectively. For **Survey start date & time** we can set a default value of the current date and time by using a JavaScript function ``new Date()``. Setting default values is a good way to help speed up data entry in the field. Details on how to set this up is included in Chapter 3. 
 
-The **Stream**, **Survey start point** and **Survey end point** elements demonstrate use of filtered option lists. Click on **Stream** and you will see a list of stream names. Start and stop points for reaches are filtered to the stream you select. If you change your **Stream** selection, a different set of start and stop points options will be displayed. Select **Bear Cr (19.0196)** to see a good example of using labels to help identify filtered options. If you now click on the **Survey start point** pick list you will see a simple set of descriptions for the filtered points. 
+### Filtered option lists
 
-At the bottom of each option list for start and stop points you have the ability to enter **Not listed above**. If you select this option two additional form elements will appear where you can enter the approximate river mile of the location and a description of the location. Ideally, all reach end points you normally survey will already be entered to your option lists. New points can easily be added, even to a live form, but for those rare cases where the unexpected happens, it is sometimes a good idea to provide options for manual entry. Keep this to a minimum though, as it can quickly make a form overly complex and unwieldy.  
+The **Stream**, **Survey start point** and **Survey end point** elements demonstrate use of filtered option lists. Click on **Stream** and you will see a list of stream names. Start and stop points for stream *reach* sections that are typically surveyed are displayed. These are filtered to the stream you select. If you change the **Stream** selection, a different set of start and stop points options will be displayed. Select **Bear Cr (19.0196)** to see a good example of using labels to help identify filtered options. If you now click on the **Survey start point** pick list you will see a simple set of descriptions for the filtered points. 
 
-For an example of data validation, click on the **Water temperature (degree C)** widget and enter the number 45, then click the **Done** button. You should see a message pop up that says "The start point water temperature must be between 0 and 40 degrees Celsius". These types of validations are simple to set up. Details will be provided in Chapter 3. 
+At the bottom of each option list for start and stop points you have the ability to enter **Not listed above**. If you select this option two additional form elements will appear where you can enter the approximate river mile of the location and a description of the location. Ideally, all reach end points that you normally survey will already be entered to your option lists. New points can easily be added, even to a live form, but for those rare cases where the unexpected happens, it is sometimes a good idea to provide options for manual entry. Keep this to a minimum though, as it can quickly make a form overly complex and unwieldy.  
 
-The **Target species** multiselect widget is intended as an automated way to enter zero counts. For example, if your survey is specifically targeted for Coho and Chinook, and your survey will be used to calculate population estimates, entering zero counts is crucial. By entering Coho and Chinook as target species, a zero count can automatically be entered on the backend for these species. The alternative would be to manually enter a count of zero for each species targeted. This can speed up data entry in the field. 
+### Data validation
 
-The follow-up question immediately below asks you to specify the categories of counts where zeros should be entered. Depending on the type of survey, this question allows you to specify if zero counts should be entered for fish counts, redds counts, or both. If you are strictly conducting a redd survey you would only want zeros entered for redds. If you are only doing a carcass survey, you will want to specify **Fish only**. If you are conducting a complete survey, including redd, live, and carcass counts, you will want to zero counts entered for **Both fish and redds**. 
+For an example of data validation, click on the **Water temperature (degree C)** widget and enter the number 45, then click the **Done** button. You should see a message pop up that says "The start point water temperature must be between 0 and 38 degrees Celsius". These types of validations are simple to set up. Details will be provided in Chapter 3. 
 
-The final header data question in the top section asks **Did you see any fish or fish redds**. If you answer **Yes** you will open a subform where you can enter each observation. If you answer **No** you will only need to fill in a few remaining post-survey questions. To complete the questions on the parent form click on **No** to this question. 
+### Automated entry of zero counts
 
-In the bottom portion of the parent form you are asked to enter some legacy *canned* pick-list comments regarding Stream flow, Visibility conditions, and Weather. The new *spawning ground* database provides many additional options for *canned* comments. I have not included these here. Contact me if you would like to see examples of how these can be integrated, or would like a copy of the new *spawning ground* database data dictionary.
+The **Target species** multiselect widget is intended as an automated way to enter zero counts. For example, if your survey is specifically targeted for Coho and Chinook, and your survey will be used to calculate population estimates, entering zero counts is crucial. By entering Coho and Chinook as target species, a zero count can automatically be entered on the backend for these species. The alternative would be to manually enter a count of zero for each species targeted. Automating this aspect can speed up data entry in the field. 
 
-You are next asked if the survey was completed. If not, then you are asked to explain why. Toggle between answering **Completed survey** and any other option. Notice that the label for the **Survey comments** field will change from **(optional)** to **(required)**. In addition, a note will appear reminding you that an explantion is needed. This is a good example of using **Dynamic lables**. Additional details will be provided in Chapter 3. 
+The follow-up question immediately below asks you to specify the categories of counts where zeros should be entered. Depending on the type of survey, this question allows you to specify if zero counts should be entered for fish counts, redds counts, or both. If you are strictly conducting a redd survey you would only want zeros entered for redds. If you are only doing a carcass survey, you will want to specify **Fish only**. If you are conducting a complete survey, including redd, live, and carcass counts, you will want zero counts entered for **Both fish and redds**.
 
-The final two question allow you to enter general comments on the survey, and the time the survey was finished. Both questions are technically set as optional, but remember that you will still need to enter an explanation if you did not answer **Completed survey** above. This demonstrates how optional fields can conditionally be set to required, without explicitly toggling the **Required** setting in form builder.  
+### Toggling a subform
+
+The final header data question in the top section asks **Did you see any fish or fish redds?**. If you answer **Yes** you will open a subform where you can enter each observation. If you answer **No** you will only need to fill in a few remaining post-survey questions. To complete the questions on the parent form click on **No** to this question.
+
+### Survey comments and dynamic labels
+
+In the bottom portion of the parent form you are asked to enter some *canned* pick-list comments regarding Stream flow, Visibility conditions, and Weather. The new *spawning ground* database provides many additional options for *canned* comments adapted from legacy *condition codes* that you may have used in the past. I have not included these here. If you are an employee of WDFW you can see a complete list of options in the **SpawningGroundDataDictionary.html** located in the WDFW Fish Program shared drive under the *30Day/SpawningGround* folder. Otherwise, contact me if you would like a copy. 
+
+You are next asked if the survey was completed. If not, then you are asked to explain why. Toggle between answering **Completed survey** and any other option. Notice that the label for the **Survey comments** field will change from **(optional)** to **(required)**. In addition, a note will appear reminding you that an explantion is needed. This is a good example of using **Dynamic lables**. Additional details will be provided in Chapter 3.
+
+### Setting optional fields to required
+
+The final two questions allow you to enter general comments on the survey, and the time the survey was finished. Both questions are technically set as optional, but remember that you will still need to enter an explanation if you did not answer **Completed survey** above. This demonstrates how optional fields can conditionally be set to required, without explicitly toggling the **Required** setting when building the form.  
 
 ## A brief tour: Observations subform
 
-Go back to the question **Did you see any fish or fish redds** and click **Yes:**. The **Observation subform** will be displayed. Click on the *Observation subform** to allow entering data for individual observations and counts of fish and redds. 
+Go back to the question **Did you see any fish or fish redds?** and click **Yes**. The **Observation subform** will be displayed. Click on the **Observation subform** to allow entering counts of fish, redds and any ancillary information. 
 
 After opening the subform you will need to specify if the **Observation type** was for live fish, dead fish, or redds. Depending on your answers a different set of questions will be displayed. After you enter **Observation type** and **Species** toggle between **Fish redd** and the other two options in **Observation type** to see how the questions near the bottom of the screen vary. 
 
 The initial set of questions after selecting **Observation type** and **Species** will be identical. They will ask about run year, and survey type. Each of these are core questions that are required in the form, and must be anwered in order to enter the data to our corporate database. 
 
-In our example **Run year** is set to the current year. You could also use JavaScript to auto-generate different values depending on species and current date. You can manually edit **Run year** as needed. Survey type can vary depending on species and survey protocol. This is why survey type is included at the subform level. For example, during a fall Chinook **index** survey, Pink salmon encounters may need to be entered as **supplemental**. 
+In our example, **Run year** is set to the current year. You could also use JavaScript to auto-generate different values depending on species and current date. Or you can manually edit **Run year** as needed. 
+
+**Survey type** can vary depending on species and survey protocol. This is why survey type is included at the subform level. For example, during a fall Chinook **index** survey, Pink salmon encounters may need to be entered as **supplemental**. 
 
 Note that depending on the species selected, the text for subsequent questions will be altered to include the species name. This is another example of **Dynamic labels**.
 
-Go back to **Observation type** and select **Live fish**, then select **Chinook** as **Species**. A relatively simple set of form elements will be displayed. You can enter a **count** of how many fish you saw, there is an option to enter the **location**, along with **Sex and maturity** and **Adipose clip status**. Enter some arbitraty values for these fields and click the **Done** button. As soon as the form saves the record it will cycle right back to the start and you can
+### Live fish
 
- 
+Go back to **Observation type** and select **Live fish**, then select **Chinook** as **Species**. A relatively simple set of form elements will be displayed. After you enter a **count** of how many fish you saw you will see options to enter the **location**, along with **Sex and maturity** and **Adipose clip status**. Enter some arbitrary values for these fields and click the **Done** button. As soon as the form saves the record it will cycle right back to the start of the **Observation subform** and you can enter the next observation. The ability of the subform to cycle back to the start after saving a record is a feature you can specify when designing the form. It is called **SUBFORM_BATCH_MODE**. Details will be provided in Chapter 3. 
 
+Notice also that the form is *sticky* in the sense that after you press the **Done** button, it remembers the **Species** and **Survey type** you entered last, and initiates the new observation with the values you used most recently. This *stickiness* can be useful if you typically encounter the same species repeatedly during a survey. Chapter 3 will detail how to code this behavior in the **dynamic value** box of a field. 
+
+Change the **Species** to **Pink** and notice that the option to enter **Adipose clip status** dissapears. Using conditional logic you can first make a list of the species likely to have clipped fins, and then only display the **Adipose clip status** question when one of those species is encountered.
+
+### Carcass
+
+Click the **Done** button and cycle back to the top of the subform to enter a new observation. This time select **Carcass** as the **Observation type** and **Chinook** as the **Species**. The initial set of questions will look the same as for live fish. But if you enter a count of *2* or more for the **Number of Chinook counted** you will see a note reminding you that you must enter a count of *1* if you also want to enter additional biological data that is typically associated with individual fish, such as spawn condition, length measurements, or scale samples. This forces data for individual fish to be entered one fish at a time to our corporate database. If otoliths, or tissue samples for DNA analaysis are taken, the form will also assign a unique ID (UUID) that allows a single fish to be tracked in our data systems as a unique entity.
+
+If you now edit the **Number of Chinook counted** and enter *1*, you will see a question appear asking: **Did you take a sample?**. If you select either **Otolith** or **Tissue** a UUID will be generated in a hidden field. You are also given the option to manually enter a **Sample number**. This will be appended to the front of the UUID and enables additional flexibility in tracking individual fish and sample numbers.
+
+If you enter either **Beep** or **No beep** in the **Did you detect a CWT in the Chinook?** a new question will appear asking what **Detection method** you used. Also, if you selected **Adult female** or **Sub-adult female** for the **Sex and maturity** question, you will be asked an optional question regarding **Spawn condition** of the fish. 
+
+Length measurements are sometimes required when tissue samples are taken for DNA analyses. In our example form you will be asked to enter a fish length if you select either **Otolith** or **Tissue** for the **Did you take a sample?** question. If you enter a length you will also be asked what type of length measurement was taken. As always, both the selection of length types, and the triggers for when this question is asked, can be customized to your individual survey protocols. 
+
+Go back to **Number of Chinook counted** and edit your answer to a number greater than one. You will still have the ability to enter a location for where you saw the group of fish. You can also enter **Sex and maturity**, **Adipose clip status**, and whether you detected coded-wire tags in the group of fish. If you answer **Beep** or **No Beep** to the question **Did you detect a CWT in the Chinook** you will also be asked about **Detection method**. However, if you detected a coded-wire tag (CWT) and need to record a **CWT head label number** you will be required to enter this on an individual basis. You will only have the ability to enter a **CWT head label number** if the **Number of Chinook counted** is *1*.  
+
+### Fish redd
+
+Click the **Done** button and cycle back to the top of the subform to enter a new observation. This time select **Fish redd** as the **Observation type** and **Steelhead** as the **Species**. Once again the first set of questions look similar, but you will now be asked to enter the **Number of redds observed**. If you enter a count greater than zero, you will also be asked to enter a **Redd location**. Notice that we have now set the **Redd location** question to required, as indicated by the asterisk. After you enter the location a hidden field will be generated in the background that will include only the latitude and longitude portions of the location output. For example:
+
+```
+47.065892: -122.887961
+```
+This is a good example of how you can pull out just the parts you need from a given data element and combine those parts in arbitrary ways to generate custom data elements.  
+
+If you enter a count greater than zero for **Number of redds observed** you will also be asked about **Redd status**. The typical options will be listed for selection, but if your protocols require additional categories, those can easily be added. 
+
+You will also be asked if there were **Any live Steelhead associated with the redd?**. If you answer **Yes** you will then have the option to enter the number of Steelhead seen, the **Sex and maturity**, and the **Adipose clip status** of the live steelhead. 
+
+Unlike the restrictions applied to carcass data, there are no requirements to enter data for redds on an individual basis. However, if you wanted to add questions to your form that typically require individual entries, such as redd shape, tailspill height, or substrate type, then you would need to condition those question on **Redd count** and only show these question if the count was one. 
+
+## Additional options
+
+The example survey form described above includes most of the basic elements that would typically be needed for spawning ground surveys. Although the form has intentionally been kept simple to illustrate basic concepts, other data elements can easily be added. Questions regarding items such as gill condition, egg retention, marks or tags, would be trivial to implement. The relatively simple structure, consisting of one parent form and one subform, is sufficient to incorporate many additional data elements. You always have the option to add more subforms, but keep in mind that the simpler the structure of the form, the simpler it is build and maintain. It can quickly become challenging to reason about conditional logic when multiple subforms are involved. At that point you may find you need to pass hidden values back and forth between parent and multiple subforms. As a general rule, simpler is nearly always better. 
+
+Before you add new data elements to your mobile form please take a look at the **SpawningGroundDataDictionary.html** located in the WDFW Fish Program shared drive under the *30Day/SpawningGround* folder. The data dictionary for the new *spawning_ground* database includes tables listing a wide range of data elements that could be incorporated into mobile forms. Feel free to contact me if you have any questions. 
 
 
 
