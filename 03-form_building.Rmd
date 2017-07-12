@@ -26,11 +26,14 @@ function generateUUID () { // Public Domain/MIT
 }
 ```
 
-Copy and paste the code block above directly into the JavaScript panel of your parent form. You can access the JavaScript panel by clicking on the curly braces icon:  
+Copy and paste the code block above directly into the JavaScript panel of your parent form. You can access the JavaScript panel by clicking on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the Forms page when using the online Form Builder application.
 
-<span style="color:#89BD48; font-size: 1.9em;">{}</span> 
 
-in the top right corner of the Forms page when using the online Form Builder application. Make sure you paste it into the JavaScript panel for your parent form. 
+```{r echo = FALSE, out.width = "25%"}
+knitr::include_graphics("screenshots/actions.png")
+```
+
+Make sure you paste the code into the JavaScript panel for your **parent** form. 
 
 You then create a read-only element in you parent form by clicking on the *Read Only* widget in the left-hand pane. The name of the element should be **survey_uuid**. Enter **Unique survey ID** as the label. In the **Dynamic Value** box in the *Element Properties* pane on the right-hand side enter the following: 
 
@@ -44,11 +47,11 @@ Leave the **Condition Value** set to **false**. That way it will be invisible to
 33b78489-7ad3-4482-9455-3988e05bfb28
 ```
 
-There are 2^122^ possible combinations for a randomly generated version 4 uuid. In practical terms this means that if you generate one billion UUIDs every second for approximately 85 years, the probability that two identical uuids will be generated is still only about 50%. See article at [Wikipedia](https://en.wikipedia.org/wiki/Universally_unique_identifier). 
+There are 2^122^ possible combinations for a randomly generated version 4 uuid. In practical terms this means that if you generate one billion UUIDs every second for approximately 85 years, the probability that two identical UUIDs will be generated is still only about 50%. See article at [Wikipedia](https://en.wikipedia.org/wiki/Universally_unique_identifier). 
 
 ## Data source (core element)
 
-Click on the *Data source* label in the form view on the left-hand side of the form-builder pane. Then examine the *Element Properties* in the right-hand pane. The **data_source** element will typically be another read-only field. It can be hard-coded as "wdfw" in the **Dynamic Value** box of the Smart Control. You can set the **Condition Value** to false to hide it from view. On the off-chance that your form will be shared with other organizations, you can also change this element to a select widget. You will then need to create an option list that includes all organizations using the form. Examples of how to create option lists and use select values are provided in the sections below. For now, let's just assume **data_source** will be a hidden, read-only data element. 
+Click on the *Data source* label in the form view on the left-hand side of the form-builder pane. Then examine the *Element Properties* in the right-hand pane. The **data_source** element will typically be another read-only field. It can be hard-coded as "wdfw" in the **Dynamic Value** box of the Smart Control. You can set the **Condition Value** to *false* to hide it from view. On the off-chance that your form will be shared with other organizations, you can also change this element to a select widget. You will then need to create an option list that includes all organizations using the form. Examples of how to create option lists and use select values are provided in the sections below. For now, let's just assume **data_source** will be a hidden, read-only data element. 
 
 ## Observers
 
