@@ -16,7 +16,7 @@ There is a great deal of information available at the iFormBuilder website for l
 
 At some point you will need to write simple JavaScript code. This is especially important when you want to create conditional logic to hide or show a data element, validate data, or sum up a set of counts. My favorite site for help with JavaScript is [w3schools](https://iformbuilder.zendesk.com/hc/en-us). If you need to do something more complex, you will usually find that someone has already written a function to accomplish exactly what you want. Try searching on [stackoverflow](https://stackoverflow.com/questions/tagged/javascript). In addition, there is a selection of commonly used JavaScript functions located in the appendix.
 
-When building forms, remember to **SAVE** frequently. Best practice is to get into the habit of clicking the save icon in the upper right-hand corner every time you make a change.
+When building forms, remember to **Save** frequently. Best practice is to get into the habit of clicking the save icon in the upper right-hand corner every time you make a change. Few things are more annoying than to make a series of changes, then later realize that all your work has dissapeared because you forgot to save. 
 
 ```{r echo = FALSE, out.width = "25%"}
 knitr::include_graphics("screenshots/actions.png")

@@ -33,7 +33,7 @@ Copy and paste the code block above directly into the JavaScript panel of your p
 knitr::include_graphics("screenshots/actions.png")
 ```
 
-Make sure you paste the code into the JavaScript panel for your **parent** form. 
+Make sure you paste the code into the JavaScript panel for your *parent* form, not the *subform*. 
 
 You then create a read-only element in you parent form by clicking on the *Read Only* widget in the left-hand pane. The name of the element should be **survey_uuid**. Enter **Unique survey ID** as the label. In the **Dynamic Value** box in the *Element Properties* pane on the right-hand side enter the following: 
 
@@ -51,11 +51,11 @@ There are 2^122^ possible combinations for a randomly generated version 4 uuid. 
 
 ## Data source (core element)
 
-Click on the *Data source* label in the form view on the left-hand side of the form-builder pane. Then examine the *Element Properties* in the right-hand pane. The **data_source** element will typically be another read-only field. It can be hard-coded as "wdfw" in the **Dynamic Value** box of the Smart Control. You can set the **Condition Value** to *false* to hide it from view. On the off-chance that your form will be shared with other organizations, you can also change this element to a select widget. You will then need to create an option list that includes all organizations using the form. Examples of how to create option lists and use select values are provided in the sections below. For now, let's just assume **data_source** will be a hidden, read-only data element. 
+Click on the **Data source** label in the form view on the left-hand side of the form-builder pane. Then examine the *Element Properties* in the right-hand pane. The **data_source** element will typically be another read-only field. It can be hard-coded as **"wdfw"** in the **Dynamic Value** box of the Smart Control. You can set the **Condition Value** to *false* to hide it from view. On the off-chance that your form will be shared with other organizations, you can also change this element to a select widget. You will then need to create an option list that includes all organizations using the form. Examples of how to create option lists and use select values are provided in the sections below. For now, let's just assume **data_source** will be a hidden, read-only data element. 
 
 ## Observers
 
-Click on *Observers* in the form view. Although **observers** is not a core required element it is highly recommended that you include this multi-select widget. In the example form it has been set to *Required* in the *Attributes* section of the *Element properties* pane. Click on the green **Option lists** button to see the observers currently listed. 
+Click on **Observers** in the form view. Although **observers** is not a core required element it is highly recommended that you include this multi-select widget. In the example form it has been set to *Required* in the *Attributes* section of the *Element properties* pane. Click on the green **Option lists** button to see the observers currently listed. 
 
 Multi-select widgets allow you to select one or more of the options listed. If more than one is selected the last names (Key Value) will be concatenated together, separated by commas and a space. Feel free to edit the names in the option list to meet your own needs. If you choose to edit the names, make sure to hit the Save icon in the upper-right corner before you close out the window. 
 
