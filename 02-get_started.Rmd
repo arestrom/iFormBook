@@ -6,13 +6,25 @@ The quickest way to get started with form building is by example.
 
 1. Download the [**Package_spawning_ground.json**](https://github.com/arestrom/iFormBook) file from the GitHub repository for this book.  
 
-2. Sign in to you iFormBuilder profile and click on the **Forms** tab, then **Form Packages**, and **Package Import**.  
+2. Sign in to your iFormBuilder profile and click on the **Forms** tab, then **Form Packages**, and **Package Import**. 
 
-3. In the **Package Importer** screen, click **Choose File**, navigate to where you downloaded the **Package_spawning_ground.json** file, and click **Import**. If you have existing forms in your profile you will want to select the **Keep Both** options in the **Conflict Mode** screen.  
+```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
+knitr::include_graphics("screenshots/package_dropdown.png")
+```
+
+3. In the **Package Importer** screen, click **Choose File**, navigate to where you downloaded the **Package_spawning_ground.json** file, and click **Import**. If you have existing forms in your profile you will want to select the **Keep Both** options in the **Conflict Mode** screen.
+
+```{r echo = FALSE, fig.align = 'center', out.width = "45%"}
+knitr::include_graphics("screenshots/conflict_mode.png")
+```
 
 4. After you have imported the form click on the **Forms** tab, then **Form Assignment**. You should see two new forms: **spawning_ground_p** and **spawning_ground_s**. The underscore p indicates the *parent* form. The underscore s indicates the *subform*.
 
 5. Highlight the row for **spawning_ground_s** then click **Assign** in the upper left corner. 
+
+```{r echo = FALSE, fig.align = 'center', out.width = "35%"}
+knitr::include_graphics("screenshots/form_assign.png")
+```
 
 6. Uncheck the boxes for **Collect** and **View**. Then scroll to the bottom and click **Update**. You should never have anything but the parent form assigned. 
 

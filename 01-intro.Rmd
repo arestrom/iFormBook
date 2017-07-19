@@ -12,16 +12,22 @@ Since the source code for this manual is hosted on a public website, I will not 
 
 ## Useful tips
 
-There is a great deal of information available at the iFormBuilder website for learning how to build forms. This includes an extensive list of videos. Unfortunately, that information is not always well organized. You can often get better results prefacing *iformbuilder* with a general search term, such as *parse location* than using iFormBuilder's help. That said, the [Customer Success Center](https://iformbuilder.zendesk.com/hc/en-us) is still a good place to start. If you have not already done so, watch the [Art of Form Building](https://www.zerionsoftware.com/recording/form-builder-101-may-2016/) video for an introduction to best practices. 
+There is a great deal of information available at the iFormBuilder website for learning how to build forms. This includes an extensive list of videos. Unfortunately, that information is not always well organized. You can often get better results prefacing a general search term such as *parse location* with *iformbuilder* than using iFormBuilder's help. That said, the [Customer Success Center](https://iformbuilder.zendesk.com/hc/en-us) is still a good place to start. If you have not already done so, watch the [Art of Form Building](https://www.zerionsoftware.com/recording/form-builder-101-may-2016/) video for an introduction to best practices. 
 
-At some point you will need to write simple JavaScript code. This is especially important when you want to create conditional logic to hide or show a data element, validate data, or sum up a set of counts. My favorite site for help with JavaScript is [w3schools](https://iformbuilder.zendesk.com/hc/en-us). If you need to do something more complex, you will usually find that someone has already written a function to accomplish exactly what you want. Try searching on [stackoverflow](https://stackoverflow.com/questions/tagged/javascript). In addition, there is a selection of commonly used JavaScript functions located in the appendix.
+At some point you will need to write simple JavaScript code. This is especially important when you want to create conditional logic to hide or show a data element, validate data, or sum up a set of counts. My favorite site for help with JavaScript is [w3schools](https://iformbuilder.zendesk.com/hc/en-us). If you need to do something more complex, you will usually find that someone has already written a function to accomplish exactly what you want. Try searching on [stackoverflow](https://stackoverflow.com/questions/tagged/javascript). In addition, there is a selection of commonly used JavaScript functions located in the appendix section of this manual.
 
-When building forms, remember to **Save** frequently. Best practice is to get into the habit of clicking the save icon in the upper right-hand corner every time you make a change. Few things are more annoying than to make a series of changes, then later realize that all your work has dissapeared because you forgot to save. 
+When adding new data elements to your form keep in mind that the *data_column* names must be what is termed *database friendly*. They must all be lower_case, and you cannot use compound words, such as *redd count* without first tying the words together using an underscore. For example, *redd_count*. There is also a long list of [reserved words](https://iformbuilder.zendesk.com/hc/en-us/articles/201698530-Reserved-Words-What-words-cannot-be-used-as-data-column-names-) that you cannot use for data_column names. These can be downloaded from the link above. 
+
+Always remember that option lists can be shared among different forms. This means that whenever you edit an option lists you are changing options for all forms that share the list. This can cause severe problems with other mobile forms in your profile if you are not careful. 
+
+When building forms, remember to **Save** frequently. Best practice is to get into the habit of clicking the save icon in the upper right-hand corner of the form builder interface every time you make a change. 
 
 ```{r echo = FALSE, out.width = "25%"}
 knitr::include_graphics("screenshots/actions.png")
 ```
 
+Few things are more annoying than to make a series of changes to a form, then later realize that all your work has dissapeared because you forgot to save. 
 
+## Conventions
 
 

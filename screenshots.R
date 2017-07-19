@@ -9,6 +9,6 @@ webshot("https://wdfw.iformbuilder.com/exzact/FormBuilder/pages/3358331",
         shrink()
 
 # Get the whole page
-webshot("https://wdfw.iformbuilder.com/exzact/FormBuilder/pages/3358331", 
-        "screenshots/device.png", selector = ".z-index-fix", zoom = 50) %>% 
+webshot("https://wdfw.iformbuilder.com/exzact/FormBuilder/optionlists/4436717", 
+        "screenshots/option_list.png", selector = ".col-sm-12", zoom = 25) %>% 
   shrink()
