@@ -1,6 +1,6 @@
 # Build a form
 
-The sections below use the [**Package_spawning_ground.json**](https://github.com/arestrom/iFormBook) example form to illustrate how to build a mobile form on the iFormBuilder platform. If you have not done so already, please see the instructions in chapter 2 to load this package to your profile. Then open the iFormBuilder web interface, click on *Forms > Form Builder > spawning_ground_p* to load the example form. 
+The sections below use the [*Package_spawning_ground.json*](https://github.com/arestrom/iFormBook) example form to illustrate how to build a mobile form on the iFormBuilder platform. If you have not done so already, please see the instructions in chapter 2 to load this package to your profile. Then open the iFormBuilder web interface, click on *Forms > Form Builder > spawning_ground_p* to load the example form. 
 
 ```{r echo = FALSE, fig.align = 'left', out.width = "20%"}
 knitr::include_graphics("screenshots/forms_dropdown.png")
@@ -12,7 +12,7 @@ There will be special emphasis below on the core data elements that need to be p
 
 ## Survey ID (core element)
 
-The first element in the parent form of any mobile form used for spawning ground surveys should be a **unique survey ID**. Although iFormBuilder has a widget titled *Unique ID* this is not a good choice for our purposes. Their *Unique ID* widget is merely a combination of a constant prefix and an integer value that increments each time you start filling out a new form. For example, D16-1, D16-2, etc. 
+The first element in the parent form of any mobile form used for spawning ground surveys should be a *unique survey ID*. Although iFormBuilder has a widget titled *Unique ID* this is not a good choice for our purposes. Their *Unique ID* widget is merely a combination of a constant prefix and an integer value that increments each time you start filling out a new form. For example, D16-1, D16-2, etc. 
 
 The reason that iFormBuilder's solution is not a good choice is that it may result in generating IDs that conflict over time. For example, if after a season of using a form you decide to amend the structure, retire the old form and deploy the new version, you may end up with identical IDs for different surveys unless you also make sure to edit the prefix to some value never previously used. An alternate scenario is that you may want to create dedicated forms for different type of surveys, such as for fall Chinook, or spring Steelhead. To enfore uniqueness statewide there would need to be coordination in assigning prefixes over WDFW districts and regions, otherwise new forms may start incrementing overlapping IDs.  
 
@@ -47,25 +47,25 @@ You then go back to the form builder interface and create a read-only element in
 knitr::include_graphics("screenshots/read_only_widget.png")
 ```
 
-The name of the element in the *Element Properties* pane on the right-hand side should be **survey_uuid**. Enter **Unique survey ID** as the label. 
+The name of the element in the *Element Properties* pane on the right-hand side should be `survey_uuid`. Enter `Unique survey ID` as the label. 
 
 ```{r echo = FALSE, fig.align = 'left', out.width = "20%"}
 knitr::include_graphics("screenshots/label_name.png")
 ```
 
-In the **Dynamic Value** box in the *Element Properties* pane on the right-hand side enter the following: 
+In the *Dynamic Value* box in the *Element Properties* pane on the right-hand side enter the following: 
 
 ```{js, eval = FALSE}
 generateUUID() 
 ```
 
-Leave the **Condition Value** set to **false**. That way it will be invisible to the surveyor. 
+Leave the *Condition Value* set to `false`. That way it will be invisible to the surveyor. 
 
 ```{r echo = FALSE, fig.align = 'left', out.width = "20%"}
 knitr::include_graphics("screenshots/dynamic_value.png")
 ```
 
-The **survey_uuid** element will generate a universally unique ID every time a form is initiated that will look something like: 
+The `survey_uuid` element will generate a universally unique ID every time a form is initiated that will look something like: 
 
 ```
 33b78489-7ad3-4482-9455-3988e05bfb28
@@ -75,17 +75,17 @@ There are 2^122^ possible combinations for a randomly generated version 4 uuid. 
 
 ## Data source (core element)
 
-Click on the **Data source** label in the form view on the left-hand side of the form-builder pane. Then examine the *Element Properties* in the right-hand pane. The **data_source** element will typically be another read-only field. It can be hard-coded as **"wdfw"** in the **Dynamic Value** box of the Smart Control. You can set the **Condition Value** to *false* to hide it from view. On the off-chance that your form will be shared with other organizations, you can also change this element to a select widget. You will then need to create an option list that includes all organizations using the form. Examples of how to create option lists and use select values are provided in the sections below. For now, let's just assume **data_source** will be a hidden, read-only data element. 
+Click on the *Data source* label in the form view on the left-hand side of the form-builder pane. Then examine the *Element Properties* in the right-hand pane. The `data_source` element will typically be another read-only field. It can be hard-coded as `"wdfw"` in the *Dynamic Value* box of the Smart Control. You can set the *Condition Value* to `false` to hide it from view. On the off-chance that your form will be shared with other organizations, you can also change this element to a select widget. You will then need to create an option list that includes all organizations using the form. Examples of how to create option lists and use select values are provided in the sections below. For now, let's just assume `data_source` will be a hidden, read-only data element. 
 
 ## Observers
 
-Click on **Observers** in the form view. Although **observers** is not a core required element it is highly recommended that you include this multi-select widget. In the example form it has been set to *Required* in the *Attributes* section of the *Element properties* pane. 
+Click on *Observers* in the form view. Although `observers` is not a core required element it is highly recommended that you include this multi-select widget. In the example form it has been set to *Required* in the *Attributes* section of the *Element properties* pane. 
 
 ```{r echo = FALSE, fig.align = 'left', out.width = "40%"}
 knitr::include_graphics("screenshots/observer_required.png")
 ```
 
-Click on the green **Option lists** button to see the observers currently listed. A screen will appear that allows you to assign option lists to data elements. 
+Click on the green *Option lists* button to see the observers currently listed. A screen will appear that allows you to assign option lists to data elements. 
 
 ```{r echo = FALSE, fig.align = 'left', out.width = "60%"}
 knitr::include_graphics("screenshots/option_list_box.png")
@@ -95,7 +95,7 @@ Multi-select widgets allow you to select one or more of the options listed. If m
 
 ## Data submitter
 
-The **data_submitter** element is another hidden field that is not required, but good practice to include. The **data_submitter** value is auto-generated in the background, and identifies the person who was logged into the mobile device when the the survey **Done** button was clicked. The data are derived from default meta-data fields provided by iFormBuilder. To create this element you click on the *Text* widget in the left-hand sidebar and check the *Read-Only* box in the *Attributes* section of the *Element Properties* box on the right-hand side. In the *Dynamic Value* box of the *Smart Control* pane, enter:
+The `data_submitter` element is another hidden field that is not required, but good practice to include. The `data_submitter` value is auto-generated in the background, and identifies the person who was logged into the mobile device when the the survey *Done* button was clicked. The data are derived from default meta-data fields provided by iFormBuilder. To create this element you click on the *Text* widget in the left-hand sidebar and check the *Read-Only* box in the *Attributes* section of the *Element Properties* box on the right-hand side. In the *Dynamic Value* box of the *Smart Control* pane, enter:
 
 ```{js, eval = FALSE}
 iformbuilder.lastName
@@ -103,11 +103,11 @@ iformbuilder.lastName
 
 There are several built-in functions you can use to generate data such a this. See the [JavaScript Tips and Tricks](https://iformbuilder.zendesk.com/hc/en-us/articles/201697610-Overview-of-the-Built-in-iFormBuilder-Functions) section for additional examples of how these built-in functions can be used. 
 
-To hide this field so it does not clutter up your display when conducting a survey, you can set the *Condition Value* to **false**. 
+To hide this field so it does not clutter up your display when conducting a survey, you can set the *Condition Value* to `false`. 
 
 ## Entry method
 
-The **Data entry real-time or post-survey?** field allows for selectively hiding or showing fields depending on the method used to record data in the field; whether on a mobile device, or on paper. There may be occasions where you need to enter data that was originally recorded on paper. In this case, fields for capturing GPS locations, barcodes, or images would be largely irrelevant. The two options are: *Real-time* or *Post-survey*. 
+The *Data entry real-time or post-survey?* field allows for selectively hiding or showing fields depending on the method used to record data in the field; whether on a mobile device, or on paper. There may be occasions where you need to enter data that was originally recorded on paper. In this case, fields for capturing GPS locations, barcodes, or images would be largely irrelevant. The two options are: `Real-time` or `Post-survey`. 
 
 Click on the green *Option Lists* bar in the *Option List* box to see how these options are structured. 
 
@@ -115,11 +115,11 @@ Click on the green *Option Lists* bar in the *Option List* box to see how these 
 knitr::include_graphics("screenshots/real_post.png")
 ```
 
-Notice the *Sort Order* column in the option list. You can use these values to specify a default answer to display. If you enter `0` in the *Dynamic Value* box the default value will be *Real-time*, entering `1` would set the default value to *Post-survey*. If you do not want to set a default value you can enter `-1`. Setting a dynamic value of `-1` is an explicit way to say the value is currently missing. It is good practice to always initialize select, multi-select, or pick-list widgets with either a default value or `-1`. 
+Notice the *Sort Order* column in the option list. You can use these values to specify a default answer to display. If you enter `0` in the *Dynamic Value* box the default value will be `Real-time`, entering `1` would set the default value to `Post-survey`. If you do not want to set a default value you can enter `-1`. Setting a dynamic value of `-1` is an explicit way to say the value is currently missing. It is good practice to always initialize select, multi-select, or pick-list widgets with either a default value or `-1`. 
 
 Another way to set default values is to reference either the option list *Label* or *Key Value* instead. You would simply preface the field name with `ZCDisplayLabel` or `ZCDisplayKey`. For example, `ZCDisplayLabel_species` or `ZCDisplayLabel_redd_status`. 
 
-In the case of simple lists such as **entry_method** using *Sort Order* as a reference is acceptable. There are only two values to remember. For more more complex cases, however, where there are many options, and possibly conditional logic tied to those option values, it is nearly always better to reference the *Label* or *Key Value* instead. The reason is that you are then constructing logical statements with actual understandable names rather than just numbers. For example, once your brain gets past the ugly `ZCDisplayKey` portion, it's much easier to understand statements such as: 
+In the case of simple lists such as `entry_method` using *Sort Order* as a reference is acceptable. There are only two values to remember. For more more complex cases, however, where there are many options, and possibly conditional logic tied to those option values, it is nearly always better to reference the *Label* or *Key Value* instead. The reason is that you are then constructing logical statements with actual understandable names rather than just numbers. For example, once your brain gets past the ugly `ZCDisplayKey` portion, it's much easier to understand statements such as: 
 
 ```{js, eval = FALSE}
 if(ZCDisplayKey_species == "coho" && ZCDisplayKey_redd_status == "new_redd") {"Yes"} else {"No"}
@@ -135,15 +135,17 @@ Aside from not having to remember the `sort_order` values in order to understand
 
 ## Survey start date (core element)
 
-The **survey_start_datetime** field is a core element. There are several methods to add a date or date-time field to your form. The example form shows perhaps the most common method, but see the: [JavaScript Tips and Tricks](https://iformbuilder.zendesk.com/hc/en-us/articles/201697830-Adding-Date-and-TimeStamps-to-a-Form) section for alternative methods. Because it is a core field, and it is not hidden, you will need to check *Required* in the *Attributes* box of *Element Properties*. Note also that the *Dynamic Value* is generated using a JavaScript function: 
+The `survey_start_datetime` field is a core element. There are several methods to add a date or date-time field to your form. The example form shows perhaps the most common method, but see the: [JavaScript Tips and Tricks](https://iformbuilder.zendesk.com/hc/en-us/articles/201697830-Adding-Date-and-TimeStamps-to-a-Form) section for alternative methods. Because it is a core field, and it is not hidden, you will need to check *Required* in the *Attributes* box of *Element Properties*. Note also that the *Dynamic Value* is generated using a JavaScript function: 
 
 ```{js, eval = FALSE}
 new date()
 ```
 
-## Survey method (core field)
+## Survey method (core element)
 
-The **survey_method** field is another core element. If you click on the green *Option Lists* bar you will see there are only three options listed: *Foot, Raft, and Helicopter*. Several additional options that you may want to add are listed in the **SpawningGroundDataDictionary** mentioned in chapter 2. If you need to add an option, for example *Snorkle*, you would simply click on the plus sign in the *Actions* column of the option list. A new row will appear, and a new sequential *sort_order* number will be automatically assigned. You would then enter *Snorkle* in the *Label* column, and a lower case *snorkle* in the *Key Value* column. The *Key Value* name should always be lower case. Underscores can be used for compound names, such as *new_redd*. Don't forget to click the save button before closing the *Option Lists* window. 
+Edit how to edit option lists....
+
+The `survey_method` field is another core element. If you click on the green *Option Lists* bar you will see there are only three options listed: `Foot`, `Raft`, and `Helicopter`. Several additional options that you may want to add are listed in the *SpawningGroundDataDictionary* mentioned in chapter 2. If you need to add an option, for example `Snorkle`, you would simply click on the plus sign in the *Actions* column of the option list. A new row will appear, and a new sequential `sort_order` number will be automatically assigned. You would then enter `Snorkle` in the *Label* column, and a lower case `snorkle` in the *Key Value* column. The *Key Value* name should always be lower case. Underscores can be used for compound names, such as `new_redd`. Don't forget to click the save button before closing the *Option Lists* window. 
 
 Notice that the default value for **survey_method** has been set to 0 (*Foot*) in the *Dynamic Value* box. Since most spawning ground surveys tend to be *foot* surveys, this setting allows you to quickly skim by this element when entering header data. If you prefer to manually select a **survey_method** each time, you can set the *Dynamic Value* to -1 instead. 
 
