@@ -6,17 +6,17 @@ The sections below use the [*Package_spawning_ground.json*](https://github.com/a
 knitr::include_graphics("screenshots/forms_dropdown.png")
 ```
 
-In Chapter 2 we looked at how the example *spawning_ground* form appeared on your mobile device. In Chapter 3 we will shift focus to the iFormBuilder web interface and learn how elements can be defined, validated, conditionally hidden, and assigned default values. 
+Chapter 2 dealt with how the example *spawning_ground* form appeared on the mobile device. In Chapter 3 the focus shifts to the iFormBuilder web interface and details how data elements can be defined, validated, conditionally hidden, and assigned default values. 
 
 There will be special emphasis below on the core data elements that need to be present in any mobile form intended to be submitted to our corporate spawning ground database. If a core element is missing it will not be possible to upload any of the data from your mobile form to our central database.  
 
 ## Survey ID (core element)
 
-The first element in the parent form of any mobile form used for spawning ground surveys should be a *unique survey ID*. Although iFormBuilder has a widget titled *Unique ID* this is not a good choice for our purposes. Their *Unique ID* widget is merely a combination of a constant prefix and an integer value that increments each time you start filling out a new form. For example, D16-1, D16-2, etc. 
+The first element in the parent form of any mobile form used for spawning ground surveys should be a *unique survey ID*. Although iFormBuilder has a widget titled *Unique ID* this is not a good choice for our purposes. The iFormBuilder *Unique ID* widget is merely a combination of a constant prefix and an integer value that increments each time you start filling out a new form. For example, D16-1, D16-2, etc. 
 
-The reason that iFormBuilder's solution is not a good choice is that it may result in generating IDs that conflict over time. For example, if after a season of using a form you decide to amend the structure, retire the old form and deploy the new version, you may end up with identical IDs for different surveys unless you also make sure to edit the prefix to some value never previously used. An alternate scenario is that you may want to create dedicated forms for different type of surveys, such as for fall Chinook, or spring Steelhead. To enfore uniqueness statewide there would need to be coordination in assigning prefixes over WDFW districts and regions, otherwise new forms may start incrementing overlapping IDs.  
+The reason that iFormBuilder's solution is not a good choice is that it may result in generating IDs that conflict over time. For example, if after a season of using a form you decide to amend the structure, retire the old form and deploy the new version, you may end up with identical IDs for different surveys unless you also make sure to edit the prefix to some value never previously used. An alternate scenario is that you may want to create dedicated forms for different types of surveys, such as for fall Chinook, or spring Steelhead. To enfore uniqueness statewide there would need to be coordination in assigning prefixes over WDFW districts and regions, otherwise new forms may start incrementing overlapping IDs.  
 
-An even more important reason for adding a truly unique survey ID element to our forms is that it can then be used as a primary key in our corporate database. To that end what we need is a unique identifier that is (virtually) guaranteed to always be unique. The solution is to use a random uuid (universally unique ID). A version 4 uuid can be generated using the JavaScript code below. See the *Briguy37* answer at [Stackoverflow](https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript).  
+An even more important reason for adding a truly unique survey ID element to our forms is that it can then be used as a primary key in our corporate database. To that end what we need is a unique identifier that is (virtually) guaranteed to always be unique. The solution is to use a random uuid (universally unique ID). A version 4 uuid can be generated using the JavaScript code below. See the following link at [Stackoverflow](https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript) for the source of the function.  
 
 ```{js, eval = FALSE}
 function generateUUID () { // Public Domain/MIT
@@ -32,16 +32,16 @@ function generateUUID () { // Public Domain/MIT
 }
 ```
 
-Copy and paste the code block above directly into the JavaScript panel of your parent form. You can access the JavaScript panel by clicking on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the Forms page when using the online Form Builder application.
+You can copy and paste this function directly into the JavaScript panel of your parent form. To access the JavaScript panel click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the Forms page when using the online Form Builder application.
 
 
 ```{r echo = FALSE, out.width = "25%"}
 knitr::include_graphics("screenshots/actions.png")
 ```
 
-Make sure you paste the code into the JavaScript panel for your *parent* form, not the *subform*. 
+Make sure you paste the function into the JavaScript panel for your *parent* form, not the *subform*. 
 
-You then go back to the form builder interface and create a read-only element in your parent form by clicking on the *Read Only* widget in the left-hand pane. 
+You can then go back to the form builder interface and create a read-only element in your parent form by clicking on the *Read Only* widget in the left-hand pane. 
 
 ```{r echo = FALSE, fig.align = 'left', out.width = "20%"}
 knitr::include_graphics("screenshots/read_only_widget.png")
@@ -131,7 +131,7 @@ Rather than:
 if(species == 3 && redd_status == 0) {"Yes"} else {"No"}
 ```
 
-Aside from not having to remember the `sort_order` values in order to understand what is actually being stated, using *Key Values* or *Labels* also avoids having to change the statements if you decide to edit the option list and inadvertantly shuffle the `sort_order` values assigned to each option. 
+Aside from not having to remember the `sort_order` values in order to understand what is actually being stated, using *Key Values* or *Labels* also avoids having to change the statements if you later need to edit the option list and inadvertantly shuffle the `sort_order` values assigned to each option.
 
 ## Survey start date (core element)
 
@@ -147,25 +147,25 @@ Edit how to edit option lists....
 
 The `survey_method` field is another core element. If you click on the green *Option Lists* bar you will see there are only three options listed: `Foot`, `Raft`, and `Helicopter`. Several additional options that you may want to add are listed in the *SpawningGroundDataDictionary* mentioned in chapter 2. If you need to add an option, for example `Snorkle`, you would simply click on the plus sign in the *Actions* column of the option list. A new row will appear, and a new sequential `sort_order` number will be automatically assigned. You would then enter `Snorkle` in the *Label* column, and a lower case `snorkle` in the *Key Value* column. The *Key Value* name should always be lower case. Underscores can be used for compound names, such as `new_redd`. Don't forget to click the save button before closing the *Option Lists* window. 
 
-Notice that the default value for **survey_method** has been set to 0 (*Foot*) in the *Dynamic Value* box. Since most spawning ground surveys tend to be *foot* surveys, this setting allows you to quickly skim by this element when entering header data. If you prefer to manually select a **survey_method** each time, you can set the *Dynamic Value* to -1 instead. 
+Notice that the default value for **survey_method** has been set to `0 (Foot)` in the *Dynamic Value* box. Since most spawning ground surveys tend to be `foot` surveys, this setting allows you to quickly skim by this element when entering header data. If you prefer to manually select a `survey_method` each time, you can set the *Dynamic Value* to `-1` instead. 
 
 ## Stream (core element)
 
-As mentioned in Chapter 2, you must select a **stream** before any additional fields in your example form become visible. You will then be able to select start and end points for your survey along the selected stream. Only points belonging to the stream you select will be visible. This is an example of a filtered option list. 
+As mentioned in Chapter 2, you must select a `stream` before any additional fields in your example form become visible. You will then be able to select start and end points for your survey along the selected stream. Only points belonging to the stream you select will be visible. This is an example of a filtered option list. 
 
-If you click on the green *Option List* bar for the **stream** element and scroll through the option lists on the left-hand side of the pop-up window, you will see an **SGS-Streams** option list and a **SGS-StreamLocations** option list. There are 38 options in the **SGS-Streams** list, and 210 options in the **SGS-StreamLocations** list. Option lists for streams and locations in your area may end up being longer. Given the number of elements involved you will want the *Element Type* to be a *Pick List*. 
+If you click on the green *Option List* bar for the `stream` element and scroll through the option lists on the left-hand side of the pop-up window, you will see an `SGS-Streams` option list and a `SGS-StreamLocations` option list. There are 38 options in the `SGS-Streams` list, and 210 options in the `SGS-StreamLocations` list. Option lists for streams and locations in your area may end up being longer. Given the number of elements involved you will want the *Element Type* to be a *Pick List*. 
 
-Close this pop-up window and select **Option Lists** in the upper left-hand corner of the *Form Builder* page. 
+Close this pop-up window and select *Option Lists* in the upper left-hand corner of the *Form Builder* page. 
 
 ```{r echo = FALSE, out.width = "50%"}
 knitr::include_graphics("screenshots/option_list.png")
 ```
 
-Scroll down and click on **SGS-Streams** to see how this option list is defined. One defining feature of option lists is that the *Key Values* must all be unique. For this reason you do not want to use the stream name as the key value. There can be multiple Boulder Creeks, or Cedar Creeks within a given watershed. Using the Stream Catalog Code (i.e. 17.0213) is also problematic since there are areas in the state where smaller streams may not have been assigned a code. The solution is to use the unique integer ID from the old Spawning Ground Survey (SGS) database for the *Key Value*. 
+Scroll down and click on `SGS-Streams` to see how this option list is defined. One defining feature of option lists is that the *Key Values* must all be unique. For this reason you do not want to use the stream name as the key value. There can be multiple Boulder Creeks, or Cedar Creeks within a given watershed. Using the Stream Catalog Code (i.e. 17.0213) is also problematic since there are areas in the state where smaller streams may not have been assigned a code. The solution is to use the unique integer ID from the old Spawning Ground Survey (SGS) database for the *Key Value*. 
 
-Next, click on **Option Lists** again and select **SGS-StreamLocations**. The first entry has a *Label* that lists the river mile of the point, along with a short description (RM 0.00: Mouth). This is the part that will be visible when using the form. The *Key Value* is a combination of the integer ID of the stream combined with an underscore separator and finally the river mile formatted to three digits before the decimal and two digits after the decimal. This ensures that the *Key Value* will always be unique. 
+Next, click on *Option Lists* again and select `SGS-StreamLocations`. The first entry has a *Label* that lists the river mile of the point, along with a short description: `RM 0.00: Mouth`. This is the part that will be visible when using the form. The *Key Value* is a combination of the integer ID of the stream combined with an underscore separator and finally the river mile formatted to three digits before the decimal and two digits after the decimal. This ensures that the *Key Value* will always be unique and of consistent length. 
 
-To see how this list is filtered by stream click on the gray **Condition Value** button in the upper-left hand corner of the option list. 
+To see how this list is filtered by stream click on the gray *Condition Value* button in the upper-left hand corner of the option list. 
 
 JavaScript ordering from zero
 
