@@ -153,9 +153,9 @@ If you need to add an option, for example `Snorkle`, close the *Assign Option Li
 knitr::include_graphics("screenshots/option_list.png")
 ```
 
-A window showing all option lists in your profile will open. Scroll down to the `SGS-SurveyMethod` option list and click on it. This will open a new window where you can veiw and edit the `SGS-SurveyMethod` list. Next, click on the green plus sign at the bottom of the *Actions* column on the far right. A new row will appear, and a new sequential `sort_order` number will be automatically assigned. You can then enter `Snorkle` in the *Label* column, and a lower case `snorkle` in the *Key Value* column. The *Key Value* name should always be in lower case. Underscores should be used for compound names, such as `new_redd`. Don't forget to click the **Save** icon before closing the *Option Lists* window. 
+A window showing all option lists in your profile will open. Scroll down to the `SGS-SurveyMethod` option list and click on it. This will open a new window where you can view and edit the `SGS-SurveyMethod` list. Next, click on the green plus sign at the bottom of the *Actions* column on the far right. A new row will appear, and a new sequential `sort_order` number will be automatically assigned. You can then enter `Snorkle` in the *Label* column, and a lower case `snorkle` in the *Key Value* column. The *Key Value* name should always be in lower case. Underscores should be used for compound names, such as `new_redd`. Don't forget to click the **Save** icon before closing the *Option Lists* window. 
 
-Notice that the default value for **survey_method** has been set to `0 (Foot)` in the *Dynamic Value* box. Since most spawning ground surveys tend to be `foot` surveys, this setting allows you to quickly skim by this element when entering header data. If you prefer to manually select a `survey_method` each time, you can set the *Dynamic Value* to `-1` instead. 
+Switch back to the form builder view and notice that the default value for `survey_method` has been set to `0` in the *Dynamic Value* box. This means that the default value displayed on the device will be `Foot`. Since most spawning ground surveys tend to be `Foot` surveys, this setting allows you to quickly skim by this element when entering header data. If you prefer to manually select a `survey_method` each time, you can set the *Dynamic Value* to `-1` instead. 
 
 ## Stream (core element)
 
@@ -169,11 +169,11 @@ Close this pop-up window and select *Option Lists* in the upper left-hand corner
 knitr::include_graphics("screenshots/option_list.png")
 ```
 
-Scroll down and click on `SGS-Streams` to see how this option list is defined. One defining feature of option lists is that the *Key Values* must all be unique. For this reason you do not want to use the stream name as the key value. There can be multiple Boulder Creeks, or Cedar Creeks within a given watershed. Using the Stream Catalog Code (i.e. 17.0213) is also problematic since there are areas in the state where smaller streams may not have been assigned a code. The solution is to use the unique integer ID from the old Spawning Ground Survey (SGS) database for the *Key Value*. 
+Scroll down and click on `SGS-Streams` to see how this option list is defined. One defining feature of option lists is that the *Key Values* must all be unique. For this reason you do not want to use the stream name as the key value. There can be multiple *Boulder Creeks*, or *Cedar Creeks* within any given watershed. Using the Stream Catalog Code (i.e. 17.0213) is also problematic since there are areas in the state where smaller streams may not have been assigned a code. The solution is to use the unique integer ID from the old Spawning Ground Survey (SGS) database for the *Key Value*. 
 
 Next, click on *Option Lists* again and select `SGS-StreamLocations`. The first entry has a *Label* that lists the river mile of the point, along with a short description: `RM 0.00: Mouth`. This is the part that will be visible when using the form. The *Key Value* is a combination of the integer ID of the stream combined with an underscore separator and finally the river mile formatted to three digits before the decimal and two digits after the decimal. This ensures that the *Key Value* will always be unique and of consistent length. 
 
-To see how this list is filtered by stream click on the gray *Condition Value* button in the upper-left hand corner of the option list. 
+To see how this list is filtered by stream click on the *Condition Value* button in the upper-left hand corner of the option list window. 
 
 JavaScript ordering from zero
 

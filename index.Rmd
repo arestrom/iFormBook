@@ -7,7 +7,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: arestrom/iFormBook
+github-repo: arestrom/mf4ss
 description: null
 graphics: yes
 coverpage: cover.png
