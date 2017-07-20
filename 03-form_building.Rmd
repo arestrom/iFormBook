@@ -91,7 +91,7 @@ Click on the green *Option lists* button to see the observers currently listed. 
 knitr::include_graphics("screenshots/option_list_box.png")
 ```
 
-Multi-select widgets allow you to select one or more of the options listed. If more than one is selected the last names (Key Value) will be concatenated together, separated by commas and a space. 
+Multi-select widgets allow you to select one or more of the options listed. If more than one is selected the last names (Key Value) will be concatenated together, separated by commas and a space, for example, `Smith, Jones, Nelson'. 
 
 ## Data submitter
 
