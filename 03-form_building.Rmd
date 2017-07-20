@@ -145,7 +145,15 @@ new date()
 
 Edit how to edit option lists....
 
-The `survey_method` field is another core element. If you click on the green *Option Lists* bar you will see there are only three options listed: `Foot`, `Raft`, and `Helicopter`. Several additional options that you may want to add are listed in the *SpawningGroundDataDictionary* mentioned in chapter 2. If you need to add an option, for example `Snorkle`, you would simply click on the plus sign in the *Actions* column of the option list. A new row will appear, and a new sequential `sort_order` number will be automatically assigned. You would then enter `Snorkle` in the *Label* column, and a lower case `snorkle` in the *Key Value* column. The *Key Value* name should always be lower case. Underscores can be used for compound names, such as `new_redd`. Don't forget to click the save button before closing the *Option Lists* window. 
+The `survey_method` field is another core element. If you click on the green *Option Lists* bar the *Assign Option Lists* window will open and you will see there are only three options listed: `Foot`, `Raft`, and `Helicopter`. Several additional options that you may want to add are listed in the *SpawningGroundDataDictionary* mentioned in chapter 2. 
+
+If you need to add an option, for example `Snorkle`, close the *Assign Option Lists* window and click on *Option Lists* in the top left-hand corner of the form builder application. 
+
+```{r echo = FALSE, out.width = "50%"}
+knitr::include_graphics("screenshots/option_list.png")
+```
+
+A window showing all option lists in your profile will open. Scroll down to the `SGS-SurveyMethod` option list and click on it. This will open a new window where you can veiw and edit the `SGS-SurveyMethod` list. Next, click on the green plus sign at the bottom of the *Actions* column on the far right. A new row will appear, and a new sequential `sort_order` number will be automatically assigned. You can then enter `Snorkle` in the *Label* column, and a lower case `snorkle` in the *Key Value* column. The *Key Value* name should always be in lower case. Underscores should be used for compound names, such as `new_redd`. Don't forget to click the **Save** icon before closing the *Option Lists* window. 
 
 Notice that the default value for **survey_method** has been set to `0 (Foot)` in the *Dynamic Value* box. Since most spawning ground surveys tend to be `foot` surveys, this setting allows you to quickly skim by this element when entering header data. If you prefer to manually select a `survey_method` each time, you can set the *Dynamic Value* to `-1` instead. 
 
