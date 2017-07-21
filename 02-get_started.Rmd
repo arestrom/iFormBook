@@ -1,8 +1,10 @@
 # Get started
 
+The aim of this chapter is to provide a visual tour of what a spawning ground form built using the iFormBuilder platform *could* look like. The first section describes how to load an *example* spawning ground survey form to your profile. Then the following sections provide a guided tour of the parent *header* form and the *observations* subform. The focus is on design elements, and what is visible to the surveyor on the device. Technical details on how to build forms will be addressed in chapter 3. 
+
 ## Import example form  
 
-The quickest way to get started with form building is by example.
+The quickest way to get started with mobile forms is by example.
 
 1. Download the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) file from the GitHub repository for this book.  
 

@@ -8,9 +8,11 @@ knitr::include_graphics("screenshots/forms_dropdown.png")
 
 Chapter 2 dealt with how the example *spawning_ground* form appeared on the mobile device. In Chapter 3 the focus shifts to the iFormBuilder web interface and details how data elements can be defined, validated, conditionally hidden, and assigned default values. 
 
-There will be special emphasis below on the core data elements that need to be present in any mobile form intended to be submitted to our corporate spawning ground database. If a core element is missing it will not be possible to upload any of the data from your mobile form to our central database.  
+There will be special emphasis below on the core data elements that need to be present in any mobile form intended to be submitted to our corporate spawning ground database. If a core element is missing it will not be possible to upload any of the data from your mobile form to our central database.
 
-## Survey ID (core element)
+## Parent form
+
+### Survey ID (core element)
 
 The first element in the parent form of any mobile form used for spawning ground surveys should be a *unique survey ID*. Although iFormBuilder has a widget titled *Unique ID* this is not a good choice for our purposes. The iFormBuilder *Unique ID* widget is merely a combination of a constant prefix and an integer value that increments each time you start filling out a new form. For example, D16-1, D16-2, etc. 
 
@@ -73,11 +75,11 @@ The `survey_uuid` element will generate a universally unique ID every time a for
 
 There are 2^122^ possible combinations for a randomly generated version 4 uuid. In practical terms this means that if you generate one billion UUIDs every second for approximately 85 years, the probability that two identical UUIDs will be generated is still only about 50%. See article at [Wikipedia](https://en.wikipedia.org/wiki/Universally_unique_identifier). 
 
-## Data source (core element)
+### Data source (core element)
 
 Click on the *Data source* label in the form view on the left-hand side of the form-builder pane. Then examine the *Element Properties* in the right-hand pane. The `data_source` element will typically be another read-only field. It can be hard-coded as `"wdfw"` in the *Dynamic Value* box of the Smart Control. You can set the *Condition Value* to `false` to hide it from view. On the off-chance that your form will be shared with other organizations, you can also change this element to a select widget. You will then need to create an option list that includes all organizations using the form. Examples of how to create option lists and use select values are provided in the sections below. For now, let's just assume `data_source` will be a hidden, read-only data element. 
 
-## Observers
+### Observers
 
 Click on *Observers* in the form view. Although `observers` is not a core required element it is highly recommended that you include this multi-select widget. In the example form it has been set to *Required* in the *Attributes* section of the *Element properties* pane. 
 
@@ -93,7 +95,7 @@ knitr::include_graphics("screenshots/option_list_box.png")
 
 Multi-select widgets allow you to select one or more of the options listed. If more than one is selected the last names (Key Value) will be concatenated together, separated by commas and a space, for example, `Smith, Jones, Nelson'. 
 
-## Data submitter
+### Data submitter
 
 The `data_submitter` element is another hidden field that is not required, but good practice to include. The `data_submitter` value is auto-generated in the background, and identifies the person who was logged into the mobile device when the the survey *Done* button was clicked. The data are derived from default meta-data fields provided by iFormBuilder. To create this element you click on the *Text* widget in the left-hand sidebar and check the *Read-Only* box in the *Attributes* section of the *Element Properties* box on the right-hand side. In the *Dynamic Value* box of the *Smart Control* pane, enter:
 
@@ -105,7 +107,7 @@ There are several built-in functions you can use to generate data such a this. S
 
 To hide this field so it does not clutter up your display when conducting a survey, you can set the *Condition Value* to `false`. 
 
-## Entry method
+### Entry method
 
 The *Data entry real-time or post-survey?* field allows for selectively hiding or showing fields depending on the method used to record data in the field; whether on a mobile device, or on paper. There may be occasions where you need to enter data that was originally recorded on paper. In this case, fields for capturing GPS locations, barcodes, or images would be largely irrelevant. The two options are: `Real-time` or `Post-survey`. 
 
@@ -133,7 +135,7 @@ if(species == 3 && redd_status == 0) {"Yes"} else {"No"}
 
 Aside from not having to remember the `sort_order` values in order to understand what is actually being stated, using *Key Values* or *Labels* also avoids having to change the statements if you later need to edit the option list and inadvertantly shuffle the `sort_order` values assigned to each option.
 
-## Survey start date (core element)
+### Survey start date (core element)
 
 The `survey_start_datetime` field is a core element. There are several methods to add a date or date-time field to your form. The example form shows perhaps the most common method, but see the: [JavaScript Tips and Tricks](https://iformbuilder.zendesk.com/hc/en-us/articles/201697830-Adding-Date-and-TimeStamps-to-a-Form) section for alternative methods. Because it is a core field, and it is not hidden, you will need to check *Required* in the *Attributes* box of *Element Properties*. Note also that the *Dynamic Value* is generated using a JavaScript function: 
 
@@ -141,9 +143,7 @@ The `survey_start_datetime` field is a core element. There are several methods t
 new date()
 ```
 
-## Survey method (core element)
-
-Edit how to edit option lists....
+### Survey method (core element)
 
 The `survey_method` field is another core element. If you click on the green *Option Lists* bar the *Assign Option Lists* window will open and you will see there are only three options listed: `Foot`, `Raft`, and `Helicopter`. Several additional options that you may want to add are listed in the *SpawningGroundDataDictionary* mentioned in chapter 2. 
 
@@ -153,11 +153,17 @@ If you need to add an option, for example `Snorkle`, close the *Assign Option Li
 knitr::include_graphics("screenshots/option_list.png")
 ```
 
-A window showing all option lists in your profile will open. Scroll down to the `SGS-SurveyMethod` option list and click on it. This will open a new window where you can view and edit the `SGS-SurveyMethod` list. Next, click on the green plus sign at the bottom of the *Actions* column on the far right. A new row will appear, and a new sequential `sort_order` number will be automatically assigned. You can then enter `Snorkle` in the *Label* column, and a lower case `snorkle` in the *Key Value* column. The *Key Value* name should always be in lower case. Underscores should be used for compound names, such as `new_redd`. Don't forget to click the **Save** icon before closing the *Option Lists* window. 
+A window showing all option lists in your profile will open. Scroll down to the `SGS-SurveyMethod` option list and click on it. This will open a new window where you can view and edit the `SGS-SurveyMethod` list. 
+
+```{r echo = FALSE, out.width = "95%"}
+knitr::include_graphics("screenshots/method_options.png")
+```
+
+Next, click on the green plus sign at the bottom of the *Actions* column on the far right. A new row will appear, and a new sequential `sort_order` number will be automatically assigned. You can then enter `Snorkle` in the *Label* column, and a lower case `snorkle` in the *Key Value* column. The *Key Value* name should always be in lower case. Underscores should be used for compound names, such as `new_redd`. Don't forget to click the **Save** icon before closing the *Option Lists* window. 
 
 Switch back to the form builder view and notice that the default value for `survey_method` has been set to `0` in the *Dynamic Value* box. This means that the default value displayed on the device will be `Foot`. Since most spawning ground surveys tend to be `Foot` surveys, this setting allows you to quickly skim by this element when entering header data. If you prefer to manually select a `survey_method` each time, you can set the *Dynamic Value* to `-1` instead. 
 
-## Stream (core element)
+### Stream (core element)
 
 As mentioned in Chapter 2, you must select a `stream` before any additional fields in your example form become visible. You will then be able to select start and end points for your survey along the selected stream. Only points belonging to the stream you select will be visible. This is an example of a filtered option list. 
 
@@ -169,24 +175,32 @@ Close this pop-up window and select *Option Lists* in the upper left-hand corner
 knitr::include_graphics("screenshots/option_list.png")
 ```
 
-Scroll down and click on `SGS-Streams` to see how this option list is defined. One defining feature of option lists is that the *Key Values* must all be unique. For this reason you do not want to use the stream name as the key value. There can be multiple *Boulder Creeks*, or *Cedar Creeks* within any given watershed. Using the Stream Catalog Code (i.e. 17.0213) is also problematic since there are areas in the state where smaller streams may not have been assigned a code. The solution is to use the unique integer ID from the old Spawning Ground Survey (SGS) database for the *Key Value*. 
+Scroll down and click on `SGS-Streams` to see how this option list is defined. One defining feature of option lists is that the *Key Values* must all be unique. For this reason you do not want to use the stream name as the key value. There can be multiple *Boulder Creeks*, or *Cedar Creeks* within any given watershed. Using the *Stream Catalog Code* (i.e. *17.0213*) is also problematic since there are areas in the state where smaller streams may not have been assigned a code. The solution is to use the unique integer ID from the old *Spawning Ground Survey (SGS)* database for the *Key Value*. 
 
-Next, click on *Option Lists* again and select `SGS-StreamLocations`. The first entry has a *Label* that lists the river mile of the point, along with a short description: `RM 0.00: Mouth`. This is the part that will be visible when using the form. The *Key Value* is a combination of the integer ID of the stream combined with an underscore separator and finally the river mile formatted to three digits before the decimal and two digits after the decimal. This ensures that the *Key Value* will always be unique and of consistent length. 
+### Survey start point (core element)
 
-To see how this list is filtered by stream click on the *Condition Value* button in the upper-left hand corner of the option list window. 
+Every survey must have a start and stop point. Click on *Option Lists* again in the top-left corner of the form builder and select `SGS-StreamLocations` to see how these points are defined. The *Label* lists the river mile of the point, along with a short description: `RM 0.00: Mouth`. This is the part that will be visible when using the form. The *Key Value* is a combination of the integer ID of the stream combined with an underscore separator and finally the river mile formatted to three digits before the decimal and two digits after the decimal. This ensures that the *Key Value* will always be unique and of consistent length. 
 
+To see how this list is filtered by stream click on the *Condition Value* button in the upper-left hand corner of the option list window. This will turn the button from gray to green and reveal the *Condition Value* column in the option list. 
 
-```{r echo = FALSE, out.width = "50%"}
-knitr::include_graphics("screenshots/option_condition.png")
+```{r echo = FALSE, out.width = "90%"}
+knitr::include_graphics("screenshots/stream_locations.png")
 ```
 
-JavaScript ordering from zero
+Setting condition values in option lists follows the same rules as showing or hiding data elements in a form. You can use the same `ZCDisplayKey` or `ZCDisplayValue` terminology as when setting *Element properties* in the *form builder* interface. If you want to temporarily hide an option from view, you can also set the *Condition Value* to `false`. In the example above, the five options at the top of the `SGS-StreamLocations` option list will only be visible if the `key_value` for the `stream` you selected was `285`. 
 
-Difficulty creating lists
+The convention for coding *Key values* for locations that are *Not listed above* is to concatenate a zero with an underscore and the stream ID. For example: `0_285`. This ensures that no duplicate *Key Values* will be entered to the option list. 
 
-iformr and API
+Option lists such as `SGS-StreamLocations`, with upwards of 210 elements and 38 different condition values, can be tedious to create by hand. A better option is to create and write such lists directly to the iFormBuilder cloud using scripts. This can be accomplished in seconds using the [iformr](https://github.com/arestrom/iformr) package for the [R](https://www.r-project.org/about.html) programming language. See the package documentation for usage examples. I can also provide example scripts. 
 
-Uniqueness and key_value scheme
+### Start point not listed
+
+If the *Label* of a selected `start_point` or `end_point` is `Not listed above`, then additional data elements for entering those points manually in the form will be revealed. The *Start point not listed* and *End point not listed* elements are both set as *Element Type* `Text`.
+
+Numeric, but use text. Reason: easier to deal with. Set keyboard to number and punct.
+Add GPS?
+Add photo?
+
 
 
 
