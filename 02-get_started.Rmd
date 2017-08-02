@@ -1,12 +1,14 @@
 # Get started
 
+The aim of this chapter is to provide a visual tour of what a spawning ground form built using the iFormBuilder platform *could* look like. The first section describes how to load an *example* spawning ground survey form to your profile. Then the following sections provide a guided tour of the parent *header* form and the *observations* subform. The focus is on design elements, and what is visible to the surveyor on the device. Technical details on how to build forms will be addressed in chapter 3. 
+
 ## Import example form  
 
-The quickest way to get started with form building is by example.
+The quickest way to get started with mobile forms is by example.
 
-1. Download the [**Package_spawning_ground.json**](https://github.com/arestrom/iFormBook) file from the GitHub repository for this book.  
+1. Download the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) file from the GitHub repository for this book. To download, click on the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) link. Then locate the file in repository list, click on the file. This will take you open a new window with a download button in the upper right-hand corner. Click on the button and download the file to a convenient location. Do this now.  
 
-2. Sign in to your iFormBuilder profile and click on the *Forms* tab, then *Form Packages*, and *Package Import*. 
+2. Sign in to your iFormBuilder profile and click on the *Forms* tab, then *Form Packages > Package Import*. 
 
 ```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
 knitr::include_graphics("screenshots/package_dropdown.png")
@@ -18,7 +20,7 @@ knitr::include_graphics("screenshots/package_dropdown.png")
 knitr::include_graphics("screenshots/conflict_mode.png")
 ```
 
-4. After you have imported the form click on the *Forms* tab, then *Form Assignment*. You should see two new forms: *spawning_ground_p* and *spawning_ground_s*. The underscore p indicates the *parent* form. The underscore s indicates the *subform*.
+4. After you have imported the form click on the *Forms* tab, then *Form Assignment*. You should see two new forms: *spawning_ground_p* and *spawning_ground_s*. The trailing *p* indicates the *parent* form. The trailing *s* indicates the *subform*.
 
 5. Highlight the row for *spawning_ground_s* then click *Assign* in the upper left corner. 
 
@@ -26,9 +28,9 @@ knitr::include_graphics("screenshots/conflict_mode.png")
 knitr::include_graphics("screenshots/form_assign.png")
 ```
 
-6. Uncheck the boxes for *Collect* and *View*. Then scroll to the bottom and click *Update*. You should never have anything but the parent form assigned. 
+6. Uncheck the boxes for *Collect* and *View*. Then scroll to the bottom and click *Update*. You should **never** have anything but the *parent form* assigned to users.  
 
-7. Open the iFormBuilder application on your mobile device. 
+7. Open the iFormBuilder application on your mobile device. If you have done the preceeding steps correctly you should now see a form called *Spawning Ground Surveys* in the iFormBuilder application on your device. 
 
 ## A brief tour: Parent form
 
@@ -58,13 +60,13 @@ At the bottom of each option list for start and stop points you have the ability
 
 ### Data validation
 
-For an example of data validation, click on the *Water temperature (degree C)* widget and enter the number `45`, then click the *Done* button. You should see a message pop up that says "The start point water temperature must be between 0 and 38 degrees Celsius". These types of validations are simple to set up. Details will be provided in Chapter 3. 
+For an example of data validation, click on the *Water temperature (degree C)* widget and enter the number `45`, then click the *Done* button. You should see a message pop-up that says *The start point water temperature must be between 0 and 38 degrees Celsius*. These types of validations are simple to set up. Details will be provided in Chapter 3. 
 
 ### Automated entry of zero counts
 
-The *Target species* multiselect widget is intended as an automated way to enter zero counts. For example, if your survey is specifically targeted for Coho and Chinook, and your survey will be used to calculate population estimates, entering zero counts is crucial. By entering Coho and Chinook as target species, a zero count can automatically be entered on the backend for these species. The alternative would be to manually enter a count of zero for each species targeted. Automating this aspect can speed up data entry in the field. 
+The *Target species* multiselect widget is intended as an automated way to enter zero counts. For example, if your survey is specifically targeted for Coho and Chinook, and your survey will be used to calculate population estimates, entering zero counts is crucial. By entering Coho and Chinook as target species, a zero count can automatically be entered on the backend for these species. The alternative would be to manually enter a count of zero for each species targeted. Automating the process of entering zero counts can help speed up data entry in the field. 
 
-The follow-up question immediately below asks you to specify the categories of counts where zeros should be entered. Depending on the type of survey, this question allows you to specify if zero counts should be entered for fish counts, redds counts, or both. If you are strictly conducting a redd survey you would only want zeros entered for redds. If you are only doing a carcass survey, you will want to specify *Fish only*. If you are conducting a complete survey, including redd, live, and carcass counts, you will want zero counts entered for *Both fish and redds*.
+The follow-up question below asks you to specify the *categories* of counts where zeros should be entered. Depending on the type of survey, this question allows you to specify if zero counts should be entered for fish counts, redds counts, or both. If you are strictly conducting a redd survey you would only want zeros entered for redds. If you are only doing a carcass survey, you will want to specify *Fish only*. If you are conducting a complete survey, including redd, live, and carcass counts, you will want zero counts entered for *Both fish and redds*.
 
 ### Toggling a subform
 
@@ -72,7 +74,7 @@ The final header data question in the top section asks *Did you see any fish or 
 
 ### Survey comments and dynamic labels
 
-In the bottom portion of the parent form you are asked to enter some *canned* pick-list comments regarding Stream flow, Visibility conditions, and Weather. The new *spawning ground* database provides many additional options for *canned* comments adapted from legacy *condition codes* that you may have used in the past. I have not included these here. If you are an employee of WDFW you can see a complete list of options in the *SpawningGroundDataDictionary.html* located in the WDFW Fish Program shared drive under the *30Day/SpawningGround* folder. Otherwise, contact me if you would like a copy. 
+In the bottom portion of the parent form you are asked to enter some *canned* pick-list comments regarding *Stream flow, Visibility conditions, and Weather*. The new *spawning ground* database provides many additional options for *canned* comments adapted from legacy *condition codes* that you may have used in the past. I have not included these here. If you are an employee of WDFW you can see a complete list of options in the *SpawningGroundDataDictionary.html* located in the WDFW Fish Program shared drive under the *30Day/SpawningGround* folder. Otherwise, contact me if you would like a copy. 
 
 You are next asked if the survey was completed. If not, then you are asked to explain why. Toggle between answering *Completed survey* and any other option. Notice that the label for the *Survey comments* field will change from *(optional)* to *(required)*. In addition, a note will appear reminding you that an explantion is needed. This is a good example of using *Dynamic lables*. Additional details will be provided in Chapter 3.
 
@@ -86,7 +88,7 @@ Go back to the question *Did you see any fish or fish redds?* and click *Yes*. T
 
 After opening the subform you will need to specify if the *Observation type* was for live fish, dead fish, or redds. Depending on your answers a different set of questions will be displayed. After you enter *Observation type* and *Species* toggle between *Fish redd* and the other two options in *Observation type* to see how the questions near the bottom of the screen vary. 
 
-The initial set of questions after selecting *Observation type* and *Species* will be identical. They will ask about run year, and survey type. Each of these are core questions that are required in the form, and must be anwered in order to enter the data to our corporate database. 
+The initial set of questions after selecting *Observation type* and *Species* will be identical. They will ask about *Run year*, and *Survey type*. Each of these are core questions that are required in the form, and must be anwered in order to enter the data to our corporate database. 
 
 In our example, *Run year* is set to the current year. You could also use JavaScript to auto-generate different values depending on species and current date. Or you can manually edit *Run year* as needed. 
 
@@ -133,7 +135,7 @@ Unlike the restrictions applied to carcass data, there are no requirements to en
 
 The example survey form described above includes most of the basic elements that would typically be needed for spawning ground surveys. Although the form has intentionally been kept simple to illustrate basic concepts, other data elements can easily be added. Questions regarding items such as gill condition, egg retention, marks or tags, would be trivial to implement. The relatively simple structure, consisting of one parent form and one subform, is sufficient to incorporate many additional data elements. You always have the option to add more subforms, but keep in mind that the simpler the structure of the form, the simpler it is build and maintain. It can quickly become challenging to reason about conditional logic when multiple subforms are involved. At that point you may find you need to pass hidden values back and forth between parent and multiple subforms. As a general rule, simpler is nearly always better. 
 
-Before you add new data elements to your mobile form please take a look at the *SpawningGroundDataDictionary.html* located in the WDFW Fish Program shared drive under the *30Day/SpawningGround* folder. The data dictionary for the new *spawning_ground* database includes tables listing a wide range of data elements that could be incorporated into mobile forms. Feel free to contact me if you have any questions. 
+Before you add new data elements to your mobile form please take a look at the *SpawningGroundDataDictionary* located on the WDFW Fish Program shared drive under the *30Day/SpawningGround* folder. The data dictionary for the new *spawning_ground* database includes tables listing a wide range of data elements that could be incorporated into mobile forms. Feel free to contact me if you have any questions. 
 
 
 
