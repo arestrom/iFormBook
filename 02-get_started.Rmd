@@ -6,7 +6,7 @@ The aim of this chapter is to provide a visual tour of what a spawning ground fo
 
 The quickest way to get started with mobile forms is by example.
 
-1. Download the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) file from the GitHub repository for this book.  
+1. Download the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) file from the GitHub repository for this book. To download, click on the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) link. Then locate the file in repository list, click on the file. This will take you open a new window with a download button in the upper right-hand corner. Click on the button and download the file to a convenient location.  
 
 2. Sign in to your iFormBuilder profile and click on the *Forms* tab, then *Form Packages > Package Import*. 
 
