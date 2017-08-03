@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mobile forms for salmon surveys</title>
+  <meta name="description" content="Mobile forms for salmon surveys">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Mobile forms for salmon surveys" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="arestrom/mf4ss" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mobile forms for salmon surveys" />
+  
+  
+  
+
+<meta name="author" content="Are Strom">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="intro.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="mf4ss.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">Mobile forms</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#why-mobile-forms"><i class="fa fa-check"></i><b>1.1</b> Why mobile forms?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#trade-offs"><i class="fa fa-check"></i><b>1.1.1</b> Trade-offs</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#automated-integrated-data-capture"><i class="fa fa-check"></i><b>1.1.2</b> Automated, integrated, data capture</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#enter-once"><i class="fa fa-check"></i><b>1.1.3</b> Enter once</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#validation"><i class="fa fa-check"></i><b>1.1.4</b> Validation</a></li>
+<li class="chapter" data-level="1.1.5" data-path="intro.html"><a href="intro.html#reporting"><i class="fa fa-check"></i><b>1.1.5</b> Reporting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#api"><i class="fa fa-check"></i><b>1.2</b> API</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#profiles"><i class="fa fa-check"></i><b>1.3</b> Profiles</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#useful-tips"><i class="fa fa-check"></i><b>1.4</b> Useful tips</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#searching-for-help"><i class="fa fa-check"></i><b>1.4.1</b> Searching for help</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#data-column-names"><i class="fa fa-check"></i><b>1.4.2</b> Data column names</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#option-lists"><i class="fa fa-check"></i><b>1.4.3</b> Option lists</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#save-often"><i class="fa fa-check"></i><b>1.4.4</b> Save often</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#conventions"><i class="fa fa-check"></i><b>1.5</b> Conventions</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="get-started.html"><a href="get-started.html"><i class="fa fa-check"></i><b>2</b> Get started</a><ul>
+<li class="chapter" data-level="2.1" data-path="get-started.html"><a href="get-started.html#import-example-form"><i class="fa fa-check"></i><b>2.1</b> Import example form</a></li>
+<li class="chapter" data-level="2.2" data-path="get-started.html"><a href="get-started.html#a-brief-tour-parent-form"><i class="fa fa-check"></i><b>2.2</b> A brief tour: Parent form</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="get-started.html"><a href="get-started.html#hiding-questions"><i class="fa fa-check"></i><b>2.2.1</b> Hiding questions</a></li>
+<li class="chapter" data-level="2.2.2" data-path="get-started.html"><a href="get-started.html#required-fields"><i class="fa fa-check"></i><b>2.2.2</b> Required fields</a></li>
+<li class="chapter" data-level="2.2.3" data-path="get-started.html"><a href="get-started.html#real-time-or-post-survey"><i class="fa fa-check"></i><b>2.2.3</b> Real-time or post-survey</a></li>
+<li class="chapter" data-level="2.2.4" data-path="get-started.html"><a href="get-started.html#default-values"><i class="fa fa-check"></i><b>2.2.4</b> Default values</a></li>
+<li class="chapter" data-level="2.2.5" data-path="get-started.html"><a href="get-started.html#filtered-option-lists"><i class="fa fa-check"></i><b>2.2.5</b> Filtered option lists</a></li>
+<li class="chapter" data-level="2.2.6" data-path="get-started.html"><a href="get-started.html#data-validation"><i class="fa fa-check"></i><b>2.2.6</b> Data validation</a></li>
+<li class="chapter" data-level="2.2.7" data-path="get-started.html"><a href="get-started.html#automated-entry-of-zero-counts"><i class="fa fa-check"></i><b>2.2.7</b> Automated entry of zero counts</a></li>
+<li class="chapter" data-level="2.2.8" data-path="get-started.html"><a href="get-started.html#toggling-a-subform"><i class="fa fa-check"></i><b>2.2.8</b> Toggling a subform</a></li>
+<li class="chapter" data-level="2.2.9" data-path="get-started.html"><a href="get-started.html#survey-comments-and-dynamic-labels"><i class="fa fa-check"></i><b>2.2.9</b> Survey comments and dynamic labels</a></li>
+<li class="chapter" data-level="2.2.10" data-path="get-started.html"><a href="get-started.html#setting-optional-fields-to-required"><i class="fa fa-check"></i><b>2.2.10</b> Setting optional fields to required</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="get-started.html"><a href="get-started.html#a-brief-tour-observations-subform"><i class="fa fa-check"></i><b>2.3</b> A brief tour: Observations subform</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="get-started.html"><a href="get-started.html#live-fish"><i class="fa fa-check"></i><b>2.3.1</b> Live fish</a></li>
+<li class="chapter" data-level="2.3.2" data-path="get-started.html"><a href="get-started.html#carcass"><i class="fa fa-check"></i><b>2.3.2</b> Carcass</a></li>
+<li class="chapter" data-level="2.3.3" data-path="get-started.html"><a href="get-started.html#fish-redd"><i class="fa fa-check"></i><b>2.3.3</b> Fish redd</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="get-started.html"><a href="get-started.html#additional-options"><i class="fa fa-check"></i><b>2.4</b> Additional options</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="build-a-form.html"><a href="build-a-form.html"><i class="fa fa-check"></i><b>3</b> Build a form</a><ul>
+<li class="chapter" data-level="3.1" data-path="build-a-form.html"><a href="build-a-form.html#parent-form"><i class="fa fa-check"></i><b>3.1</b> Parent form</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="build-a-form.html"><a href="build-a-form.html#survey-id-core-element"><i class="fa fa-check"></i><b>3.1.1</b> Survey ID (core element)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="build-a-form.html"><a href="build-a-form.html#data-source-core-element"><i class="fa fa-check"></i><b>3.1.2</b> Data source (core element)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="build-a-form.html"><a href="build-a-form.html#observers"><i class="fa fa-check"></i><b>3.1.3</b> Observers</a></li>
+<li class="chapter" data-level="3.1.4" data-path="build-a-form.html"><a href="build-a-form.html#data-submitter"><i class="fa fa-check"></i><b>3.1.4</b> Data submitter</a></li>
+<li class="chapter" data-level="3.1.5" data-path="build-a-form.html"><a href="build-a-form.html#entry-method"><i class="fa fa-check"></i><b>3.1.5</b> Entry method</a></li>
+<li class="chapter" data-level="3.1.6" data-path="build-a-form.html"><a href="build-a-form.html#survey-start-date-core-element"><i class="fa fa-check"></i><b>3.1.6</b> Survey start date (core element)</a></li>
+<li class="chapter" data-level="3.1.7" data-path="build-a-form.html"><a href="build-a-form.html#survey-method-core-element"><i class="fa fa-check"></i><b>3.1.7</b> Survey method (core element)</a></li>
+<li class="chapter" data-level="3.1.8" data-path="build-a-form.html"><a href="build-a-form.html#stream-core-element"><i class="fa fa-check"></i><b>3.1.8</b> Stream (core element)</a></li>
+<li class="chapter" data-level="3.1.9" data-path="build-a-form.html"><a href="build-a-form.html#survey-start-point-core-element"><i class="fa fa-check"></i><b>3.1.9</b> Survey start point (core element)</a></li>
+<li class="chapter" data-level="3.1.10" data-path="build-a-form.html"><a href="build-a-form.html#start-point-not-listed"><i class="fa fa-check"></i><b>3.1.10</b> Start point not listed</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="todo.html"><a href="todo.html"><i class="fa fa-check"></i><b>4</b> ToDo</a></li>
+<li class="chapter" data-level="5" data-path="notes-on-bookdown.html"><a href="notes-on-bookdown.html"><i class="fa fa-check"></i><b>5</b> Notes on bookdown</a><ul>
+<li class="chapter" data-level="5.1" data-path="notes-on-bookdown.html"><a href="notes-on-bookdown.html#files-needed-to-build-basic-book"><i class="fa fa-check"></i><b>5.1</b> Files needed to build basic book:</a></li>
+<li class="chapter" data-level="5.2" data-path="notes-on-bookdown.html"><a href="notes-on-bookdown.html#building-these-files-generates"><i class="fa fa-check"></i><b>5.2</b> Building these files generates:</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mobile forms for salmon surveys</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Mobile forms for salmon surveys</h1>
+<h4 class="author"><em>Are Strom</em></h4>
+</div>
+<div id="welcome" class="section level1 unnumbered">
+<h1>Welcome</h1>
+<p><img src="cover.png" width="250" height="375" alt="Cover image" /></p>
+<p>The growing popularity of mobile technology for data collection has increased both the types of data, and the volume of data, flowing from field to database. The advantages of mobile devices over paper forms are compelling. Mobile devices enable automated data capture using a wide assortment of sensors, including temperature probes, pH meters, barcode readers, cameras, PIT tag readers, and integrated GPS.</p>
+<p>In the past, data from a complete spawning ground survey would typically have been entered first in a field notebook, then transcribed to a 3x5 index card, and finally entered to an electronic spreadsheet. The electronic portion would rarely require more than a few kilobytes of memory. By contrast, mobile technology enables capturing a much <em>richer</em> set of data, possibly including binary data such as images or video. Consequently, storage requirements can grow to megabyte size and manual transcription is no longer practical. This, in turn, requires better systems to store, retrieve, and analyze an expanding flow of data.</p>
+<p>Making sure that data systems are well integrated is becoming increasingly important. At the Washington Department of Fish and Wildlife (WDFW), a new spawning ground database has been constructed to absorb the increased flow, and diversity, of data on the back-end. Integration on the front-end is still a work in progress. This manual was motivated by the need for guidelines and standards at the mobile device end. The aim is two-fold: first, to provide simple examples to assist those just learning to build mobile forms, and second, to document form elements needed to facilitate getting data securely moved from field to database.</p>
+<p>Building mobile forms can be a source of frustration, even for experienced IT staff. Although it is true that simple forms <em>can</em> be built quickly and easily, even moderately complex forms, such as those typically needed for spawning ground surveys, require a considerable amount of work. Once you start adding conditional logic and validation to your forms you <em>will</em> need to write some code. A formalized set of guidelines, along with step-by-step instructions, can help ease the pain. Standardizing the general structure of mobile forms can also help enable a smooth flow of data from field to back-end database. Although survey protocols vary from region to region, in general, they are similar enough that there is much to be gained from copying what works and learning from each other.</p>
+<p>To simplify the process of building mobile forms this manual takes a highly opinionated approach. As you gain experience in form building, feel free to customize as needed. But please keep in mind that core elements need to be present in order to enable downloading and processing data so it can be integrated into our corporate <em>spawning ground</em> database. These core elements will be emphasized in the sections that follow.</p>
+<p>Please consider contributing your own solutions, corrections, or edits to this manual. All source code is available at the project <a href="https://github.com/arestrom/mf4ss">GitHub repository</a>. It is written using the <a href="https://github.com/rstudio/bookdown">bookdown</a> package. See <a href="https://bookdown.org/yihui/bookdown/">bookdown: Authoring Books and Technical Documents with R Markdown</a> for technical details on how to contribute.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/arestrom/iFormBook/edit/master/index.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
