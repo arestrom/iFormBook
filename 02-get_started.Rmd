@@ -6,15 +6,33 @@ The aim of this chapter is to provide a visual tour of what a spawning ground fo
 
 The quickest way to get started with mobile forms is by example.
 
-1. Download the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) file from the GitHub repository for this book. To download, click on the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) link. Then locate the file in repository list, click on the file. This will take you open a new window with a download button in the upper right-hand corner. Click on the button and download the file to a convenient location. Do this now.  
+1. Download the *Package_spawning_ground.json* file from the GitHub repository for this manual. To download, click on the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) link. You will see a list of files in the repository directory. Locate the *Package_spawning_ground.json* file in repository list and then click on the file. 
 
-2. Sign in to your iFormBuilder profile and click on the *Forms* tab, then *Form Packages > Package Import*. 
+```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
+knitr::include_graphics("screenshots/package_json.png")
+```
+
+This will open a new window and display the contents of the file. Click on the *Raw" button in the upper right-hand corner. 
+
+```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
+knitr::include_graphics("screenshots/raw_json.png")
+```
+
+This will fill your display with the raw contents of the file. You can now right-click anywhere in your display and save the contents to a convenient location on your computer. 
+
+```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
+knitr::include_graphics("screenshots/save_raw_json.png")
+```
+
+In the *Save As* dialog the default name for the file will be *Package_spawning_ground.json.txt*. Accept the default and click *Save*. Then navigate to the location where you saved the file and edit the name to remove the *.txt* part. Windows will warn you not to do this, but do it anyway. You should end up with a file name of *Package_spawning_ground.json*. 
+
+2. Sign in to your iFormBuilder profile and click on the *Forms* tab, then click on *Form Packages > Package Import*. 
 
 ```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
 knitr::include_graphics("screenshots/package_dropdown.png")
 ```
 
-3. In the *Package Importer* screen, click *Choose File*, navigate to where you downloaded the *Package_spawning_ground.json* file, and click *Import*. If you have existing forms in your profile you will want to select the *Keep Both* options in the *Conflict Mode* screen.
+3. In the *Package Importer* screen, click *Choose File*, navigate to where you downloaded the *Package_spawning_ground.json* file, and click *Import*. If you have existing forms in your profile **make sure** and select the **Keep Both** options in the *Conflict Mode* screen.
 
 ```{r echo = FALSE, fig.align = 'center', out.width = "45%"}
 knitr::include_graphics("screenshots/conflict_mode.png")
