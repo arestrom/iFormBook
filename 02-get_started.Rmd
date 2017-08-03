@@ -6,49 +6,47 @@ The aim of this chapter is to provide a visual tour of what a spawning ground fo
 
 The quickest way to get started with mobile forms is by example.
 
-1. Download the *Package_spawning_ground.json* file from the GitHub repository for this manual. To download, click on the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) link. You will see a list of files in the repository directory. Locate the *Package_spawning_ground.json* file in repository list and then click on the file. 
+1. Download the *Package_spawning_ground.json* file from the GitHub repository for this manual. To download, click on the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) link. You will see a list of files in the repository directory. Locate the *Package_spawning_ground.json* file in repository list and then click on the file. This will open a new window and display the contents of the file.
 
-```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
+```{r echo = FALSE, fig.align = 'center', out.width = "50%"}
 knitr::include_graphics("screenshots/package_json.png")
 ```
 
-This will open a new window and display the contents of the file. Click on the *Raw" button in the upper right-hand corner. 
+2. Click on the *Raw" button in the upper right-hand corner. This will fill your display with the raw contents of the file. 
 
-```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
+```{r echo = FALSE, fig.align = 'center', out.width = "50%"}
 knitr::include_graphics("screenshots/raw_json.png")
 ```
 
-This will fill your display with the raw contents of the file. You can now right-click anywhere in your display and save the contents to a convenient location on your computer. 
+3. You can now right-click anywhere in your display and save the contents to a convenient location on your computer. In the *Save As* dialog the default name for the file will be *Package_spawning_ground.json.txt*. Accept the default and click *Save*. Then navigate to the location where you saved the file and edit the name to remove the *.txt* part. Windows will warn you not to do this, but do it anyway. You should end up with a file name of *Package_spawning_ground.json*.
 
-```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
+```{r echo = FALSE, fig.align = 'center', out.width = "50%"}
 knitr::include_graphics("screenshots/save_raw_json.png")
 ```
 
-In the *Save As* dialog the default name for the file will be *Package_spawning_ground.json.txt*. Accept the default and click *Save*. Then navigate to the location where you saved the file and edit the name to remove the *.txt* part. Windows will warn you not to do this, but do it anyway. You should end up with a file name of *Package_spawning_ground.json*. 
-
-2. Sign in to your iFormBuilder profile and click on the *Forms* tab, then click on *Form Packages > Package Import*. 
+4. Sign in to your iFormBuilder profile and click on the *Forms* tab, then click on *Form Packages > Package Import*. 
 
 ```{r echo = FALSE, fig.align = 'center', out.width = "25%"}
 knitr::include_graphics("screenshots/package_dropdown.png")
 ```
 
-3. In the *Package Importer* screen, click *Choose File*, navigate to where you downloaded the *Package_spawning_ground.json* file, and click *Import*. If you have existing forms in your profile **make sure** and select the **Keep Both** options in the *Conflict Mode* screen.
+5. In the *Package Importer* screen, click *Choose File*, navigate to where you downloaded the *Package_spawning_ground.json* file, and click *Import*. If you have existing forms in your profile **make sure** and select the **Keep Both** options in the *Conflict Mode* screen.
 
 ```{r echo = FALSE, fig.align = 'center', out.width = "45%"}
 knitr::include_graphics("screenshots/conflict_mode.png")
 ```
 
-4. After you have imported the form click on the *Forms* tab, then *Form Assignment*. You should see two new forms: *spawning_ground_p* and *spawning_ground_s*. The trailing *p* indicates the *parent* form. The trailing *s* indicates the *subform*.
+6. After you have imported the form click on the *Forms* tab, then *Form Assignment*. You should see two new forms: *spawning_ground_p* and *spawning_ground_s*. The trailing *p* indicates the *parent* form. The trailing *s* indicates the *subform*.
 
-5. Highlight the row for *spawning_ground_s* then click *Assign* in the upper left corner. 
+7. Highlight the row for *spawning_ground_s* then click *Assign* in the upper left corner. 
 
 ```{r echo = FALSE, fig.align = 'center', out.width = "35%"}
 knitr::include_graphics("screenshots/form_assign.png")
 ```
 
-6. Uncheck the boxes for *Collect* and *View*. Then scroll to the bottom and click *Update*. You should **never** have anything but the *parent form* assigned to users.  
+8. Uncheck the boxes for *Collect* and *View*. Then scroll to the bottom and click *Update*. You should **never** have anything but the *parent form* assigned to users.  
 
-7. Open the iFormBuilder application on your mobile device. If you have done the preceeding steps correctly you should now see a form called *Spawning Ground Surveys* in the iFormBuilder application on your device. 
+9. Open the iFormBuilder application on your mobile device. If you have done the preceeding steps correctly you should now see a form called *Spawning Ground Surveys* in the iFormBuilder application on your device. 
 
 ## A brief tour: Parent form
 
