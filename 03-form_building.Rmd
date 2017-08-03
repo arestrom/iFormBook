@@ -6,9 +6,9 @@ The sections below use the [*Package_spawning_ground.json*](https://github.com/a
 knitr::include_graphics("screenshots/forms_dropdown.png")
 ```
 
-Chapter 2 dealt with how the example *spawning_ground* form appeared on the mobile device. In Chapter 3 the focus shifts to the iFormBuilder web interface and details how data elements can be defined, validated, conditionally hidden, and assigned default values. 
+Chapter 2 provided a high level tour of the example *spawning_ground* survey form the perspective of the end-user. The focus was on the appearance and behavior of the data elements that a user would encounter on the mobile device. In Chapter 3 the focus shifts to the iFormBuilder web interface and dives into mobile form construction techniques. Details will be provided on how data elements can be defined, validated, conditionally hidden, and assigned default values. 
 
-There will be special emphasis below on the core data elements that need to be present prior to submission to our corporate spawning ground database. If a core element is missing it will not be possible to upload any of the data from your mobile form to our central database.
+There will be special emphasis below on the core data elements that need to be present if data from a mobile form is intended for submission to our corporate spawning ground database. If a core element is missing it will not be possible to upload any of the data from your mobile form to our central database.
 
 ## Parent form
 
