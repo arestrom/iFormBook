@@ -1,6 +1,6 @@
 # Introduction {#intro}
 
-The WDFW Fish Program currently uses [iFormBuilder](https://www.zerionsoftware.com/iformbuilder/) as a platform for building and deploying mobile forms. Although there are numerous alternative mobile platforms, both commercial and open-source, among the benefits of iFormBuilder are an easy-to-use form building application, a robust system for syncing between forms and devices, and an excellent application programming interface (API). The [API](http://docs.iformbuilder.apiary.io/#) is particulary useful, as it allows us to automate many of the most burdensome aspects of building forms and managing data flows.
+The WDFW Fish Program currently uses [iFormBuilder](https://www.zerionsoftware.com/iformbuilder/) as a platform for building and deploying mobile forms. Although there are numerous alternative mobile platforms, both commercial and open-source, among the benefits of iFormBuilder are an easy-to-use form building application, a fairly good system for syncing between forms and devices, and an excellent application programming interface (API). The [API](http://docs.iformbuilder.apiary.io/#) is particulary useful, as it allows us to automate many of the most burdensome aspects of building forms and managing data flows.
 
 ## Why mobile forms?
 
