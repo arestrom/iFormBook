@@ -1,4 +1,6 @@
-# JavaScript functions {-}
+# Appendix
+
+## JavaScript functions
 
 You can copy and paste these function directly into the JavaScript panel of your parent form. To access the JavaScript panel click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the Forms page when using the online Form Builder application.
 
@@ -7,7 +9,9 @@ You can copy and paste these function directly into the JavaScript panel of your
 knitr::include_graphics("screenshots/actions.png")
 ```
 
-## Generate a unique ID (UUID). From [Stackoverflow](https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript).
+### Unique ID (UUID)
+
+From [Stackoverflow](https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript).
 
 ```{js, eval = FALSE}
 function generateUUID () { // Public Domain/MIT
@@ -23,7 +27,9 @@ function generateUUID () { // Public Domain/MIT
 }
 ```
 
-## Generate the Statistical week from a date. For WDFW the standard statistical week starts on Monday and ends on Sunday. The first day of the year is always week 1. This function mimics output from a legacy WDFW executable to generate stat weeks. To use in a mobile form create a new text element below your `survey_start_datetime` element. Then in the *Dynamic Value* box enter: `survey_start_datetime.fishStatWeek()`.    
+### Statistical week. 
+
+For WDFW the standard statistical week starts on Monday and ends on Sunday. The first day of the year is always week 1. This function mimics output from a legacy WDFW executable to generate stat weeks. To use in a mobile form create a new text element below your `survey_start_datetime` element. Then in the *Dynamic Value* box enter: `survey_start_datetime.fishStatWeek()`.    
 
 ```{js, eval = FALSE}
 Date.prototype.fishStatWeek = function () {
@@ -36,7 +42,9 @@ Date.prototype.fishStatWeek = function () {
 };
 ```
 
-## Pad a number with three leading zeros. For example, change `01` to `0001`, or `2` to `0002`. Author: Jake Shapely.  
+### Pad a number
+
+Pad a number with three leading zeros. For example, change `01` to `0001`, or `2` to `0002`. Author: Jake Shapely.  
 
 ```{js, eval = FALSE}
 function pad(num) {
