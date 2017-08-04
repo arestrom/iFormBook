@@ -169,6 +169,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6.1.2" data-path="appendix.html"><a href="appendix.html#statistical-week."><i class="fa fa-check"></i><b>6.1.2</b> Statistical week.</a></li>
 <li class="chapter" data-level="6.1.3" data-path="appendix.html"><a href="appendix.html#pad-a-number"><i class="fa fa-check"></i><b>6.1.3</b> Pad a number</a></li>
 </ul></li>
+<li class="chapter" data-level="6.2" data-path="appendix.html"><a href="appendix.html#character-limits"><i class="fa fa-check"></i><b>6.2</b> Character limits</a></li>
+<li class="chapter" data-level="6.3" data-path="appendix.html"><a href="appendix.html#maximum-inputs-per-form"><i class="fa fa-check"></i><b>6.3</b> Maximum inputs per form</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
@@ -229,8 +231,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     <span class="cf">while</span> (<span class="va">s</span>.<span class="at">length</span> <span class="op">&lt;</span> <span class="dv">3</span>) s <span class="op">=</span> <span class="st">&quot;0&quot;</span> <span class="op">+</span> s<span class="op">;</span>
     <span class="cf">return</span> s<span class="op">;</span>
 <span class="op">};</span></code></pre></div>
-
 </div>
+</div>
+<div id="character-limits" class="section level2">
+<h2><span class="header-section-number">6.2</span> Character limits</h2>
+<p>The iFormBuilder platform imposes limits on the number of characters that are allow for naming or defining various items. The following table was compiled from disparate parts of the iFormBuilder website by Steve VanderPloeg.</p>
+<p><strong>IForm character limits:</strong></p>
+<ul>
+<li>Form Name Label: 500</li>
+<li>Form Name: 50</li>
+<li>Field Name Label: 1000</li>
+<li>Field Name: 65</li>
+<li>Conditional Values: 500</li>
+<li>Dynamic Values: 500</li>
+<li>Dynamic Labels: 500</li>
+<li>Client Validation: 500</li>
+<li>Validation Labels: 500</li>
+<li>Data column name: 65</li>
+<li>Text-area widget: 65,000</li>
+</ul>
+</div>
+<div id="maximum-inputs-per-form" class="section level2">
+<h2><span class="header-section-number">6.3</span> Maximum inputs per form</h2>
+<p>The iFormBuilder website recommends limiting the number of inputs in a form or subform to 100. If your needs exceed 100 inputs for any given form, they recommend breaking up those forms into one or more subforms. As mobile devices have become more powerful those recommended limits have increased from 35-40 inputs to the most recent recommendation of 100 inputs (as of 2016).</p>
+<p>This is only a guideline, and given the increasing power of newer devices, these recommendations may already be out of date. The highly opinionated counter-recommendation in this manual is to try and keep your forms as simple as possible by minimizing the number of subforms whenever possible. Then test thoroughly to ensure your forms stay responsive. Instead of setting an arbitary limit on the number of inputs per form, a better policy is to carefully test for performance issues. Depending on the type of inputs, you may be able to exceed the 100 input recommendation by a considerable margin. Only break up forms into subforms if performance starts to deteriorate markedly.</p>
+<p>To streamline data entry you should instead be vigilant in hiding inputs whenever possible. A few judiciously placed questions in tandem with condition statements can often serve to hide all but the few relevant inputs needed for any given observation. For field use, speed of data entry is often the most important consideration. Switching between subforms slows down the process. Ideally you would have just one parent form for header data and one primary subform for the majority of your repeat observations.</p>
+
 </div>
 </div>
             </section>

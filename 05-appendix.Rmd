@@ -53,3 +53,31 @@ function pad(num) {
     return s;
 };
 ```
+
+## Character limits
+
+The iFormBuilder platform imposes limits on the number of characters that are allow for naming or defining various items. The following table was compiled from disparate parts of the iFormBuilder website by Steve VanderPloeg.   
+
+**IForm character limits:**
+
+* Form Name Label: 500
+* Form Name: 50
+* Field Name Label: 1000
+* Field Name: 65
+* Conditional Values: 500
+* Dynamic Values: 500
+* Dynamic Labels: 500
+* Client Validation: 500
+* Validation Labels: 500
+* Data column name: 65
+* Text-area widget: 65,000
+
+## Maximum inputs per form
+
+The iFormBuilder website recommends limiting the number of inputs in a form or subform to 100. If your needs exceed 100 inputs for any given form, they recommend breaking up those forms into one or more subforms. As mobile devices have become more powerful those recommended limits have increased from 35-40 inputs to the most recent recommendation of 100 inputs (as of 2016). 
+
+This is only a guideline, and given the increasing power of newer devices, these recommendations may already be out of date. The highly opinionated counter-recommendation in this manual is to try and keep your forms as simple as possible by minimizing the number of subforms whenever possible. Then test thoroughly to ensure your forms stay responsive. Instead of setting an arbitary limit on the number of inputs per form, a better policy is to carefully test for performance issues. Depending on the type of inputs, you may be able to exceed the 100 input recommendation by a considerable margin. Only break up forms into subforms if performance starts to deteriorate markedly.
+
+To streamline data entry you should instead be vigilant in hiding inputs whenever possible. A few judiciously placed questions in tandem with condition statements can often serve to hide all but the few relevant inputs needed for any given observation. For field use, speed of data entry is often the most important consideration. Switching between subforms slows down the process. Ideally you would have just one parent form for header data and one primary subform for the majority of your repeat observations.
+
+
