@@ -93,7 +93,7 @@ Click on the green *Option lists* button to see the observers currently listed. 
 knitr::include_graphics("screenshots/option_list_box.png")
 ```
 
-Multi-select widgets allow you to select one or more of the options listed. If more than one is selected the last names (Key Value) will be concatenated together, separated by commas and a space, for example, `Smith, Jones, Nelson'. 
+Multi-select widgets allow you to select one or more of the options listed. If more than one is selected the last names (Key Value) will be concatenated together, separated by commas and a space, for example, `Smith, Jones, Nelson`. 
 
 ### Data submitter
 
@@ -145,7 +145,7 @@ new date()
 
 ### Survey method (core input element)
 
-The `survey_method` field is another core input element. If you click on the green *Option Lists* bar the *Assign Option Lists* window will open and you will see there are only three options listed: `Foot`, `Raft`, and `Helicopter`. Several additional options that you may want to add are listed in the *SpawningGroundDataDictionary* mentioned in chapter 2. 
+The `survey_method` field is another core input element. If you click on the green *Option Lists* bar the *Assign Option Lists* window will open and you will see there are only three options listed: `Foot`, `Raft`, and `Helicopter`. Several additional options that you may want to add are listed in the *spawning_ground* database [*Data Dictionary*](https://arestrom.github.io/sgsdd/) mentioned in chapter 2. 
 
 If you need to add an option, for example `Snorkle`, close the *Assign Option Lists* window and click on *Option Lists* in the top left-hand corner of the form builder application. 
 
@@ -175,7 +175,7 @@ Close this pop-up window and select *Option Lists* in the upper left-hand corner
 knitr::include_graphics("screenshots/option_list.png")
 ```
 
-Scroll down and click on `SGS-Streams` to see how this option list is defined. One defining feature of option lists is that the *Key Values* must all be unique. For this reason you do not want to use the stream name as the key value. There can be multiple *Boulder Creeks*, or *Cedar Creeks* within any given watershed. Using the *Stream Catalog Code* (i.e. *17.0213*) is also problematic since there are areas in the state where smaller streams may not have been assigned a code. The solution is to use the unique integer ID from the old *Spawning Ground Survey (SGS)* database for the *Key Value*. 
+Scroll down and click on `SGS-Streams` to see how this option list is defined. One defining feature of option lists is that the *Key Values* must all be unique. For this reason you do not want to use the stream name as the key value. There can be multiple *Boulder Creeks*, or *Cedar Creeks* within any given watershed. Using the *Stream Catalog Code* (i.e. *17.0213*) is also problematic since there are areas in the state where smaller streams may not have been assigned a code. The solution is to use the unique integer ID from the old *Spawning Ground Survey (SGS)* database for the *Key Value*. Contact me if you need a list of ID values for streams in your district.  
 
 ### Survey start point (core input element)
 

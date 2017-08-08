@@ -18,11 +18,13 @@ knitr::include_graphics("screenshots/package_json.png")
 knitr::include_graphics("screenshots/raw_json.png")
 ```
 
-3. You can now right-click anywhere in your display and save the contents to a convenient location on your computer. In the *Save As* dialog the default name for the file will be *Package_spawning_ground.json.txt*. Accept the default and click *Save*. Then navigate to the location where you saved the file and edit the name to remove the *.txt* part. Windows will warn you not to do this, but do it anyway. You should end up with a file name of *Package_spawning_ground.json*.
+<br>
 
 ```{r echo = FALSE, fig.align = 'center', out.width = "50%"}
 knitr::include_graphics("screenshots/save_raw_json.png")
 ```
+
+3. You can now right-click anywhere in your display and save the contents to a convenient location on your computer. In the *Save As* dialog the default name for the file will be *Package_spawning_ground.json.txt*. Accept the default and click *Save*. Then navigate to the location where you saved the file and edit the name to remove the *.txt* part. Windows will warn you not to do this, but do it anyway. You should end up with a file name of *Package_spawning_ground.json*.
 
 4. Sign in to your iFormBuilder profile and click on the *Forms* tab, then click on *Form Packages > Package Import*. 
 
@@ -86,11 +88,11 @@ The follow-up question below asks you to specify the *categories* of counts wher
 
 ### Toggling a subform
 
-The final header data question in the top section asks *Did you see any fish or fish redds?*. If you answer *Yes* you will open a subform where you can enter each observation. If you answer *No* you will only need to fill in a few remaining post-survey questions. To complete the questions on the parent form click on *No* to this question.
+The final header data question in the top section asks *Did you see any fish or fish redds?*. If you answer *Yes* a subform will become visible where you can enter each observation. If you answer *No* you will only need to fill in a few remaining post-survey questions. To complete the questions on the parent form click *No* to this question.
 
 ### Survey comments and dynamic labels
 
-In the bottom portion of the parent form you are asked to enter some *canned* pick-list comments regarding *Stream flow, Visibility conditions, and Weather*. The new *spawning ground* database provides many additional options for *canned* comments adapted from legacy *condition codes* that you may have used in the past. I have not included these here. If you are an employee of WDFW you can see a complete list of options in the *SpawningGroundDataDictionary.html* located in the WDFW Fish Program shared drive under the *30Day/SpawningGround* folder. Otherwise, contact me if you would like a copy. 
+In the bottom portion of the parent form you are asked to enter some *canned* pick-list comments regarding *Stream flow, Visibility conditions, and Weather*. The new *spawning ground* database provides many additional options for *canned* comments adapted from legacy *condition codes* that you may have used in the past. See the *spawning_ground* database [*Data Dictionary*](https://arestrom.github.io/sgsdd/) for a full list of these comments. Click on *Survey_comment* in the navigation panel on the left-hand side to see the comments currently available. Comment descriptions are listed in the look-up tables linked to the survey_comment table.  
 
 You are next asked if the survey was completed. If not, then you are asked to explain why. Toggle between answering *Completed survey* and any other option. Notice that the label for the *Survey comments* field will change from *(optional)* to *(required)*. In addition, a note will appear reminding you that an explantion is needed. This is a good example of using *Dynamic lables*. Additional details will be provided in Chapter 3.
 
