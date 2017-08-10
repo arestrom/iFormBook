@@ -193,13 +193,53 @@ The convention for coding *Key values* for locations that are *Not listed above*
 
 Option lists such as `SGS-StreamLocations`, with upwards of 210 elements and 38 different condition values, can be tedious to create by hand. A better option is to create and write such lists directly to the iFormBuilder cloud using scripts. This can be accomplished in seconds using the [iformr](https://github.com/arestrom/iformr) package for the [R](https://www.r-project.org/about.html) programming language. See the package documentation for usage examples. I can also provide example scripts. 
 
-### Start point not listed
+### Start or end point not listed
 
-If the *Label* of a selected `start_point` or `end_point` is `Not listed above`, then additional data input elements for entering those points manually in the form will be revealed. The *Start point not listed* and *End point not listed* inputs are both set as *Element Type* `Text`.
+If the *Label* of a selected `start_point` or `end_point` is `Not listed above`, then two additional data inputs will appear allowing you to enter the river mile, and optionally, a description of the start or end point. The `start_not_listed` and `end_not_listed` inputs are set to *Element Type* `Text`. Although setting the *Element Type* to `Number` instead of `Text` may seem more logical, there are a number of reasons why text values tend to be easier to work with, especially if you are going to use the value later in a condition statement, or if you intend to export your data to Excel. 
 
-Numeric, but use text. Reason: easier to deal with. Set keyboard to number and punct.
-Add GPS?
-Add photo?
+Set the *Keyboard* to `Number and Punctuation` to allow entry of decimal points. The *Dynamic Value* should be initiated to `{""}` indicating a missing value. To ensure that you only see these inputs in case the start or end points are `Not listed above` set the *Condition Value* to `ZCDisplayValue_start_point == "Not listed above"` or `ZCDisplayValue_end_point == "Not listed above"` respectively. Also notice that these inputs have been set to `Required` in the *Attributes* section of the *Element Properties*. This is conditional on the inputs being visible. You will only be required to enter a value in these inputs if you selected `Not listed above` in the start or end point pick lists.
+
+Scroll down to the lower portion of the *Element Properties* pane to see examples of how to code a *Client Validation* and add a *Validation Message*.
+
+```{r echo = FALSE, out.width = "55%"}
+knitr::include_graphics("screenshots/validation.png")
+```
+
+The *Client Validation* logic should be set up to describe what you **expect** to see. In this case we want the river mile value to be between `0` and `999`. If you enter a value outside this range you will see the *Validation Message* when you press the *Done* button. You will not be able to submit your data to the server until you enter a valid number. 
+
+Notice that we are first converting the `start_not_listed` value that we entered as `text` to a `number` before doing the comparison. This is an example of using the JavaScript function `Number()` to do a simple conversion. 
+
+### Start or end point description
+
+This input allows you to add a brief text description of the start or end point. In this case we have set the limit to `200` characters. If you anticipate using the `Not listed above` option frequently, or plan to conduct many exploratory surveys, you may also want to add a *Location* input, to capture coordinates of the new start and end points, or an *Image* input to take photos of the reach end points. In this case you would set the *Condition Value* to `ZCDisplayValue_start_point == "Not listed above"` for each input.
+
+### Water temperature (degrees C)
+
+The structure of the water temperature input is very similar to the inputs for manual entry of start and end points. Again, the *Element Type* has been set to `Text`, the *Keyboard* has been set to `Number and Punctuation`, and the *Dynamic Value* initiated to an empty character `{""}`. The *Condition Value* has been set to `start_point > -1` so that the input will only be displayed after the sampler has entered a value for `start_point`. The *Client Validation* setting requires that the `start_temperature_c` value be within a reasonable range, otherwise the surveyor will see a message warning that *The start point water temperature must be between 0 and 38 degrees Celsius* when pressing the *Done* button at the end of the survey. 
+
+### Target species label
+
+This *Label* input is an example of providing simple text reminders to the surveyor, or to stress something important. No data are recorded here. The input merely displays a message. 
+
+### Target species
+
+The `target_species` and  `fish_redd_zeros` inputs allow for automating the entry of zero counts. Instead of surveyors having to manually enter counts of zero for each species they were intending to count but did not encounter, the job can be offloaded to a computer. One or more species are selected from an option list then a select input is clicked to determine if the zeros should be added for just fish, redds, or both. The *Dynamic Value* has been set to `2`. This is the sort_order value for *Both fish and redds*. When the code that parses survey data into the database encounters this value it will automatically assign zero counts for all species selected using this input. Zeros will be assigned for both fish counts and fish redd counts. 
+
+The *Condition Value* for the `fish_redd_zeros` uses a JavaScript function `length()` to determine if any `target_species` have been selected: `ZCDisplayValue_target_species.length > 0`. If no `target_species` are selected the default value will be `""`, an empty text string of length zero. If at least one `target_species` is selected the length will be greater than one. Measuring the `length()` of text strings can often be useful for setting up condition statements.
+
+### Dividers
+
+Dividers can be useful for breaking up sections of forms into more visually digestible chunks. In our example the dividers highlight the `obseration_subform` input. Note that dividers can be conditionally set to appear or dissapear just as with other inputs. Here the dividers will only appear if at least one `target_species` has been selected. The aim is to keep the appearance of the form as minimally cluttered as possible. 
+
+### Observations, yes-no?
+
+Directly below the section divider is the `observations_yes_no` select input. To force surveyors to enter values for `target_species` this input also remains hidden until at least one `target_species` is selected. As with the `fish_redd_zeros` input, the *Condition Value* has been defined as: `ZCDisplayValue_target_species.length > 0`. 
+
+### Observations subform
+
+If you answer `Yes` in the `observations_yes_no` input the `observation_subform` input will become visible. Clicking this input will open a new *subform* where you can enter all observations of fish or redds encountered during the survey. Note that this input includes an entry in the *Reference ID 1* box near the bottom of the *Element Properties* pane. By entering *SUBFORM_BATCH_MODE* here the behavior of the subform changes. Instead of cycling back to the parent form after every observation, you will be sent back to the top of the subform after every observation. This can speed up data entry, by avoiding having to trigger the subform for each observation. See the [*Reference ID Overview*](https://iformbuilder.zendesk.com/hc/en-us/articles/201699300-Reference-ID-Overview) for additional details on this topic.  
+
+Add image of SUBFORM_BATCH_MODE.............
 
 
 
