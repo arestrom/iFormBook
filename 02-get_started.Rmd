@@ -18,11 +18,13 @@ knitr::include_graphics("screenshots/package_json.png")
 knitr::include_graphics("screenshots/raw_json.png")
 ```
 
-3. You can now right-click anywhere in your display and save the contents to a convenient location on your computer. In the *Save As* dialog the default name for the file will be *Package_spawning_ground.json.txt*. Accept the default and click *Save*. Then navigate to the location where you saved the file and edit the name to remove the *.txt* part. Windows will warn you not to do this, but do it anyway. You should end up with a file name of *Package_spawning_ground.json*.
+<br>
 
 ```{r echo = FALSE, fig.align = 'center', out.width = "50%"}
 knitr::include_graphics("screenshots/save_raw_json.png")
 ```
+
+3. You can now right-click anywhere in your display and save the contents to a convenient location on your computer. In the *Save As* dialog the default name for the file will be *Package_spawning_ground.json.txt*. Accept the default and click *Save*. Then navigate to the location where you saved the file and edit the name to remove the *.txt* part. Windows will warn you not to do this, but do it anyway. You should end up with a file name of *Package_spawning_ground.json*.
 
 4. Sign in to your iFormBuilder profile and click on the *Forms* tab, then click on *Form Packages > Package Import*. 
 
@@ -54,25 +56,25 @@ The parent form is where you would record information that only needs to be ente
 
 ### Hiding questions
 
-After you have synced the *Spawning Ground* form to your device, click to launch. You should see a fairly bare form. The only items showing will be some basic header information. Items include a multiselect dropdown widget for *Observers*, a set of select buttons for *Data entry real-time or post-survey*,  a *Survey start date & time* widget, a set of *Survey method* select buttons, a dropdown widget for *Stream*, and a *Done* button. The reason that you only see a few elements at first is that we have hidden the others using conditional logic. Hidden elements will only be revealed after prerequisite fields have been filled out. Selectively hiding elements in a form is a highly effective tool for reducing clutter and simplifying form structure. 
+After you have synced the *Spawning Ground* form to your device, click to launch. You should see a fairly bare form. The only items showing will be some basic header information. Items include a multiselect dropdown widget for *Observers*, a set of select buttons for *Data entry real-time or post-survey*,  a *Survey start date & time* widget, a set of *Survey method* select buttons, a dropdown widget for *Stream*, and a *Done* button. The reason that you only see a few input elements at first is that we have hidden the others using conditional logic. Hidden inputs will only be revealed after prerequisite fields have been filled out. Selectively hiding input elements in a form is a highly effective tool for reducing clutter and simplifying form structure. 
 
 ### Required fields
 
-Note the asterisks next to the labels for each element. This indicates *required* fields. If you fail to fill any of these out you will be reminded when you hit the *Done* button. You will not be allowed to save or submit your data until all required fields are filled in. 
+Note the asterisks next to the labels for each input element. This indicates *required* fields. If you fail to fill any of these out you will be reminded when you hit the *Done* button. You will not be allowed to save or submit your data until all required fields are filled in. 
 
 ### Real-time or post-survey
 
-The *Data entry real-time or post-survey* field illustrates how you can set up rules to show or hide elements in your form based on an initial conditions. For example, if you have some old paper data to enter and you need to use the mobile form as a post-survey data entry screen, then we know we don't need to show widgets for recording GPS locations at a later stage. In addition, we probably won't need to show widgets for capturing barcodes, or taking pictures. These can all be hidden if data entry type is set to *post_survey*. 
+The *Data entry real-time or post-survey* field illustrates how you can set up rules to show or hide input elements in your form based on an initial conditions. For example, if you have some old paper data to enter and you need to use the mobile form as a post-survey data entry screen, then we know we don't need to show widgets for recording GPS locations at a later stage. In addition, we probably won't need to show widgets for capturing barcodes, or taking pictures. These can all be hidden if data entry type is set to *post_survey*. 
 
 ### Default values
 
-Notice that for the *Data entry real-time or post-survey* and *Survey method* elements we have pre-selected default values of *Real-time* and *Foot* respectively. For *Survey start date & time* we can set a default value of the current date and time by using a JavaScript function `new Date()`. Setting default values is a good way to help speed up data entry in the field. Details on how to set this up is included in Chapter 3. 
+Notice that for the *Data entry real-time or post-survey* and *Survey method* inputs we have pre-selected default values of *Real-time* and *Foot* respectively. For *Survey start date & time* we can set a default value of the current date and time by using a JavaScript function `new Date()`. Setting default values is a good way to help speed up data entry in the field. Details on how to set this up is included in Chapter 3. 
 
 ### Filtered option lists
 
-The *Stream*, *Survey start point* and *Survey end point* elements demonstrate use of filtered option lists. Click on *Stream* and you will see a list of stream names. Start and stop points for stream *reach* sections that are typically surveyed are displayed. These are filtered to the stream you select. If you change the *Stream* selection, a different set of start and stop points options will be displayed. Select *Bear Cr (19.0196)* to see a good example of using labels to help identify filtered options. If you now click on the *Survey start point* pick list you will see a simple set of descriptions for the filtered points. 
+The *Stream*, *Survey start point* and *Survey end point* input elements demonstrate use of filtered option lists. Click on *Stream* and you will see a list of stream names. Start and stop points for stream *reach* sections that are typically surveyed are displayed. These are filtered to the stream you select. If you change the *Stream* selection, a different set of start and stop points options will be displayed. Select *Bear Cr (19.0196)* to see a good example of using labels to help identify filtered options. If you now click on the *Survey start point* pick list you will see a simple set of descriptions for the filtered points. 
 
-At the bottom of each option list for start and stop points you have the ability to enter *Not listed above*. If you select this option two additional form elements will appear where you can enter the approximate river mile of the location and a description of the location. Ideally, all reach end points that you normally survey will already be entered to your option lists. New points can easily be added, even to a live form, but for those rare cases where the unexpected happens, it is sometimes a good idea to provide options for manual entry. Keep this to a minimum though, as it can quickly make a form overly complex and unwieldy.  
+At the bottom of each option list for start and stop points you have the ability to enter *Not listed above*. If you select this option two additional form input elements will appear where you can enter the approximate river mile of the location and a description of the location. Ideally, all reach end points that you normally survey will already be entered to your option lists. New points can easily be added, even to a live form, but for those rare cases where the unexpected happens, it is sometimes a good idea to provide options for manual entry. Keep this to a minimum though, as it can quickly make a form overly complex and unwieldy.  
 
 ### Data validation
 
@@ -86,11 +88,11 @@ The follow-up question below asks you to specify the *categories* of counts wher
 
 ### Toggling a subform
 
-The final header data question in the top section asks *Did you see any fish or fish redds?*. If you answer *Yes* you will open a subform where you can enter each observation. If you answer *No* you will only need to fill in a few remaining post-survey questions. To complete the questions on the parent form click on *No* to this question.
+The final header data question in the top section asks *Did you see any fish or fish redds?*. If you answer *Yes* a subform will become visible where you can enter each observation. If you answer *No* you will only need to fill in a few remaining post-survey questions. To complete the questions on the parent form click *No* to this question.
 
 ### Survey comments and dynamic labels
 
-In the bottom portion of the parent form you are asked to enter some *canned* pick-list comments regarding *Stream flow, Visibility conditions, and Weather*. The new *spawning ground* database provides many additional options for *canned* comments adapted from legacy *condition codes* that you may have used in the past. I have not included these here. If you are an employee of WDFW you can see a complete list of options in the *SpawningGroundDataDictionary.html* located in the WDFW Fish Program shared drive under the *30Day/SpawningGround* folder. Otherwise, contact me if you would like a copy. 
+In the bottom portion of the parent form you are asked to enter some *canned* pick-list comments regarding *Stream flow, Visibility conditions, and Weather*. The new *spawning ground* database provides many additional options for *canned* comments adapted from legacy *condition codes* that you may have used in the past. See the *spawning_ground* database [*Data Dictionary*](https://arestrom.github.io/sgsdd/) for a full list of these comments. Click on *Survey_comment* in the navigation panel on the left-hand side to see the comments currently available. Comment descriptions are listed in the look-up tables linked to the survey_comment table.  
 
 You are next asked if the survey was completed. If not, then you are asked to explain why. Toggle between answering *Completed survey* and any other option. Notice that the label for the *Survey comments* field will change from *(optional)* to *(required)*. In addition, a note will appear reminding you that an explantion is needed. This is a good example of using *Dynamic lables*. Additional details will be provided in Chapter 3.
 
@@ -114,7 +116,7 @@ Note that depending on the species selected, the text for subsequent questions w
 
 ### Live fish
 
-Go back to *Observation type* and select *Live fish*, then select *Chinook* as *Species*. A relatively simple set of form elements will be displayed. After you enter a *count* of how many fish you saw you will see options to enter the *location*, along with *Sex and maturity* and *Adipose clip status*. Enter some arbitrary values for these fields and click the *Done* button. As soon as the form saves the record it will cycle right back to the start of the *Observation subform* and you can enter the next observation. The ability of the subform to cycle back to the start after saving a record is a feature you can specify when designing the form. It is called *SUBFORM_BATCH_MODE*. Details will be provided in Chapter 3. 
+Go back to *Observation type* and select *Live fish*, then select *Chinook* as *Species*. A relatively simple set of form inputs will be displayed. After you enter a *count* of how many fish you saw you will see options to enter the *location*, along with *Sex and maturity* and *Adipose clip status*. Enter some arbitrary values for these fields and click the *Done* button. As soon as the form saves the record it will cycle right back to the start of the *Observation subform* and you can enter the next observation. The ability of the subform to cycle back to the start after saving a record is a feature you can specify when designing the form. It is called *SUBFORM_BATCH_MODE*. Details will be provided in Chapter 3. 
 
 Notice also that the form is *sticky* in the sense that after you press the *Done* button, it remembers the *Species* and *Survey type* you entered last, and initiates the new observation with the values you used most recently. This *stickiness* can be useful if you typically encounter the same species repeatedly during a survey. Chapter 3 will detail how to code this behavior in the *dynamic value* box of a field. 
 
@@ -139,7 +141,7 @@ Click the *Done* button and cycle back to the top of the subform to enter a new 
 ```
 47.065892: -122.887961
 ```
-This is a good example of how you can pull out just the parts you need from a given data element and combine those parts in arbitrary ways to generate custom data elements. Details on how to create this element is included in chapter 3.   
+This is a good example of how you can pull out just the parts you need from a given data input element and combine those parts in arbitrary ways to generate custom data elements. Details on how to create this input element is included in chapter 3.   
 
 If you enter a count greater than zero for *Number of redds observed* you will also be asked about *Redd status*. The typical options will be listed for selection, but if your protocols require additional categories, those can easily be added. 
 
@@ -149,9 +151,9 @@ Unlike the restrictions applied to carcass data, there are no requirements to en
 
 ## Additional options
 
-The example survey form described above includes most of the basic elements that would typically be needed for spawning ground surveys. Although the form has intentionally been kept simple to illustrate basic concepts, other data elements can easily be added. Questions regarding items such as gill condition, egg retention, marks or tags, would be trivial to implement. The relatively simple structure, consisting of one parent form and one subform, is sufficient to incorporate many additional data elements. You always have the option to add more subforms, but keep in mind that the simpler the structure of the form, the simpler it is build and maintain. It can quickly become challenging to reason about conditional logic when multiple subforms are involved. At that point you may find you need to pass hidden values back and forth between parent and multiple subforms. As a general rule, simpler is nearly always better. 
+The example survey form described above includes most of the basic input elements that would typically be needed for spawning ground surveys. Although the form has intentionally been kept simple to illustrate basic concepts, other data inputs can easily be added. Questions regarding items such as gill condition, egg retention, marks or tags, would be trivial to implement. The relatively simple structure, consisting of one parent form and one subform, is sufficient to incorporate many additional data input elements. You always have the option to add more subforms, but keep in mind that the simpler the structure of the form, the simpler it is build and maintain. It can quickly become challenging to reason about conditional logic when multiple subforms are involved. At that point you may find you need to pass hidden values back and forth between parent and multiple subforms. As a general rule, simpler is nearly always better. 
 
-Before you add new data elements to your mobile form please take a look at the *SpawningGroundDataDictionary* located on the WDFW Fish Program shared drive under the *30Day/SpawningGround* folder. The data dictionary for the new *spawning_ground* database includes tables listing a wide range of data elements that could be incorporated into mobile forms. Feel free to contact me if you have any questions. 
+Before you add new data input elements to your mobile form please take a look at the *spawning_ground* database [*Data Dictionary*](https://arestrom.github.io/sgsdd/). This document lists the full range of data elements available to be incorporated into mobile forms. Feel free to contact me if you have any questions.
 
 
 

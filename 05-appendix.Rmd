@@ -2,7 +2,7 @@
 
 ## JavaScript functions
 
-You can copy and paste these function directly into the JavaScript panel of your parent form. To access the JavaScript panel click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the Forms page when using the online Form Builder application.
+You can copy and paste these functions directly into the JavaScript panel of your parent form. To access the JavaScript panel click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the Forms page when using the online Form Builder application.
 
 
 ```{r echo = FALSE, out.width = "25%"}
@@ -29,7 +29,7 @@ function generateUUID () { // Public Domain/MIT
 
 ### Statistical week. 
 
-For WDFW the standard statistical week starts on Monday and ends on Sunday. The first day of the year is always week 1. This function mimics output from a legacy WDFW executable to generate stat weeks. To use in a mobile form create a new text element below your `survey_start_datetime` element. Then in the *Dynamic Value* box enter: `survey_start_datetime.fishStatWeek()`.    
+For WDFW the standard statistical week starts on Monday and ends on Sunday. The first day of the year is always in week 1. This function generates the statistical week from a date value. To use in a mobile form create a new `text` input element below your `survey_start_datetime` data element. Then in the *Dynamic Value* box of the new input enter: `survey_start_datetime.fishStatWeek()`.    
 
 ```{js, eval = FALSE}
 Date.prototype.fishStatWeek = function () {
