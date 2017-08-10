@@ -1,6 +1,6 @@
 # Build a form
 
-The sections below use the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) example form to illustrate how to build a mobile form on the iFormBuilder platform. If you have not done so already, please see the instructions in chapter 2 to load this package to your profile. Then open the iFormBuilder web interface, click on *Forms > Form Builder > spawning_ground_p* to load the example form. 
+The sections below use the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) example form to illustrate how to build a mobile form on the iFormBuilder platform. If you have not done so already, please see the instructions in **Chapter 2** to load this package to your profile. Then open the iFormBuilder web interface, click on *Forms > Form Builder > spawning_ground_p* to load the example form. 
 
 ```{r echo = FALSE, fig.align = 'left', out.width = "20%"}
 knitr::include_graphics("screenshots/forms_dropdown.png")
@@ -14,7 +14,7 @@ There will be special emphasis below on the core data inputs that need to be pre
 
 ### Survey ID (core input element)
 
-The first input in the parent form of any mobile form used for spawning ground surveys should be a *unique survey ID*. Although iFormBuilder has a widget titled *Unique ID* this is not a good choice for our purposes. The iFormBuilder *Unique ID* widget is merely a combination of a constant prefix and an integer value that increments each time you start filling out a new form. For example, D16-1, D16-2, etc. 
+The first input in the parent form of any mobile form used for spawning ground surveys should be a *unique survey ID*. Although iFormBuilder has a widget titled *Unique ID* this is not a good choice for our purposes. The iFormBuilder *Unique ID* widget is merely a combination of a constant prefix and an integer value that increments each time you start filling out a new form. For example, `D16-1, D16-2`, etc. 
 
 The reason that iFormBuilder's solution is not a good choice is that it may result in generating IDs that conflict over time. For example, if after a season of using a form you decide to amend the structure, retire the old form and deploy the new version, you may end up with identical IDs for different surveys unless you also make sure to edit the prefix to some value never previously used. An alternate scenario is that you may want to create dedicated forms for different types of surveys, such as for fall Chinook, or spring Steelhead. To enfore uniqueness statewide there would need to be coordination in assigning prefixes over WDFW districts and regions, otherwise new forms may start incrementing overlapping IDs.  
 
@@ -83,7 +83,7 @@ Click on the *Data source* label in the form view on the left-hand side of the f
 
 Click on *Observers* in the form view. Although `observers` is not a core required input it is highly recommended that you include this multi-select widget. In the example form it has been set to *Required* in the *Attributes* section of the *Element properties* pane. 
 
-```{r echo = FALSE, fig.align = 'left', out.width = "40%"}
+```{r echo = FALSE, fig.align = 'left', out.width = "35%"}
 knitr::include_graphics("screenshots/observer_required.png")
 ```
 
@@ -223,13 +223,13 @@ This *Label* input is an example of providing simple text reminders to the surve
 
 ### Target species
 
-The `target_species` and  `fish_redd_zeros` inputs allow for automating the entry of zero counts. Instead of surveyors having to manually enter counts of zero for each species they were intending to count but did not encounter, the job can be offloaded to a computer. One or more species are selected from an option list then a select input is clicked to determine if the zeros should be added for just fish, redds, or both. The *Dynamic Value* has been set to `2`. This is the sort_order value for *Both fish and redds*. When the code that parses survey data into the database encounters this value it will automatically assign zero counts for all species selected using this input. Zeros will be assigned for both fish counts and fish redd counts. 
+The `target_species` and  `fish_redd_zeros` inputs allow for automating the entry of zero counts. Instead of surveyors having to manually enter counts of zero for each species they were intending to count but did not encounter, the job can be offloaded to a computer. One or more species are selected from an option list then a select input is clicked to determine if the zeros should be added for just fish, redds, or both. The *Dynamic Value* has been set to `2`. This is the *sort_order* value for *Both fish and redds*. When the code that parses survey data into the database encounters this value it will automatically assign zero counts for all species selected using this input. Zeros will be assigned for both fish counts and fish redd counts. 
 
-The *Condition Value* for the `fish_redd_zeros` uses a JavaScript function `length()` to determine if any `target_species` have been selected: `ZCDisplayValue_target_species.length > 0`. If no `target_species` are selected the default value will be `""`, an empty text string of length zero. If at least one `target_species` is selected the length will be greater than one. Measuring the `length()` of text strings can often be useful for setting up condition statements.
+The *Condition Value* for the `fish_redd_zeros` uses a JavaScript function `length` to determine if any `target_species` have been selected: `ZCDisplayValue_target_species.length > 0`. If no `target_species` are selected the default value will be `""`, an empty text string of length zero. If at least one `target_species` is selected the length will be greater than one. Measuring the `length` of text strings can often be useful for setting up condition statements.
 
 ### Dividers
 
-Dividers can be useful for breaking up sections of forms into more visually digestible chunks. In our example the dividers highlight the `obseration_subform` input. Note that dividers can be conditionally set to appear or dissapear just as with other inputs. Here the dividers will only appear if at least one `target_species` has been selected. The aim is to keep the appearance of the form as minimally cluttered as possible. 
+Dividers can be useful for breaking up sections of forms into more visually digestible chunks. In our example the dividers highlight the `observation_subform` input. Note that dividers can be conditionally set to hidden or visible just as with other inputs. Here the dividers will only become visible if at least one `target_species` has been selected. The aim is to keep the appearance of the form as minimally cluttered as possible. 
 
 ### Observations, yes-no?
 
@@ -237,9 +237,44 @@ Directly below the section divider is the `observations_yes_no` select input. To
 
 ### Observations subform
 
-If you answer `Yes` in the `observations_yes_no` input the `observation_subform` input will become visible. Clicking this input will open a new *subform* where you can enter all observations of fish or redds encountered during the survey. Note that this input includes an entry in the *Reference ID 1* box near the bottom of the *Element Properties* pane. By entering *SUBFORM_BATCH_MODE* here the behavior of the subform changes. Instead of cycling back to the parent form after every observation, you will be sent back to the top of the subform after every observation. This can speed up data entry, by avoiding having to trigger the subform for each observation. See the [*Reference ID Overview*](https://iformbuilder.zendesk.com/hc/en-us/articles/201699300-Reference-ID-Overview) for additional details on this topic.  
+If you answer `Yes` in the `observations_yes_no` input the `observation_subform` input will become visible. Clicking this input will open a new *subform* where you can enter all observations of fish or redds encountered during the survey. Note that this input includes an entry in the *Reference ID 1* box near the bottom of the *Element Properties* pane. 
 
-Add image of SUBFORM_BATCH_MODE.............
+```{r echo = FALSE, out.width = "35%"}
+knitr::include_graphics("screenshots/reference_id.png")
+```
+
+By entering `SUBFORM_BATCH_MODE` here the behavior of the subform changes. Instead of cycling back to the parent form after every observation, you will be sent back to the top of the subform after every observation. This can speed up data entry by avoiding having to re-open the subform for each observation. See the [*Reference ID Overview*](https://iformbuilder.zendesk.com/hc/en-us/articles/201699300-Reference-ID-Overview) for additional details on this topic.
+
+### End of survey, yes-no?
+
+This input acts as a trigger to unhide input elements that should only be answered at the end of a survey. Again the *Condition Value* requires that at least one `target_species` is entered before this input becomes visible. The default *Dynamic Value* is set to `{1}` for `No`. Note that this select input shares the same *SGS-YesNo* option list as the `observations_yes_no` input. 
+
+Always keep in mind that if you share option lists then any edits you make to those option lists will propogate to all inputs that share the lists. Simple *Yes-No* option lists are good candidates for sharing. For more complex option list, where there is a possibility you may need to make individual edits, sharing should be avoided. 
+
+### Survey conditions
+
+After answering `Yes` to the `survey_end_yes_no` input element a set of inputs asking about general survey conditions, including end water temperature, stream-flow, visibility, and weather, will be revealed. In terms of structure, there is little new that needs to be mentioned. These inputs are all conditional on `stream > -1 && ZCDisplayValue_survey_end_yes_no == "Yes"`. Some are optional and others are required. This can be customized depending on your survey protocols. Feel free to add or eliminate questions depending on your specific protocols. You can also look at incorporating legacy *Condition Codes* as select elements. A list of available *canned* condition codes can be seen by clicking on the *Survey comments* table in the [*Data dictionary*](https://arestrom.github.io/sgsdd/) for the new *spawning_ground* database. 
+
+### Survey completed?
+
+Although techically not *core input elements* the `completion_type` and linked `completion_type_label` elements are **highly recommended**, and should be set to `Required`. For the `completion_type` input, the default *Dynamic Value* has been set to `{0}`, indicating a `Completed survey`. If anything else is selected the `completion_type_label` element will appear and you will be required to enter a reason why the survey was not completed in the *Survey comments* input. 
+
+The *Condition Value* for the `completion_type_label` element uses a JavaScript `if()` statement to determine if the label should be set to visible: `true`, or hidden: `false`. The complete statement: `if(completion_type == 0) {false} else {true}` can be a handy example to keep in mind for conditionally setting the visibility of inputs. 
+
+### Survey comments
+
+The `survey_comment` input is normally optional, and allows for entering general comments. Note, however, that if you select anything other than `Completed survey` in the `completion_type` input, then `survey_comment` becomes a *required* field. 
+
+Three steps are required to accomplish this. First enter `if(completion_type > 0) {"Survey comments (required)"} else {"Survey comments (optional)"}` into the *Dynamic Label* box. Next use another `if` statement in the *Client Validation* box. Enter: `if(completion_type > 0) {survey_comment.length > 0} else {survey_comment.length > - 1}`. Finally enter a message to display to the surveyor if the condition is not met. In this case the message is: `"Please explain why the survey was not completed"`. 
+
+Translated into words the *Client Validation* code states that if the survey was not completed then there must be a comment entered into the `survey_comment` input that has a string length greater than `0`. Otherwise the length of your `survey_comment` string can be either zero or greater. If those conditions are not met you will see the *Validation Message* when you try to press the done button. You will not be able to save the survey as anything other than a draft until you add a `survey_comment`. 
+
+### Survey end time
+
+The final *Date-Time* input allows you to enter the time the survey was completed. Although not required, this can be useful for planning purposes and for tracking how long it typically takes to complete a survey along a specific stream reach. Again, you will only see this input unless you have seleced a stream and entered `Yes` to the `survey_end_yes_no` question. 
+
+## Observations subform
+
 
 
 
