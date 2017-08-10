@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mobile forms for salmon surveys</title>
+  <meta name="description" content="Mobile forms for salmon surveys">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Mobile forms for salmon surveys" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="arestrom/mf4ss" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mobile forms for salmon surveys" />
+  
+  
+  
+
+<meta name="author" content="Are Strom">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="build-a-form.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="mf4ss.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><strong><a href="./">Mobile forms</a></strong></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#why-mobile-forms"><i class="fa fa-check"></i><b>1.1</b> Why mobile forms?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#trade-offs"><i class="fa fa-check"></i><b>1.1.1</b> Trade-offs</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#automated-integrated-data-capture"><i class="fa fa-check"></i><b>1.1.2</b> Automated, integrated, data capture</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#enter-once"><i class="fa fa-check"></i><b>1.1.3</b> Enter once</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#validation"><i class="fa fa-check"></i><b>1.1.4</b> Validation</a></li>
+<li class="chapter" data-level="1.1.5" data-path="intro.html"><a href="intro.html#reporting"><i class="fa fa-check"></i><b>1.1.5</b> Reporting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#api"><i class="fa fa-check"></i><b>1.2</b> API</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#profiles"><i class="fa fa-check"></i><b>1.3</b> Profiles</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#useful-tips"><i class="fa fa-check"></i><b>1.4</b> Useful tips</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#searching-for-help"><i class="fa fa-check"></i><b>1.4.1</b> Searching for help</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#data-column-names"><i class="fa fa-check"></i><b>1.4.2</b> Data column names</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#option-lists"><i class="fa fa-check"></i><b>1.4.3</b> Option lists</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#save-often"><i class="fa fa-check"></i><b>1.4.4</b> Save often</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#conventions"><i class="fa fa-check"></i><b>1.5</b> Conventions</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="get-started.html"><a href="get-started.html"><i class="fa fa-check"></i><b>2</b> Get started</a><ul>
+<li class="chapter" data-level="2.1" data-path="get-started.html"><a href="get-started.html#import-example-form"><i class="fa fa-check"></i><b>2.1</b> Import example form</a></li>
+<li class="chapter" data-level="2.2" data-path="get-started.html"><a href="get-started.html#a-brief-tour-parent-form"><i class="fa fa-check"></i><b>2.2</b> A brief tour: Parent form</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="get-started.html"><a href="get-started.html#hiding-questions"><i class="fa fa-check"></i><b>2.2.1</b> Hiding questions</a></li>
+<li class="chapter" data-level="2.2.2" data-path="get-started.html"><a href="get-started.html#required-fields"><i class="fa fa-check"></i><b>2.2.2</b> Required fields</a></li>
+<li class="chapter" data-level="2.2.3" data-path="get-started.html"><a href="get-started.html#real-time-or-post-survey"><i class="fa fa-check"></i><b>2.2.3</b> Real-time or post-survey</a></li>
+<li class="chapter" data-level="2.2.4" data-path="get-started.html"><a href="get-started.html#default-values"><i class="fa fa-check"></i><b>2.2.4</b> Default values</a></li>
+<li class="chapter" data-level="2.2.5" data-path="get-started.html"><a href="get-started.html#filtered-option-lists"><i class="fa fa-check"></i><b>2.2.5</b> Filtered option lists</a></li>
+<li class="chapter" data-level="2.2.6" data-path="get-started.html"><a href="get-started.html#data-validation"><i class="fa fa-check"></i><b>2.2.6</b> Data validation</a></li>
+<li class="chapter" data-level="2.2.7" data-path="get-started.html"><a href="get-started.html#automated-entry-of-zero-counts"><i class="fa fa-check"></i><b>2.2.7</b> Automated entry of zero counts</a></li>
+<li class="chapter" data-level="2.2.8" data-path="get-started.html"><a href="get-started.html#toggling-a-subform"><i class="fa fa-check"></i><b>2.2.8</b> Toggling a subform</a></li>
+<li class="chapter" data-level="2.2.9" data-path="get-started.html"><a href="get-started.html#survey-comments-and-dynamic-labels"><i class="fa fa-check"></i><b>2.2.9</b> Survey comments and dynamic labels</a></li>
+<li class="chapter" data-level="2.2.10" data-path="get-started.html"><a href="get-started.html#setting-optional-fields-to-required"><i class="fa fa-check"></i><b>2.2.10</b> Setting optional fields to required</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="get-started.html"><a href="get-started.html#a-brief-tour-observations-subform"><i class="fa fa-check"></i><b>2.3</b> A brief tour: Observations subform</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="get-started.html"><a href="get-started.html#live-fish"><i class="fa fa-check"></i><b>2.3.1</b> Live fish</a></li>
+<li class="chapter" data-level="2.3.2" data-path="get-started.html"><a href="get-started.html#carcass"><i class="fa fa-check"></i><b>2.3.2</b> Carcass</a></li>
+<li class="chapter" data-level="2.3.3" data-path="get-started.html"><a href="get-started.html#fish-redd"><i class="fa fa-check"></i><b>2.3.3</b> Fish redd</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="get-started.html"><a href="get-started.html#additional-options"><i class="fa fa-check"></i><b>2.4</b> Additional options</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="build-a-form.html"><a href="build-a-form.html"><i class="fa fa-check"></i><b>3</b> Build a form</a><ul>
+<li class="chapter" data-level="3.1" data-path="build-a-form.html"><a href="build-a-form.html#parent-form"><i class="fa fa-check"></i><b>3.1</b> Parent form</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="build-a-form.html"><a href="build-a-form.html#survey-id-core-input-element"><i class="fa fa-check"></i><b>3.1.1</b> Survey ID (core input element)</a></li>
+<li class="chapter" data-level="3.1.2" data-path="build-a-form.html"><a href="build-a-form.html#data-source-core-input-element"><i class="fa fa-check"></i><b>3.1.2</b> Data source (core input element)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="build-a-form.html"><a href="build-a-form.html#observers"><i class="fa fa-check"></i><b>3.1.3</b> Observers</a></li>
+<li class="chapter" data-level="3.1.4" data-path="build-a-form.html"><a href="build-a-form.html#data-submitter"><i class="fa fa-check"></i><b>3.1.4</b> Data submitter</a></li>
+<li class="chapter" data-level="3.1.5" data-path="build-a-form.html"><a href="build-a-form.html#entry-method"><i class="fa fa-check"></i><b>3.1.5</b> Entry method</a></li>
+<li class="chapter" data-level="3.1.6" data-path="build-a-form.html"><a href="build-a-form.html#survey-start-date-core-input-element"><i class="fa fa-check"></i><b>3.1.6</b> Survey start date (core input element)</a></li>
+<li class="chapter" data-level="3.1.7" data-path="build-a-form.html"><a href="build-a-form.html#survey-method-core-input-element"><i class="fa fa-check"></i><b>3.1.7</b> Survey method (core input element)</a></li>
+<li class="chapter" data-level="3.1.8" data-path="build-a-form.html"><a href="build-a-form.html#stream-core-input-element"><i class="fa fa-check"></i><b>3.1.8</b> Stream (core input element)</a></li>
+<li class="chapter" data-level="3.1.9" data-path="build-a-form.html"><a href="build-a-form.html#survey-start-point-core-input-element"><i class="fa fa-check"></i><b>3.1.9</b> Survey start point (core input element)</a></li>
+<li class="chapter" data-level="3.1.10" data-path="build-a-form.html"><a href="build-a-form.html#start-or-end-point-not-listed"><i class="fa fa-check"></i><b>3.1.10</b> Start or end point not listed</a></li>
+<li class="chapter" data-level="3.1.11" data-path="build-a-form.html"><a href="build-a-form.html#start-or-end-point-description"><i class="fa fa-check"></i><b>3.1.11</b> Start or end point description</a></li>
+<li class="chapter" data-level="3.1.12" data-path="build-a-form.html"><a href="build-a-form.html#water-temperature-degrees-c"><i class="fa fa-check"></i><b>3.1.12</b> Water temperature (degrees C)</a></li>
+<li class="chapter" data-level="3.1.13" data-path="build-a-form.html"><a href="build-a-form.html#target-species-label"><i class="fa fa-check"></i><b>3.1.13</b> Target species label</a></li>
+<li class="chapter" data-level="3.1.14" data-path="build-a-form.html"><a href="build-a-form.html#target-species"><i class="fa fa-check"></i><b>3.1.14</b> Target species</a></li>
+<li class="chapter" data-level="3.1.15" data-path="build-a-form.html"><a href="build-a-form.html#dividers"><i class="fa fa-check"></i><b>3.1.15</b> Dividers</a></li>
+<li class="chapter" data-level="3.1.16" data-path="build-a-form.html"><a href="build-a-form.html#observations-yes-no"><i class="fa fa-check"></i><b>3.1.16</b> Observations, yes-no?</a></li>
+<li class="chapter" data-level="3.1.17" data-path="build-a-form.html"><a href="build-a-form.html#observations-subform"><i class="fa fa-check"></i><b>3.1.17</b> Observations subform</a></li>
+<li class="chapter" data-level="3.1.18" data-path="build-a-form.html"><a href="build-a-form.html#end-of-survey-yes-no"><i class="fa fa-check"></i><b>3.1.18</b> End of survey, yes-no?</a></li>
+<li class="chapter" data-level="3.1.19" data-path="build-a-form.html"><a href="build-a-form.html#survey-conditions"><i class="fa fa-check"></i><b>3.1.19</b> Survey conditions</a></li>
+<li class="chapter" data-level="3.1.20" data-path="build-a-form.html"><a href="build-a-form.html#survey-completed"><i class="fa fa-check"></i><b>3.1.20</b> Survey completed?</a></li>
+<li class="chapter" data-level="3.1.21" data-path="build-a-form.html"><a href="build-a-form.html#survey-comments"><i class="fa fa-check"></i><b>3.1.21</b> Survey comments</a></li>
+<li class="chapter" data-level="3.1.22" data-path="build-a-form.html"><a href="build-a-form.html#survey-end-time"><i class="fa fa-check"></i><b>3.1.22</b> Survey end time</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="build-a-form.html"><a href="build-a-form.html#observations-subform-1"><i class="fa fa-check"></i><b>3.2</b> Observations subform</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>4</b> Summary</a><ul>
+<li class="chapter" data-level="4.1" data-path="summary.html"><a href="summary.html#todo"><i class="fa fa-check"></i><b>4.1</b> ToDo</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="notes-on-bookdown.html"><a href="notes-on-bookdown.html"><i class="fa fa-check"></i><b>5</b> Notes on bookdown</a><ul>
+<li class="chapter" data-level="5.1" data-path="notes-on-bookdown.html"><a href="notes-on-bookdown.html#files-needed-to-build-basic-book"><i class="fa fa-check"></i><b>5.1</b> Files needed to build basic book:</a></li>
+<li class="chapter" data-level="5.2" data-path="notes-on-bookdown.html"><a href="notes-on-bookdown.html#building-these-files-generates"><i class="fa fa-check"></i><b>5.2</b> Building these files generates:</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>6</b> Appendix</a><ul>
+<li class="chapter" data-level="6.1" data-path="appendix.html"><a href="appendix.html#javascript-functions"><i class="fa fa-check"></i><b>6.1</b> JavaScript functions</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="appendix.html"><a href="appendix.html#unique-id-uuid"><i class="fa fa-check"></i><b>6.1.1</b> Unique ID (UUID)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="appendix.html"><a href="appendix.html#statistical-week."><i class="fa fa-check"></i><b>6.1.2</b> Statistical week.</a></li>
+<li class="chapter" data-level="6.1.3" data-path="appendix.html"><a href="appendix.html#pad-a-number"><i class="fa fa-check"></i><b>6.1.3</b> Pad a number</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="appendix.html"><a href="appendix.html#character-limits"><i class="fa fa-check"></i><b>6.2</b> Character limits</a></li>
+<li class="chapter" data-level="6.3" data-path="appendix.html"><a href="appendix.html#maximum-inputs-per-form"><i class="fa fa-check"></i><b>6.3</b> Maximum inputs per form</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Mobile forms for salmon surveys</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="get-started" class="section level1">
+<h1><span class="header-section-number">2</span> Get started</h1>
+<p>The aim of this chapter is to provide a visual tour of what a spawning ground form built using the iFormBuilder platform <em>could</em> look like. The first section describes how to load an <em>example</em> spawning ground survey form to your profile. Then the following sections provide a guided tour of the parent <em>header</em> form and the <em>observations</em> subform. The focus is on design elements, and what is visible to the surveyor on the device. Technical details on how to build forms will be addressed in chapter 3.</p>
+<div id="import-example-form" class="section level2">
+<h2><span class="header-section-number">2.1</span> Import example form</h2>
+<p>The quickest way to get started with mobile forms is by example.</p>
+<ol style="list-style-type: decimal">
+<li>Download the <em>Package_spawning_ground.json</em> file from the GitHub repository for this manual. To download, click on the <a href="https://github.com/arestrom/mf4ss"><em>Package_spawning_ground.json</em></a> link. You will see a list of files in the repository directory. Locate the <em>Package_spawning_ground.json</em> file in repository list and then click on the file. This will open a new window and display the contents of the file.</li>
+</ol>
+<p><img src="screenshots/package_json.png" width="50%" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Click on the *Raw&quot; button in the upper right-hand corner. This will fill your display with the raw contents of the file.</li>
+</ol>
+<p><img src="screenshots/raw_json.png" width="50%" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<p><img src="screenshots/save_raw_json.png" width="50%" style="display: block; margin: auto;" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>You can now right-click anywhere in your display and save the contents to a convenient location on your computer. In the <em>Save As</em> dialog the default name for the file will be <em>Package_spawning_ground.json.txt</em>. Accept the default and click <em>Save</em>. Then navigate to the location where you saved the file and edit the name to remove the <em>.txt</em> part. Windows will warn you not to do this, but do it anyway. You should end up with a file name of <em>Package_spawning_ground.json</em>.</p></li>
+<li><p>Sign in to your iFormBuilder profile and click on the <em>Forms</em> tab, then click on <em>Form Packages &gt; Package Import</em>.</p></li>
+</ol>
+<p><img src="screenshots/package_dropdown.png" width="25%" style="display: block; margin: auto;" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>In the <em>Package Importer</em> screen, click <em>Choose File</em>, navigate to where you downloaded the <em>Package_spawning_ground.json</em> file, and click <em>Import</em>. If you have existing forms in your profile <strong>make sure</strong> and select the <strong>Keep Both</strong> options in the <em>Conflict Mode</em> screen.</li>
+</ol>
+<p><img src="screenshots/conflict_mode.png" width="45%" style="display: block; margin: auto;" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li><p>After you have imported the form click on the <em>Forms</em> tab, then <em>Form Assignment</em>. You should see two new forms: <em>spawning_ground_p</em> and <em>spawning_ground_s</em>. The trailing <em>p</em> indicates the <em>parent</em> form. The trailing <em>s</em> indicates the <em>subform</em>.</p></li>
+<li><p>Highlight the row for <em>spawning_ground_s</em> then click <em>Assign</em> in the upper left corner.</p></li>
+</ol>
+<p><img src="screenshots/form_assign.png" width="35%" style="display: block; margin: auto;" /></p>
+<ol start="8" style="list-style-type: decimal">
+<li><p>Uncheck the boxes for <em>Collect</em> and <em>View</em>. Then scroll to the bottom and click <em>Update</em>. You should <strong>never</strong> have anything but the <em>parent form</em> assigned to users.</p></li>
+<li><p>Open the iFormBuilder application on your mobile device. If you have done the preceeding steps correctly you should now see a form called <em>Spawning Ground Surveys</em> in the iFormBuilder application on your device.</p></li>
+</ol>
+</div>
+<div id="a-brief-tour-parent-form" class="section level2">
+<h2><span class="header-section-number">2.2</span> A brief tour: Parent form</h2>
+<p>The parent form is where you would record information that only needs to be entered once per survey. This is typically the <em>header</em> information you would see at the top of a paper form. Any repeating lines of data (individual observations) will be entered to a subform. The sections below assume that you have a device loaded with the example <em>Spawning Ground</em> form. If not, please do so now.</p>
+<div id="hiding-questions" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Hiding questions</h3>
+<p>After you have synced the <em>Spawning Ground</em> form to your device, click to launch. You should see a fairly bare form. The only items showing will be some basic header information. Items include a multiselect dropdown widget for <em>Observers</em>, a set of select buttons for <em>Data entry real-time or post-survey</em>, a <em>Survey start date &amp; time</em> widget, a set of <em>Survey method</em> select buttons, a dropdown widget for <em>Stream</em>, and a <em>Done</em> button. The reason that you only see a few input elements at first is that we have hidden the others using conditional logic. Hidden inputs will only be revealed after prerequisite fields have been filled out. Selectively hiding input elements in a form is a highly effective tool for reducing clutter and simplifying form structure.</p>
+</div>
+<div id="required-fields" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Required fields</h3>
+<p>Note the asterisks next to the labels for each input element. This indicates <em>required</em> fields. If you fail to fill any of these out you will be reminded when you hit the <em>Done</em> button. You will not be allowed to save or submit your data until all required fields are filled in.</p>
+</div>
+<div id="real-time-or-post-survey" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Real-time or post-survey</h3>
+<p>The <em>Data entry real-time or post-survey</em> field illustrates how you can set up rules to show or hide input elements in your form based on an initial conditions. For example, if you have some old paper data to enter and you need to use the mobile form as a post-survey data entry screen, then we know we don’t need to show widgets for recording GPS locations at a later stage. In addition, we probably won’t need to show widgets for capturing barcodes, or taking pictures. These can all be hidden if data entry type is set to <em>post_survey</em>.</p>
+</div>
+<div id="default-values" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> Default values</h3>
+<p>Notice that for the <em>Data entry real-time or post-survey</em> and <em>Survey method</em> inputs we have pre-selected default values of <em>Real-time</em> and <em>Foot</em> respectively. For <em>Survey start date &amp; time</em> we can set a default value of the current date and time by using a JavaScript function <code>new Date()</code>. Setting default values is a good way to help speed up data entry in the field. Details on how to set this up is included in Chapter 3.</p>
+</div>
+<div id="filtered-option-lists" class="section level3">
+<h3><span class="header-section-number">2.2.5</span> Filtered option lists</h3>
+<p>The <em>Stream</em>, <em>Survey start point</em> and <em>Survey end point</em> input elements demonstrate use of filtered option lists. Click on <em>Stream</em> and you will see a list of stream names. Start and stop points for stream <em>reach</em> sections that are typically surveyed are displayed. These are filtered to the stream you select. If you change the <em>Stream</em> selection, a different set of start and stop points options will be displayed. Select <em>Bear Cr (19.0196)</em> to see a good example of using labels to help identify filtered options. If you now click on the <em>Survey start point</em> pick list you will see a simple set of descriptions for the filtered points.</p>
+<p>At the bottom of each option list for start and stop points you have the ability to enter <em>Not listed above</em>. If you select this option two additional form input elements will appear where you can enter the approximate river mile of the location and a description of the location. Ideally, all reach end points that you normally survey will already be entered to your option lists. New points can easily be added, even to a live form, but for those rare cases where the unexpected happens, it is sometimes a good idea to provide options for manual entry. Keep this to a minimum though, as it can quickly make a form overly complex and unwieldy.</p>
+</div>
+<div id="data-validation" class="section level3">
+<h3><span class="header-section-number">2.2.6</span> Data validation</h3>
+<p>For an example of data validation, click on the <em>Water temperature (degree C)</em> widget and enter the number <code>45</code>, then click the <em>Done</em> button. You should see a message pop-up that says <em>The start point water temperature must be between 0 and 38 degrees Celsius</em>. These types of validations are simple to set up. Details will be provided in Chapter 3.</p>
+</div>
+<div id="automated-entry-of-zero-counts" class="section level3">
+<h3><span class="header-section-number">2.2.7</span> Automated entry of zero counts</h3>
+<p>The <em>Target species</em> multiselect widget is intended as an automated way to enter zero counts. For example, if your survey is specifically targeted for Coho and Chinook, and your survey will be used to calculate population estimates, entering zero counts is crucial. By entering Coho and Chinook as target species, a zero count can automatically be entered on the backend for these species. The alternative would be to manually enter a count of zero for each species targeted. Automating the process of entering zero counts can help speed up data entry in the field.</p>
+<p>The follow-up question below asks you to specify the <em>categories</em> of counts where zeros should be entered. Depending on the type of survey, this question allows you to specify if zero counts should be entered for fish counts, redds counts, or both. If you are strictly conducting a redd survey you would only want zeros entered for redds. If you are only doing a carcass survey, you will want to specify <em>Fish only</em>. If you are conducting a complete survey, including redd, live, and carcass counts, you will want zero counts entered for <em>Both fish and redds</em>.</p>
+</div>
+<div id="toggling-a-subform" class="section level3">
+<h3><span class="header-section-number">2.2.8</span> Toggling a subform</h3>
+<p>The final header data question in the top section asks <em>Did you see any fish or fish redds?</em>. If you answer <em>Yes</em> a subform will become visible where you can enter each observation. If you answer <em>No</em> you will only need to fill in a few remaining post-survey questions. To complete the questions on the parent form click <em>No</em> to this question.</p>
+</div>
+<div id="survey-comments-and-dynamic-labels" class="section level3">
+<h3><span class="header-section-number">2.2.9</span> Survey comments and dynamic labels</h3>
+<p>In the bottom portion of the parent form you are asked to enter some <em>canned</em> pick-list comments regarding <em>Stream flow, Visibility conditions, and Weather</em>. The new <em>spawning ground</em> database provides many additional options for <em>canned</em> comments adapted from legacy <em>condition codes</em> that you may have used in the past. See the <em>spawning_ground</em> database <a href="https://arestrom.github.io/sgsdd/"><em>Data Dictionary</em></a> for a full list of these comments. Click on <em>Survey_comment</em> in the navigation panel on the left-hand side to see the comments currently available. Comment descriptions are listed in the look-up tables linked to the survey_comment table.</p>
+<p>You are next asked if the survey was completed. If not, then you are asked to explain why. Toggle between answering <em>Completed survey</em> and any other option. Notice that the label for the <em>Survey comments</em> field will change from <em>(optional)</em> to <em>(required)</em>. In addition, a note will appear reminding you that an explantion is needed. This is a good example of using <em>Dynamic lables</em>. Additional details will be provided in Chapter 3.</p>
+</div>
+<div id="setting-optional-fields-to-required" class="section level3">
+<h3><span class="header-section-number">2.2.10</span> Setting optional fields to required</h3>
+<p>The final two questions allow you to enter general comments on the survey, and the time the survey was finished. Both questions are technically set as optional, but remember that you will still need to enter an explanation if you did not answer <em>Completed survey</em> above. This demonstrates how optional fields can conditionally be set to required, without explicitly toggling the <em>Required</em> setting when building the form.</p>
+</div>
+</div>
+<div id="a-brief-tour-observations-subform" class="section level2">
+<h2><span class="header-section-number">2.3</span> A brief tour: Observations subform</h2>
+<p>Go back to the question <em>Did you see any fish or fish redds?</em> and click <em>Yes</em>. The <em>Observation subform</em> will be displayed. Click on the <em>Observation subform</em> to allow entering counts of fish, redds and any ancillary information.</p>
+<p>After opening the subform you will need to specify if the <em>Observation type</em> was for live fish, dead fish, or redds. Depending on your answers a different set of questions will be displayed. After you enter <em>Observation type</em> and <em>Species</em> toggle between <em>Fish redd</em> and the other two options in <em>Observation type</em> to see how the questions near the bottom of the screen vary.</p>
+<p>The initial set of questions after selecting <em>Observation type</em> and <em>Species</em> will be identical. They will ask about <em>Run year</em>, and <em>Survey type</em>. Each of these are core questions that are required in the form, and must be anwered in order to enter the data to our corporate database.</p>
+<p>In our example, <em>Run year</em> is set to the current year. You could also use JavaScript to auto-generate different values depending on species and current date. Or you can manually edit <em>Run year</em> as needed.</p>
+<p><em>Survey type</em> can vary depending on species and survey protocol. This is why survey type is included at the subform level. For example, during a fall Chinook <em>index</em> survey, Pink salmon encounters may need to be entered as <em>supplemental</em>.</p>
+<p>Note that depending on the species selected, the text for subsequent questions will be altered to include the species name. This is another example of <em>Dynamic labels</em>.</p>
+<div id="live-fish" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Live fish</h3>
+<p>Go back to <em>Observation type</em> and select <em>Live fish</em>, then select <em>Chinook</em> as <em>Species</em>. A relatively simple set of form inputs will be displayed. After you enter a <em>count</em> of how many fish you saw you will see options to enter the <em>location</em>, along with <em>Sex and maturity</em> and <em>Adipose clip status</em>. Enter some arbitrary values for these fields and click the <em>Done</em> button. As soon as the form saves the record it will cycle right back to the start of the <em>Observation subform</em> and you can enter the next observation. The ability of the subform to cycle back to the start after saving a record is a feature you can specify when designing the form. It is called <em>SUBFORM_BATCH_MODE</em>. Details will be provided in Chapter 3.</p>
+<p>Notice also that the form is <em>sticky</em> in the sense that after you press the <em>Done</em> button, it remembers the <em>Species</em> and <em>Survey type</em> you entered last, and initiates the new observation with the values you used most recently. This <em>stickiness</em> can be useful if you typically encounter the same species repeatedly during a survey. Chapter 3 will detail how to code this behavior in the <em>dynamic value</em> box of a field.</p>
+<p>Change the <em>Species</em> to <em>Pink</em> and notice that the option to enter <em>Adipose clip status</em> dissapears. Using conditional logic you can first make a list of the species likely to have clipped fins, and then only display the <em>Adipose clip status</em> question when one of those species is encountered.</p>
+</div>
+<div id="carcass" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Carcass</h3>
+<p>Click the <em>Done</em> button and cycle back to the top of the subform to enter a new observation. This time select <em>Carcass</em> as the <em>Observation type</em> and <em>Chinook</em> as the <em>Species</em>. The initial set of questions will look the same as for live fish. But if you enter a count of <code>2</code> or more for the <em>Number of Chinook counted</em> you will see a note reminding you that you must enter a count of <code>1</code> if you also want to enter additional biological data that is typically associated with individual fish, such as spawn condition, length measurements, or scale samples. This forces data for individual fish to be entered one fish at a time to our corporate database. If otoliths, or tissue samples for DNA analaysis are taken, the form will also assign a unique ID (UUID) that allows a single fish to be tracked in our data systems as a unique entity.</p>
+<p>If you now edit the <em>Number of Chinook counted</em> and enter <code>1</code>, you will see a question appear asking: <em>Did you take a sample?</em>. If you select either <em>Otolith</em> or <em>Tissue</em> a UUID will be generated in a hidden field. You are also given the option to manually enter a <em>Sample number</em>. This will be appended to the front of the UUID and enables additional flexibility in tracking individual fish and sample numbers.</p>
+<p>If you enter either <em>Beep</em> or <em>No beep</em> in the <em>Did you detect a CWT in the Chinook?</em> a new question will appear asking what <em>Detection method</em> you used. Also, if you selected <em>Adult female</em> or <em>Sub-adult female</em> for the <em>Sex and maturity</em> question, you will be asked an optional question regarding <em>Spawn condition</em> of the fish.</p>
+<p>Length measurements are sometimes required when tissue samples are taken for DNA analyses. In our example form you will be asked to enter a fish length if you select either <em>Otolith</em> or <em>Tissue</em> for the <em>Did you take a sample?</em> question. If you enter a length you will also be asked what type of length measurement was taken. As always, both the selection of length types, and the triggers for when this question is asked, can be customized to your individual survey protocols.</p>
+<p>Go back to <em>Number of Chinook counted</em> and edit your answer to a number greater than one. You will still have the ability to enter a location for where you saw the group of fish. You can also enter <em>Sex and maturity</em>, <em>Adipose clip status</em>, and whether you detected coded-wire tags in the group of fish. If you answer <em>Beep</em> or <em>No Beep</em> to the question <em>Did you detect a CWT in the Chinook</em> you will also be asked about <em>Detection method</em>. However, if you detected a coded-wire tag (CWT) and need to record a <em>CWT head label number</em> you will be required to enter this on an individual basis. You will only have the ability to enter a <em>CWT head label number</em> if the <em>Number of Chinook counted</em> is <code>1</code>.</p>
+</div>
+<div id="fish-redd" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Fish redd</h3>
+<p>Click the <em>Done</em> button and cycle back to the top of the subform to enter a new observation. This time select <em>Fish redd</em> as the <em>Observation type</em> and <em>Steelhead</em> as the <em>Species</em>. Once again the first set of questions look similar, but you will now be asked to enter the <em>Number of redds observed</em>. If you enter a count greater than zero, you will also be asked to enter a <em>Redd location</em>. Notice that we have now set the <em>Redd location</em> question to required, as indicated by the asterisk. After you enter the location a hidden field will be generated in the background that will include only the latitude and longitude portions of the location output. For example:</p>
+<pre><code>47.065892: -122.887961</code></pre>
+<p>This is a good example of how you can pull out just the parts you need from a given data input element and combine those parts in arbitrary ways to generate custom data elements. Details on how to create this input element is included in chapter 3.</p>
+<p>If you enter a count greater than zero for <em>Number of redds observed</em> you will also be asked about <em>Redd status</em>. The typical options will be listed for selection, but if your protocols require additional categories, those can easily be added.</p>
+<p>You will also be asked if there were <em>Any live Steelhead associated with the redd?</em>. If you answer <em>Yes</em> you will then have the option to enter the number of Steelhead seen, the <em>Sex and maturity</em>, and the <em>Adipose clip status</em> of the live steelhead.</p>
+<p>Unlike the restrictions applied to carcass data, there are no requirements to enter data for redds on an individual basis. However, if you wanted to add questions to your form that typically require individual entries, such as redd shape, tailspill height, or substrate type, then you would need to condition those question on <em>Redd count</em> and only show these question if the count was one.</p>
+</div>
+</div>
+<div id="additional-options" class="section level2">
+<h2><span class="header-section-number">2.4</span> Additional options</h2>
+<p>The example survey form described above includes most of the basic input elements that would typically be needed for spawning ground surveys. Although the form has intentionally been kept simple to illustrate basic concepts, other data inputs can easily be added. Questions regarding items such as gill condition, egg retention, marks or tags, would be trivial to implement. The relatively simple structure, consisting of one parent form and one subform, is sufficient to incorporate many additional data input elements. You always have the option to add more subforms, but keep in mind that the simpler the structure of the form, the simpler it is build and maintain. It can quickly become challenging to reason about conditional logic when multiple subforms are involved. At that point you may find you need to pass hidden values back and forth between parent and multiple subforms. As a general rule, simpler is nearly always better.</p>
+<p>Before you add new data input elements to your mobile form please take a look at the <em>spawning_ground</em> database <a href="https://arestrom.github.io/sgsdd/"><em>Data Dictionary</em></a>. This document lists the full range of data elements available to be incorporated into mobile forms. Feel free to contact me if you have any questions.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="build-a-form.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/arestrom/iFormBook/edit/master/02-get_started.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
