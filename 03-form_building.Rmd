@@ -12,6 +12,8 @@ There will be special emphasis below on the core data inputs that need to be pre
 
 ## Parent form
 
+The parent form contains data input elements that you would typically only enter once per survey. Fields such as surveyor names, the stream and stream reach you are surveying, or the survey date, are typical parent form data. These are the header fields that you would normally see at the top of a paper form.  
+
 ### Survey ID (core input element)
 
 The first input in the parent form of any mobile form used for spawning ground surveys should be a *unique survey ID*. Although iFormBuilder has a widget titled *Unique ID* this is not a good choice for our purposes. The iFormBuilder *Unique ID* widget is merely a combination of a constant prefix and an integer value that increments each time you start filling out a new form. For example, `D16-1, D16-2`, etc. 
@@ -274,6 +276,66 @@ Translated into words the *Client Validation* code states that if the survey was
 The final *Date-Time* input allows you to enter the time the survey was completed. Although not required, this can be useful for planning purposes and for tracking how long it typically takes to complete a survey along a specific stream reach. Again, you will only see this input unless you have seleced a stream and entered `Yes` to the `survey_end_yes_no` question. 
 
 ## Observations subform
+
+The observations subform contains data input elements that you would normally cycle back to multiple times during a survey. Fields such as counts of fish, or redds, that you encounter as you walk the reach are typical observation subform data. If you are sampling fish, taking measurements, scale samples, or tissue samples for DNA analysis, these would be entered as separate lines of data in the subform; one line per fish. Simple counts of fish may be entered as lump counts in many cases. As you work your way downstream counting fish you will normally want to enter those counts repeatedly, with each count categorized by factors such as species, whether they are alive or dead, adipose clip status, sex, or maturity. 
+
+### Entry method text
+
+The `entry_method_text` input is a hidden text field intended only to pass the *Key Value* from the parent form `entry_method` select widget down to the observation subform. The possible values are: `realtime` or `postsurvey`. These values are used to hide or unhide data elements further down in the form based on whether the form was filled out real-time, during a survey, or entered from notes post-survey. If data were entered post-survey we would probably not need to show GPS or barcode inputs, or inputs for taking pictures. These can all be hidden if the *Key Value* for `entry_method` is set to `postsurvey`. 
+
+### Observation type
+
+The `observation_type` single-select element is another *gatekeeper* element that conditionally *filters* the data elements to diplay based on your selection. The three options are: `Live fish`, `Carcass`, and `Fish redd`. For example, if you are counting live fish, only inputs relevant to live fish will be displayed. You will not see inputs for redd counts, or GPS locations for carcasses. 
+
+Note the coding for *Dynamic Value*. This is a bit convoluted to understand at first glance, and provides a taste of why keeping your forms as simple as possible is a good thing. The aim of this code is to produce the *stickiness* behavior referred to in section 2.3.1. Assume your a conducting a winter Chum survey. You will not want to manually select *Species*, *Run year* and *Survey type* each time the subform cycles back to a new count. You will want the previous select values to *stick* around as defaults. 
+
+The *Dynamic Value* code: `spawning_ground_p.observation_subform[spawning_ground_p.observation_subform.length - 2].observation_type` looks into the subform records for the last entered value, then sets this as the default. Cumulatively this can avoid a large number of unnecessary clicks over the course of a survey, and considerable speed up data entry in the field. 
+
+Breaking this code down into separate elements may help clarify what is going on. In JavaScript and many other programming languages square brackets are often used to index data. For example to pull out the first element of an *array* of fish such as: `var species = ["Coho", "Chinook", "Chum"]`, you could write `species[0]`. The result would be `"Coho"`. 
+
+Similarly, the first part of the *Dynamic Value* code: `spawning_ground_p.observation_subform` specifies that the data you need is in the `observation_subform` of the `spawning_ground_p` parent form. The second part, inside the brackets, specifies the *index* or *row* where the data you need is stored: `[spawning_ground_p.observation_subform.length - 2]`. Assume you have already entered three rows of data and are currently entering data for row four. The `.length` portion of the code evaluates to `4`. You then subtract `2` to get an index value of `2`. Because JavaScript begins all indexing at `0`, this means that you are asking for a value in the third row `[0, 1, 2]` of the subform. So the first part specifies what form to look in. The second part specifies what row to look in, and the final part, `.observation_type` specifies the data element you want to extract a value from.
+
+The relative complexity of the *Dynamic Value* code for `observation_type` should serve as a warning for why nesting one subform inside another subforms is generally a bad idea. There are many cases where you want to pass values between forms, and from previously entered rows. Each time you nest a subform you get an exponential increase in the verbosity and complexity of code such as this.
+
+Additional information on passing values between forms or subforms can be found in the following [*JavaScript Tips & Tricks*](https://iformbuilder.zendesk.com/hc/en-us/articles/201697700-How-do-I-pass-data-between-subform-and-parent-) article.
+
+CHECK THE ARTICLE AND SEE IF I CAN DO THIS CLEANER !!!!!!!!!!!!!!!!!!!!!!!
+
+### Species (core input element)
+
+The `species_text` input is a hidden element that pulls out the *Label* portion of the `species_fish` option list. For example, the first two elements of the *SGS-Species* option list are *Chinook* and *Chum*. The `species_text` values come in handy for dynamically changing the labels you see in the subseqent input elements. See the *Survey type* input for an example. Here the *Dynamic Label* is coded as: `"Please enter the survey type for " + species_text`. If species text was `Chinook`, the label would read: `Please enter the survey type for Chinook`. 
+
+The `species_fish` input is a *Pick list* widget due the large number of options. The *Dynamic Value* is coded using the same logic as for `observation_type` to make it *sticky*. Note also that `species_fish` is included in the *Condition Value* statements of a majority of the remaining inputs in the observation subform. You will need to enter a species before these remaining inputs become visible. 
+
+### Run year (core input element)
+
+Run year is another core element. In the example form the *Dynamic Value* has been coded using a JavaScript function to pull out just the *year* portion of the current date: `new Date().getFullYear()`. This will generate a four character text value of the current year. You can edit this value. It just serves as a starting point. Most of the time it will not need to be edited, but the option is available when needed. 
+
+### Survey type (core input element)
+
+Survey type is also a core input element. In the example form it has been coded as a select input with four options. See the [*Data dictionary*](https://arestrom.github.io/sgsdd/) for the new *spawning_ground* database if any option that you need are missing. The structure of this input is the same as many others. No additional comments are needed. The only new item is that we have added a *Label* input directly below that describes each option in more detail. This type of input can be handy when you need to include explicit documentation for specific inputs. 
+
+### Redd count
+
+The `redd_count` input is another *Text* input with a `Number pad` data entry keyboard. The *Condition Value* is defined so that it will only appear if a `species_fish` is selected and the `observation_type` *Key Value* is `fish_redd`. In the *Element Properties* it is set as *Required*. For all practical purposes it will only be required if the `observation_type` is `fish_redd`. Input elements are truly required until they are visible. 
+
+### Redd location
+
+The coding for `redd_location` is a bit more complex than other inputs. It is set as *Required* in the example form but your survey protocols may differ. The *Dynamic Value* is set to an empty string `{""}`. This is needed to **make sure** you do not recycle previously used GPS locations. An unfortunate side-effect of the *Location* widget is that it can be *sticky* without any help on your part. 
+
+The *Condition Value* for `redd_location` is where the complexity enters. We want to hide the input if the *Label* for `observation_type` is either *Live fish* or *Carcass*. And we only want to show the input if we have counted one or more actual redds and the `entry_method` is `realtime`. The full code is: 
+
+```{js, eval = FALSE}
+if(ZCDisplayValue_observation_type == "Live fish" || ZCDisplayValue_observation_type == "Carcass") 
+{false} else {Number(redd_count) > 0 && entry_method_text == "realtime"}
+```
+
+To make the code more readable we are using the *Labels* from the `observation_type` rather than the `sort_order` values. Getting used to writing conditional statements like this can take some practice. The logic is not always intuitive. Here we needed to explicitly define the `false` portion first, and only then define the `true` portion. 
+
+### Redd coordinates
+
+This element is only included to pull out the latitude: longitude coordinates and combine them into a single text string. This can make it easier to work with the data later. Otherwise what iFormBuilder outputs is a long unwieldy list of values. The code: `redd_location.latitude + ": " + redd_location.longitude` produces a string that looks like: `47.50436: -123.49568`. 
+
 
 
 
