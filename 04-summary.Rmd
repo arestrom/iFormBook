@@ -6,15 +6,15 @@
 
 2. Finish spawning ground form...Done 
 
-3. Discuss subform batch mode
+3. Discuss subform batch mode...Done
 
 4. Demonstrate how to download data?
 
 5. Write up steps to create and activate branch in remote...Done
 
-# Notes on bookdown
+## Notes on bookdown
 
-## Files needed to build basic book:
+### Files needed to build basic book:
 
 * .gitignore
 * .Rbuildignore
@@ -22,7 +22,7 @@
 * _build.sh (enables the build all command)
 * book.bib
 
-## Building these files generates:
+### Building these files generates:
 
 * book.bib
 * _book (folder)

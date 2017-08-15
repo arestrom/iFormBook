@@ -285,21 +285,23 @@ The `entry_method_text` input is a hidden text field intended only to pass the *
 
 ### Observation type
 
-The `observation_type` single-select element is another *gatekeeper* element that conditionally *filters* the data elements to diplay based on your selection. The three options are: `Live fish`, `Carcass`, and `Fish redd`. For example, if you are counting live fish, only inputs relevant to live fish will be displayed. You will not see inputs for redd counts, or GPS locations for carcasses. 
+The `observation_type` single-select element is another *gatekeeper* element that conditionally *filters* data input elements based on your selection. The three options are: `Live fish`, `Carcass`, and `Fish redd`. For example, if you are counting live fish you would select the `Live fish` option, then only inputs relevant to live fish will be displayed. You will not see inputs for redd counts, or GPS locations for carcasses. 
 
-Note the coding for *Dynamic Value*. This is a bit convoluted to understand at first glance, and provides a taste of why keeping your forms as simple as possible is a good thing. The aim of this code is to produce the *stickiness* behavior referred to in section 2.3.1. Assume your a conducting a winter Chum survey. You will not want to manually select *Species*, *Run year* and *Survey type* each time the subform cycles back to a new count. You will want the previous select values to *stick* around as defaults. 
+Note the coding for the *Dynamic Value*. This is a bit convoluted to understand at first glance, and provides a taste of why keeping your forms as simple as possible is a good thing. 
 
-The *Dynamic Value* code: `spawning_ground_p.observation_subform[spawning_ground_p.observation_subform.length - 2].observation_type` looks into the subform records for the last entered value, then sets this as the default. Cumulatively this can avoid a large number of unnecessary clicks over the course of a survey, and considerable speed up data entry in the field. 
+```{js, eval = FALSE}
+spawning_ground_p.observation_subform[spawning_ground_p.observation_subform.index - 1].observation_type
+```
 
-Breaking this code down into separate elements may help clarify what is going on. In JavaScript and many other programming languages square brackets are often used to index data. For example to pull out the first element of an *array* of fish such as: `var species = ["Coho", "Chinook", "Chum"]`, you could write `species[0]`. The result would be `"Coho"`. 
+The aim of this code is to produce the *stickiness* behavior referred to in section 2.3.1. Assume you are conducting a winter Chum survey. You will not want to manually select *Species*, *Run year* and *Survey type* each time the subform cycles back to a new count. These values are unlikely to change from one observation to the next. Instead you will want these inputs to be auto-filled based on what you entered most recently. The *Dynamic Value* code looks into the subform records for the last entered value, then sets this as the default. Cumulatively this can avoid a large number of unnecessary clicks over the course of a survey, and considerable speed up data entry in the field. 
 
-Similarly, the first part of the *Dynamic Value* code: `spawning_ground_p.observation_subform` specifies that the data you need is in the `observation_subform` of the `spawning_ground_p` parent form. The second part, inside the brackets, specifies the *index* or *row* where the data you need is stored: `[spawning_ground_p.observation_subform.length - 2]`. Assume you have already entered three rows of data and are currently entering data for row four. The `.length` portion of the code evaluates to `4`. You then subtract `2` to get an index value of `2`. Because JavaScript begins all indexing at `0`, this means that you are asking for a value in the third row `[0, 1, 2]` of the subform. So the first part specifies what form to look in. The second part specifies what row to look in, and the final part, `.observation_type` specifies the data element you want to extract a value from.
+Breaking this code down into separate chunks may help clarify what is going on. In JavaScript and many other programming languages square brackets are often used to index data. For example to pull out the first element of an *array* of fish such as: `var species = ["Coho", "Chinook", "Chum"]`, you would write `species[0]`. You use `0` instead of the more intuitive `1` because JavaScript begins all indexing at `0`. The result would be `"Coho"`.  
 
-The relative complexity of the *Dynamic Value* code for `observation_type` should serve as a warning for why nesting one subform inside another subforms is generally a bad idea. There are many cases where you want to pass values between forms, and from previously entered rows. Each time you nest a subform you get an exponential increase in the verbosity and complexity of code such as this.
+Indexing can also be used to inspect values in your forms. The first part of the *Dynamic Value* code: `spawning_ground_p.observation_subform` specifies that the data you need is in the `observation_subform` of the `spawning_ground_p` parent form. Note that `observation_subform` is the *data column name* we gave to our subform in the parent form. The second part, inside the brackets, specifies the *index* or *row* where the data you need is stored: `[spawning_ground_p.observation_subform.index - 1]`. The `.index` portion of the code tells you what row you are currently working on. If you subtract `1` you get the index value of the last row of data you saved. So to summarize, the first part specifies what form to look in. The second part specifies what row to look in, and the final part, `.observation_type` specifies the data element you want to extract a value from.
+
+The relative complexity of the *Dynamic Value* code for `observation_type` should serve as a warning for why nesting one subform inside another subforms is generally a bad idea. There are many cases where you want to pass values between forms, or from previously entered rows. Each time you nest a subform you get an exponential increase in the verbosity and complexity of code such as this.
 
 Additional information on passing values between forms or subforms can be found in the following [*JavaScript Tips & Tricks*](https://iformbuilder.zendesk.com/hc/en-us/articles/201697700-How-do-I-pass-data-between-subform-and-parent-) article.
-
-CHECK THE ARTICLE AND SEE IF I CAN DO THIS CLEANER !!!!!!!!!!!!!!!!!!!!!!!
 
 ### Species (core input element)
 
@@ -335,6 +337,8 @@ To make the code more readable we are using the *Labels* from the `observation_t
 ### Redd coordinates
 
 This element is only included to pull out the latitude: longitude coordinates and combine them into a single text string. This can make it easier to work with the data later. Otherwise what iFormBuilder outputs is a long unwieldy list of values. The code: `redd_location.latitude + ": " + redd_location.longitude` produces a string that looks like: `47.50436: -123.49568`. 
+
+### To be continued in September.
 
 
 
