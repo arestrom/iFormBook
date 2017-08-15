@@ -29,7 +29,7 @@ To simplify the process of building mobile forms this manual takes a highly opin
 
 Please consider contributing your own solutions, corrections, or edits to this manual. All source code is available at the project [GitHub repository](https://github.com/arestrom/mf4ss). It is written using the [bookdown](https://github.com/rstudio/bookdown) package. See [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) for technical details on how to contribute. 
 
-Thanks to James Losee for the cover photo. Thanks also to James and the entire WDFW District 11 team for their work in pioneering and field testing mobile forms. Since we began experimenting back in 2012 the tools and technology have continuously improved. That trend shows no sign of slowing down anytime soon. 
+Thanks to James Losee for the cover photo. 
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

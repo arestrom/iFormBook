@@ -64,7 +64,7 @@ Note the asterisks next to the labels for each input element. This indicates *re
 
 ### Real-time or post-survey
 
-The *Data entry real-time or post-survey* field illustrates how you can set up rules to show or hide input elements in your form based on an initial conditions. For example, if you have some old paper data to enter and you need to use the mobile form as a post-survey data entry screen, then we know we don't need to show widgets for recording GPS locations at a later stage. In addition, we probably won't need to show widgets for capturing barcodes, or taking pictures. These can all be hidden if data entry type is set to *post_survey*. 
+The *Data entry real-time or post-survey* field illustrates how you can set up rules to show or hide input elements in your form based on an initial conditions. For example, if you have some old paper data to enter and you need to use the mobile form as a post-survey data entry screen, then we know we don't need to show widgets for recording GPS locations at a later stage. In addition, we probably won't need to show widgets for capturing barcodes, or taking pictures. These can all be hidden if the data entry type is set to `Post-survey`. 
 
 ### Default values
 
