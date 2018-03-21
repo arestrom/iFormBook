@@ -54,6 +54,22 @@ function pad(num) {
 };
 ```
 
+### Extend JavaScript methods for arrays to determine if an array *contains* a specific element
+
+This code uses the array property *prototype* to add a new method for JavaScript arrays. It returns a value of `true` if the desired array element exists in the array. For example, if the array consists of: ["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"] and `species` is "Coho" then the statement: 
+
+```{js, eval = FALSE}
+["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"].contains(species)
+```
+
+will return `true`.
+
+```{js, eval = FALSE}
+Array.prototype.contains = function(element){
+    return this.indexOf(element) > -1;
+};
+```
+
 ## Character limits
 
 The iFormBuilder platform imposes limits on the number of characters that are allow for naming or defining various items. The following table was compiled from disparate parts of the iFormBuilder website by Steve VanderPloeg.   

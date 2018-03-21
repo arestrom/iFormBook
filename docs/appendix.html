@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Mobile forms for salmon surveys</title>
   <meta name="description" content="Mobile forms for salmon surveys">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Mobile forms for salmon surveys" />
   <meta property="og:type" content="book" />
@@ -176,7 +176,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.2.6" data-path="build-a-form.html"><a href="build-a-form.html#redd-count"><i class="fa fa-check"></i><b>3.2.6</b> Redd count</a></li>
 <li class="chapter" data-level="3.2.7" data-path="build-a-form.html"><a href="build-a-form.html#redd-location"><i class="fa fa-check"></i><b>3.2.7</b> Redd location</a></li>
 <li class="chapter" data-level="3.2.8" data-path="build-a-form.html"><a href="build-a-form.html#redd-coordinates"><i class="fa fa-check"></i><b>3.2.8</b> Redd coordinates</a></li>
-<li class="chapter" data-level="3.2.9" data-path="build-a-form.html"><a href="build-a-form.html#to-be-continued-in-september."><i class="fa fa-check"></i><b>3.2.9</b> To be continued in September.</a></li>
+<li class="chapter" data-level="3.2.9" data-path="build-a-form.html"><a href="build-a-form.html#redd-status"><i class="fa fa-check"></i><b>3.2.9</b> Redd status</a></li>
+<li class="chapter" data-level="3.2.10" data-path="build-a-form.html"><a href="build-a-form.html#redd-fish"><i class="fa fa-check"></i><b>3.2.10</b> Redd fish?</a></li>
+<li class="chapter" data-level="3.2.11" data-path="build-a-form.html"><a href="build-a-form.html#show-fish-fields"><i class="fa fa-check"></i><b>3.2.11</b> Show fish fields</a></li>
+<li class="chapter" data-level="3.2.12" data-path="build-a-form.html"><a href="build-a-form.html#number-of-fish-counted"><i class="fa fa-check"></i><b>3.2.12</b> Number of fish counted</a></li>
+<li class="chapter" data-level="3.2.13" data-path="build-a-form.html"><a href="build-a-form.html#carcass-sampling-note"><i class="fa fa-check"></i><b>3.2.13</b> Carcass sampling note</a></li>
+<li class="chapter" data-level="3.2.14" data-path="build-a-form.html"><a href="build-a-form.html#fish-location"><i class="fa fa-check"></i><b>3.2.14</b> Fish location</a></li>
+<li class="chapter" data-level="3.2.15" data-path="build-a-form.html"><a href="build-a-form.html#sex-and-maturity"><i class="fa fa-check"></i><b>3.2.15</b> Sex and maturity</a></li>
+<li class="chapter" data-level="3.2.16" data-path="build-a-form.html"><a href="build-a-form.html#adipose-clip-status"><i class="fa fa-check"></i><b>3.2.16</b> Adipose clip status</a></li>
+<li class="chapter" data-level="3.2.17" data-path="build-a-form.html"><a href="build-a-form.html#spawn-condition"><i class="fa fa-check"></i><b>3.2.17</b> Spawn condition</a></li>
+<li class="chapter" data-level="3.2.18" data-path="build-a-form.html"><a href="build-a-form.html#cwt-detected"><i class="fa fa-check"></i><b>3.2.18</b> CWT detected?</a></li>
+<li class="chapter" data-level="3.2.19" data-path="build-a-form.html"><a href="build-a-form.html#detection-method"><i class="fa fa-check"></i><b>3.2.19</b> Detection method</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>4</b> Summary</a><ul>
@@ -191,6 +201,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1.1" data-path="appendix.html"><a href="appendix.html#unique-id-uuid"><i class="fa fa-check"></i><b>5.1.1</b> Unique ID (UUID)</a></li>
 <li class="chapter" data-level="5.1.2" data-path="appendix.html"><a href="appendix.html#statistical-week."><i class="fa fa-check"></i><b>5.1.2</b> Statistical week.</a></li>
 <li class="chapter" data-level="5.1.3" data-path="appendix.html"><a href="appendix.html#pad-a-number"><i class="fa fa-check"></i><b>5.1.3</b> Pad a number</a></li>
+<li class="chapter" data-level="5.1.4" data-path="appendix.html"><a href="appendix.html#extend-javascript-methods-for-arrays-to-determine-if-an-array-contains-a-specific-element"><i class="fa fa-check"></i><b>5.1.4</b> Extend JavaScript methods for arrays to determine if an array <em>contains</em> a specific element</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="appendix.html"><a href="appendix.html#character-limits"><i class="fa fa-check"></i><b>5.2</b> Character limits</a></li>
 <li class="chapter" data-level="5.3" data-path="appendix.html"><a href="appendix.html#maximum-inputs-per-form"><i class="fa fa-check"></i><b>5.3</b> Maximum inputs per form</a></li>
@@ -253,6 +264,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     <span class="kw">var</span> s <span class="op">=</span> num <span class="op">+</span> <span class="st">&quot;&quot;</span><span class="op">;</span>
     <span class="cf">while</span> (<span class="va">s</span>.<span class="at">length</span> <span class="op">&lt;</span> <span class="dv">3</span>) s <span class="op">=</span> <span class="st">&quot;0&quot;</span> <span class="op">+</span> s<span class="op">;</span>
     <span class="cf">return</span> s<span class="op">;</span>
+<span class="op">};</span></code></pre></div>
+</div>
+<div id="extend-javascript-methods-for-arrays-to-determine-if-an-array-contains-a-specific-element" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> Extend JavaScript methods for arrays to determine if an array <em>contains</em> a specific element</h3>
+<p>This code uses the array property <em>prototype</em> to add a new method for JavaScript arrays. It returns a value of <code>true</code> if the desired array element exists in the array. For example, if the array consists of: [“Chinook”, “Coho”, “Chum”, “Sockeye”, “Cutthroat”, “Steelhead”] and <code>species</code> is “Coho” then the statement:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript">[<span class="st">&quot;Chinook&quot;</span><span class="op">,</span> <span class="st">&quot;Coho&quot;</span><span class="op">,</span> <span class="st">&quot;Chum&quot;</span><span class="op">,</span> <span class="st">&quot;Sockeye&quot;</span><span class="op">,</span> <span class="st">&quot;Cutthroat&quot;</span><span class="op">,</span> <span class="st">&quot;Steelhead&quot;</span>].<span class="at">contains</span>(species)</code></pre></div>
+<p>will return <code>true</code>.</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Array</span>.<span class="va">prototype</span>.<span class="at">contains</span> <span class="op">=</span> <span class="kw">function</span>(element)<span class="op">{</span>
+    <span class="cf">return</span> <span class="kw">this</span>.<span class="at">indexOf</span>(element) <span class="op">&gt;</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span>
 <span class="op">};</span></code></pre></div>
 </div>
 </div>
