@@ -293,7 +293,7 @@ Note the coding for the *Dynamic Value*. This is a bit convoluted to understand 
 spawning_ground_p.observation_subform[spawning_ground_p.observation_subform.index - 1].observation_type
 ```
 
-The aim of this code is to produce the *stickiness* behavior referred to in section 2.3.1. Assume you are conducting a winter Chum survey. You will not want to manually select *Species*, *Run year* and *Survey type* each time the subform cycles back to a new count. These values are unlikely to change from one observation to the next. Instead you will want these inputs to be auto-filled based on what you entered most recently. The *Dynamic Value* code looks into the subform records for the last entered value, then sets this as the default. Cumulatively this can avoid a large number of unnecessary clicks over the course of a survey, and considerable speed up data entry in the field. 
+The aim of this code is to produce the *stickiness* behavior referred to in section 2.3.1. Assume you are conducting a winter Chum survey. You will not want to manually select *Species*, *Run year* and *Survey type* each time the subform cycles back to a new count. These values are unlikely to change from one observation to the next. Instead you will want these inputs to be auto-filled based on what you entered most recently. The *Dynamic Value* code looks into the subform records for the last entered value, then sets this as the default. Cumulatively this can avoid a large number of unnecessary clicks over the course of a survey, and considerably speed up data entry in the field. 
 
 Breaking this code down into separate chunks may help clarify what is going on. In JavaScript and many other programming languages square brackets are often used to index data. For example to pull out the first element of an *array* of fish such as: `var species = ["Coho", "Chinook", "Chum"]`, you would write `species[0]`. You use `0` instead of the more intuitive `1` because JavaScript begins all indexing at `0`. The result would be `"Coho"`.  
 
@@ -336,13 +336,106 @@ To make the code more readable we are using the *Labels* from the `observation_t
 
 ### Redd coordinates
 
-This element is only included to pull out the latitude: longitude coordinates and combine them into a single text string. This can make it easier to work with the data later. Otherwise what iFormBuilder outputs is a long unwieldy list of values. The code: `redd_location.latitude + ": " + redd_location.longitude` produces a string that looks like: `47.50436: -123.49568`. 
+This element is only included to pull out the latitude: longitude coordinates and combine them into a single text string. This can make it easier to work with the data later. Otherwise iFormBuilder will output a long unwieldy list of values. The code: `redd_location.latitude + ": " + redd_location.longitude` produces a string that looks like: `47.50436: -123.49568`. There is no need for the surveyor to see this data element so it set to hidden by inserting `false` in the *Condition Value* box.  
 
-### To be continued in September.
+### Redd status
 
+The `redd_status` data element is used to track redd life over consecutive surveys. Similar to `redd_location` the *Condition Value* is defined so it will only be visible to the surveyor if the `observation_type` is not *Live fish* or *Carcass*. In addition it will only be shown if `redd_count` is greater than zero. 
 
+Since the *Element Type* is a *Select* we can set the default value to `new_redd` by entering a `sort_order` value of `0` when `ZCDisplayValue_observation_type == "Fish redd"`. Otherwise the default value will be empty. Recall that *Select* elements are typically assigned to empty by setting the `sort_order` value to `-1`.  
 
+### Redd fish?  
 
+The `redd_fish?` field is another *gatekeeper* field that asks if you want to record the number of live fish of the same species that was seen at the redd site. The default value is set to `1` for *No*. If you select *Yes* then a new data element will appear that allows the surveyor to enter the number of live fish counted.  
 
+The *Condition Value* for `redd_fish` is defined as: 
+
+```{js, eval = FALSE}
+species_fish > -1 && ZCDisplayKey_observation_type == "fish_redd" && Number(redd_count) > 0}
+```
+
+This means you will only see the element if a species of fish has been selected and the `observation_type` is `fish_redd`, and the number of redds is at least one. 
+
+### Show fish fields
+
+In addition to *gatekeeper* data elements that a surveyor can directy control, such as `redd_fish`, you can also define hidden *gatekeeper* fields. These can be especially useful in cases where you want to define the behavior of data elements using logic that by neccessity is a bit more verbose than normal. There is a 500 character limit on any conditional logic you insert into *Condition Value* boxes. The *Condition Value* for the *Show fish fields* is a good example. The code totals 229 characters and is defined as:
+
+```{js, eval = FALSE}
+if (ZCDisplayValue_observation_type == "Live fish" || ZCDisplayValue_observation_type == "Carcass") {"yes"} else if ( ZCDisplayValue_observation_type == "Fish redd" && ZCDisplayValue_redd_fish_yes_no == "Yes") {"yes"} else {"no"}
+```
+
+For our example survey form there are three separate routes a surveyor might take to enter counts of fish. The first route, mentioned above, assumes we have just located a redd and want to record the number of associated live fish. But instead of selecting `fish_redd` for `observation_type` above, we could also have selected `live_fish` or `carcass`. In that case we might need a separate set of criteria to decide if we should show the data element needed to enter counts of fish than if the route was strictly via `fish_redd`.  
+
+The code snippet above combines logic for all three possible routes to produce a simple `yes` or `no` answer that can then be inserted into the *Condition Value* box of our `fish_count` data element. The `fish_count` data element can be seen directly below *Show fish fields*. Despite the length of the code snippet above, the logic is fairly simple. All it says is that if the `observation_type` is `live_fish` or `carcass` then show the `fish_count` field. But if the `observation_type` is `fish_redd` then only show the `fish_count` field if you answered `yes` when asked if you wanted to enter counts for live fish. 
+
+The number of characters required to define such relatively simple logic should serve as a reminder that one or more hidden *gatekeeper* data elements may often be required to define the behavior of your form. You always have the option to make your logic arbitrarily complex, but you may then need to break that logic up into digestible (and hopefully understandable) > 500 character chunks.  
+
+### Number of fish counted
+
+If the output of the *gatekeeper* `show_fish` field above is `yes` additional data elements needed for counting and sampling fish will be enabled, starting with the `fish_count` element. This is where the three different routes mentioned above converge. Notice that the code needed for the *Condition Value* box can now be condensed down to `species_fish > -1 && show_fish == "yes"`.
+
+The `fish_count` field has been coded as a `Text` field, but with a `Number Pad` keyboard display. The reason for coding this as `Text` rather than `Number` is that text can often be easier to work with. One advantage is that default values can be set to `""`, or blank, rather than initiated to a value such as `0`. If you need to work with the actual numeric values later in logic statements, you can always convert using the JavaScript `Number()` function. Notice that the default *Dynamic Value* has been set to "". 
+
+### Carcass sampling note
+
+Directly below the `fish_count` element is a label that will only be visible if `fish_count` is greater than one and `observation_type` is `carcass`. This serves as a reminder to surveyors that if they need to record certain data for individual fish, then they must enter a count of one for `fish_count`. When entering carcass sampling data such as CWT label numbers, scale sample numbers, fish lengths, or other data that are only relevant to individual fish, then the `fish_count` value must be one. 
+
+### Fish location
+
+The next three fields provide surveyors the opportunity to enter GPS coordinates for a single fish or group of fish. The *Condition Value* code `fish_location_yes_no` select element uses both the `show_fish` element and the `Number()` function mentioned above:
+
+```{js, eval = FALSE}
+if (ZCDisplayValue_observation_type == "Fish redd") {false} else {species_fish > -1 && show_fish == "yes" && entry_method_text == "realtime" && Number(fish_count) > 0}
+```
+
+The `fish_location_yes_no` select element will only become visible if data are entered real-time in the field, if the logic for the `show_fish` element evaluates to `yes`, and if the number of fish counted is greater than zero. Without the `show_fish` element this set of logic may well have exceeded the 500 character limit and would have been much harder to read. 
+
+If the surveyor answers `yes` a location widget will become visible allowing automated entry of GPS location data. The next data element then processes this location data and strings together the `latitude` and `longitude` portions of the location...as was seen above with the `redd_coordinates` field. 
+
+### Sex and maturity
+
+The `sex_maturity` pick list element will only be visible if the `observation_type` is `live_fish` or `carcass`, and if the number of fish counted is greater than zero. Although sex and maturity will be entered as separate fields in the *spawning_ground* database, this is a case where there are sufficiently few possible categories that it makes sense to combine the fields on the front-end and simply have the computer parse out the data on the backend before writing to the database. This can help to speed up data entry in the field.
+
+### Adipose clip status
+
+The `clip_status` data element provides a good example of using JavaScript code to take `species` into account in determining if the field should be displayed or not. The *Condition Value* code in this case is a little more complicated:  
+
+```{js, eval = FALSE}
+if (ZCDisplayValue_observation_type == "Fish redd" &&  ZCDisplayValue_redd_fish_yes_no == "No") {false} else {Number(fish_count) > 0 && ["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"].contains(species_text)}
+```
+
+The first half of this statement is logic you have seen previously. The part after the `else` statement, however, adds a new twist by defining an array of species and then testing to see if the array contains the species you selected at the top of the subform in the `species_fish` data element. In JavaScript, arrays can be defined using square brackets. The `species_text` element we defined previously extracted the `Label` portion of the `species_fish` option list. We then define a new JavaScript `contains()` method for arrays to determine if the species array contains the `species_text` element. 
+
+The array `contains()` method is defined in the page-level JavaScript code window for the parent form. Click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the parent form page. You can also inspect the method definition in Appendix 5.1 at the bottom of this manual. The method allows us to only display the `clip_status` data element if `species_fish` is one of the species listed in the array.
+
+### Spawn condition
+
+The remaining data elements in the subform all require that the `fish_count` element evaluates to `1`, and that the `observation_type` is `carcass`. 
+
+The *Condition Value* code for the `spawn_condition` element provides another example of using previously entered data in your logic statements. This time we use the `includes()` method for strings to determine if the fish is female. 
+
+```{js, eval = FALSE}
+Number(fish_count) == 1 && ZCDisplayValue_observation_type == "Carcass"  && ZCDisplayKey_sex_maturity.includes("female")
+```
+
+Since the `includes()` method is a standard JavaScript [string method](https://www.w3schools.com/jsref/jsref_obj_string.asp) there is no need to insert any new JavaScript code in the page-level JavaScript panel. The *Condition Value* code above simply inspects the `key_value` of the `sex_maturity` option list to determine if the selected value includes the word `female`. If it does then the `spawn_condition` data element will become visible. 
+
+### CWT detected?  
+
+Another method to limit visibility of a data element based on `species` is provided by the `cwt_detected` data element: 
+
+```{js, eval = FALSE}
+ZCDisplayValue_observation_type == "Carcass"  && (species_text == "Chinook" || species_text == "Coho") && Number(fish_count) > 0
+```
+
+Since coded-wire tags are limited to only a few species it is sometimes easier to explicity inspect for species using the `==` comparison operator than to rely on string or array methods. Pay special attention to the parentheses in this case. The `observation_type` must be `carcass` and `fish_count` must be ` > 0`, but `species_text` can be *either* `Chinook` or `Coho`. 
+
+### Detection method
+
+The `cwt_detect_method` data element should only be visible if a surveyor was actively inspecting fish for coded-wire tags and a determination was recorded. In that case we want to know what method was used to detect the tags. The select option list `key_values` for `cwt_detected` lists the following categories: `did_not_check` `no_beep`, `beep`, `no_head`. We can therefore base the *Condition Value* for the `cwt_detect_method` data element on whether or not the words `beep` or `no_beep` were present in the selected `key_values`:
+
+```{js, eval = FALSE}
+ZCDisplayKey_cwt_detected == "beep" || ZCDisplayKey_cwt_detected == "no_beep"
+```
 
 
