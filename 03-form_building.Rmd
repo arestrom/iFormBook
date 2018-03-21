@@ -1,6 +1,6 @@
 # Build a form
 
-The sections below use the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) example form to illustrate how to build a mobile form on the iFormBuilder platform. If you have not done so already, please see the instructions in **Chapter 2** to load this package to your profile. Then open the iFormBuilder web interface, click on *Forms > Form Builder > spawning_ground_p* to load the example form. 
+The sections below use the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) example form to illustrate how to build a mobile form using the iFormBuilder platform. If you have not done so already, please see the instructions in **Chapter 2** to load this package to your profile. Many of the explanation below will not make sense unless you can look at the actual form element definitions in the form builder application. After you have loaded the form package to your profile, open the iFormBuilder web interface, then click on *Forms > Form Builder > spawning_ground_p* to load the example parent form. 
 
 ```{r echo = FALSE, fig.align = 'left', out.width = "20%"}
 knitr::include_graphics("screenshots/forms_dropdown.png")
@@ -12,7 +12,7 @@ There will be special emphasis below on the core data inputs that need to be pre
 
 ## Parent form
 
-The parent form contains data input elements that you would typically only enter once per survey. Fields such as surveyor names, the stream and stream reach you are surveying, or the survey date, are typical parent form data. These are the header fields that you would normally see at the top of a paper form.  
+The parent form contains data input elements that you would typically only enter once per survey. Fields such as surveyor names, the stream and stream reach you are surveying, or the survey date, are typical parent form data elements. These are the *header* fields that you would normally see at the top of a paper form.  
 
 ### Survey ID (core input element)
 
@@ -20,7 +20,7 @@ The first input in the parent form of any mobile form used for spawning ground s
 
 The reason that iFormBuilder's solution is not a good choice is that it may result in generating IDs that conflict over time. For example, if after a season of using a form you decide to amend the structure, retire the old form and deploy the new version, you may end up with identical IDs for different surveys unless you also make sure to edit the prefix to some value never previously used. An alternate scenario is that you may want to create dedicated forms for different types of surveys, such as for fall Chinook, or spring Steelhead. To enfore uniqueness statewide there would need to be coordination in assigning prefixes over WDFW districts and regions, otherwise new forms may start incrementing overlapping IDs.  
 
-An even more important reason for adding a truly unique survey ID input element to our forms is that it can then be used as a primary key in our corporate database. To that end what we need is a unique identifier that is (virtually) guaranteed to always be unique. The solution is to use a random uuid (universally unique ID). A version 4 uuid can be generated using the JavaScript code below. See the following link at [Stackoverflow](https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript) for the source of the function.  
+An even more important reason for adding a truly unique survey ID input element to our forms is that it can then be used as a primary key in our corporate database. To that end what we need is a unique identifier that is (*virtually*) guaranteed to always be unique. The solution is to use a random uuid (*universally unique ID*). A version 4 uuid can be generated using the JavaScript code below. See the following link at [Stackoverflow](https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript) for the source of the function.  
 
 ```{js, eval = FALSE}
 function generateUUID () { // Public Domain/MIT
@@ -121,9 +121,9 @@ knitr::include_graphics("screenshots/real_post.png")
 
 Notice the *Sort Order* column in the option list. You can use these values to specify a default answer to display. If you enter `0` in the *Dynamic Value* box the default value will be `Real-time`, entering `1` would set the default value to `Post-survey`. If you do not want to set a default value you can enter `-1`. Setting a dynamic value of `-1` is an explicit way to say the value is currently missing. It is good practice to always initialize select, multi-select, or pick-list widgets with either a default value or `-1`. 
 
-Another way to set default values is to reference either the option list *Label* or *Key Value* instead. You would simply preface the field name with `ZCDisplayLabel` or `ZCDisplayKey`. For example, `ZCDisplayLabel_species` or `ZCDisplayLabel_redd_status`. 
+Another way to set default values is to reference either the option list *Label* or *Key Value* instead. You would simply preface the field name with `ZCDisplayLabel` or `ZCDisplayKey`, and then an underscore. For example, `ZCDisplayLabel_species` or `ZCDisplayLabel_redd_status`. 
 
-In the case of simple lists such as `entry_method` using *Sort Order* as a reference is acceptable. There are only two values to remember. For more more complex cases, however, where there are many options, and possibly conditional logic tied to those option values, it is nearly always better to reference the *Label* or *Key Value* instead. The reason is that you are then constructing logical statements with actual understandable names rather than just numbers. For example, once your brain gets past the ugly `ZCDisplayKey` portion, it's much easier to understand statements such as: 
+In the case of simple lists such as `entry_method` using *Sort Order* as a reference is acceptable. There are only two values to remember. For more complex cases, however, where there are many options, and possibly conditional logic tied to those option values, it is nearly always better to reference the *Label* or *Key Value* instead. The reason is that you are then constructing logical statements with actual understandable names rather than just numbers. For example, once your brain gets past the ugly `ZCDisplayKey` portion, it's much easier to understand statements such as: 
 
 ```{js, eval = FALSE}
 if(ZCDisplayKey_species == "coho" && ZCDisplayKey_redd_status == "new_redd") {"Yes"} else {"No"}
@@ -135,7 +135,7 @@ Rather than:
 if(species == 3 && redd_status == 0) {"Yes"} else {"No"}
 ```
 
-Aside from not having to remember the `sort_order` values in order to understand what is actually being stated, using *Key Values* or *Labels* also avoids having to change the statements if you later need to edit the option list and inadvertantly shuffle the `sort_order` values assigned to each option.
+Aside from not having to remember the specific `sort_order` values assigned to specific option list elements in order to understand what is actually being stated, using *Key Values* or *Labels* also avoids having to change the statements if you later need to edit the option list and inadvertantly shuffle the `sort_order` values assigned to each option element.
 
 ### Survey start date (core input element)
 
@@ -147,7 +147,7 @@ new date()
 
 ### Survey method (core input element)
 
-The `survey_method` field is another core input element. If you click on the green *Option Lists* bar the *Assign Option Lists* window will open and you will see there are only three options listed: `Foot`, `Raft`, and `Helicopter`. Several additional options that you may want to add are listed in the *spawning_ground* database [*Data Dictionary*](https://arestrom.github.io/sgsdd/) mentioned in chapter 2. 
+The `survey_method` field is another core input element. If you click on the green *Option Lists* bar the *Assign Option Lists* window will open and you will see there are only three options listed: `Foot`, `Raft`, and `Helicopter`. Several additional options that you may want to add are listed in the *spawning_ground* database [*Data Dictionary*](https://arestrom.github.io/sgsdd/#survey_method_lut) mentioned in chapter 2. 
 
 If you need to add an option, for example `Snorkle`, close the *Assign Option Lists* window and click on *Option Lists* in the top left-hand corner of the form builder application. 
 
@@ -193,7 +193,7 @@ Setting condition values in option lists follows the same rules as showing or hi
 
 The convention for coding *Key values* for locations that are *Not listed above* is to concatenate a zero with an underscore and the stream ID. For example: `0_285`. This ensures that no duplicate *Key Values* will be entered to the option list. 
 
-Option lists such as `SGS-StreamLocations`, with upwards of 210 elements and 38 different condition values, can be tedious to create by hand. A better option is to create and write such lists directly to the iFormBuilder cloud using scripts. This can be accomplished in seconds using the [iformr](https://github.com/arestrom/iformr) package for the [R](https://www.r-project.org/about.html) programming language. See the package documentation for usage examples. I can also provide example scripts. 
+Option lists such as `SGS-StreamLocations`, with upwards of 210 elements and 38 different condition values, can be tedious to create by hand. A better option is to create and write such lists directly to the iFormBuilder cloud using scripts. This can be accomplished in seconds using the [iformr](https://github.com/arestrom/iformr) package for the [R](https://www.r-project.org/about.html) programming language. See the package documentation for usage examples. I can also provide example scripts, or create the option list for you if you are unfamiliar with R. 
 
 ### Start or end point not listed
 
@@ -255,7 +255,7 @@ Always keep in mind that if you share option lists then any edits you make to th
 
 ### Survey conditions
 
-After answering `Yes` to the `survey_end_yes_no` input element a set of inputs asking about general survey conditions, including end water temperature, stream-flow, visibility, and weather, will be revealed. In terms of structure, there is little new that needs to be mentioned. These inputs are all conditional on `stream > -1 && ZCDisplayValue_survey_end_yes_no == "Yes"`. Some are optional and others are required. This can be customized depending on your survey protocols. Feel free to add or eliminate questions depending on your specific protocols. You can also look at incorporating legacy *Condition Codes* as select elements. A list of available *canned* condition codes can be seen by clicking on the *Survey comments* table in the [*Data dictionary*](https://arestrom.github.io/sgsdd/) for the new *spawning_ground* database. 
+After answering `Yes` to the `survey_end_yes_no` input element a set of inputs asking about general survey conditions, including end water temperature, stream-flow, visibility, and weather, will be revealed. In terms of structure, there is little new that needs to be mentioned. These inputs are all conditional on `stream > -1 && ZCDisplayValue_survey_end_yes_no == "Yes"`. Some are optional and others are required. This can be customized depending on your survey protocols. Feel free to add or eliminate questions depending on your specific protocols. You can also look at incorporating legacy *Condition Codes* as select elements. A list of available *canned* condition codes can be seen by clicking on the *Survey comment* table in the [*Data dictionary*](https://arestrom.github.io/sgsdd/#survey_comment) for the new *spawning_ground* database. 
 
 ### Survey completed?
 
@@ -277,7 +277,7 @@ The final *Date-Time* input allows you to enter the time the survey was complete
 
 ## Observations subform
 
-The observations subform contains data input elements that you would normally cycle back to multiple times during a survey. Fields such as counts of fish, or redds, that you encounter as you walk the reach are typical observation subform data. If you are sampling fish, taking measurements, scale samples, or tissue samples for DNA analysis, these would be entered as separate lines of data in the subform; one line per fish. Simple counts of fish may be entered as lump counts in many cases. As you work your way downstream counting fish you will normally want to enter those counts repeatedly, with each count categorized by factors such as species, whether they are alive or dead, adipose clip status, sex, or maturity. 
+The observations subform contains data input elements that you would normally cycle back to multiple times during a survey. Fields such as counts of fish, or redds, that you encounter as you walk the reach are typical observation subform data. If you are sampling fish, taking measurements, scale samples, or tissue samples for DNA analysis, these would be entered as separate lines of data in the subform; one line per fish. Simple counts of fish may be entered as lump counts in many cases. As you work your way downstream counting fish you will normally want to enter those counts repeatedly, with each count categorized by factors such as species, whether they are alive or dead, adipose clip status, sex, and maturity. 
 
 ### Entry method text
 
@@ -285,7 +285,7 @@ The `entry_method_text` input is a hidden text field intended only to pass the *
 
 ### Observation type
 
-The `observation_type` single-select element is another *gatekeeper* element that conditionally *filters* data input elements based on your selection. The three options are: `Live fish`, `Carcass`, and `Fish redd`. For example, if you are counting live fish you would select the `Live fish` option, then only inputs relevant to live fish will be displayed. You will not see inputs for redd counts, or GPS locations for carcasses. 
+The `observation_type` single-select element is another *gatekeeper* element that conditionally *filters* data input elements based on your selection. The three options are: `Live fish`, `Carcass`, and `Fish redd`. For example, if you encounter a group of live fish you would select the `Live fish` option, then only inputs relevant to live fish will be displayed. You will not see inputs for redd counts, or GPS locations for carcasses. 
 
 Note the coding for the *Dynamic Value*. This is a bit convoluted to understand at first glance, and provides a taste of why keeping your forms as simple as possible is a good thing. 
 
@@ -315,7 +315,7 @@ Run year is another core element. In the example form the *Dynamic Value* has be
 
 ### Survey type (core input element)
 
-Survey type is also a core input element. In the example form it has been coded as a select input with four options. See the [*Data dictionary*](https://arestrom.github.io/sgsdd/) for the new *spawning_ground* database if any option that you need are missing. The structure of this input is the same as many others. No additional comments are needed. The only new item is that we have added a *Label* input directly below that describes each option in more detail. This type of input can be handy when you need to include explicit documentation for specific inputs. 
+Survey type is also a core input element. In the example form it has been coded as a select input with four options. See the *survey_design_type* look-up table in the [*Data dictionary*](https://arestrom.github.io/sgsdd/#survey_design_type_lut) for the new *spawning_ground* database if any option that you need is missing. The structure of this input is the same as many others. No additional comments are needed. The only new item is that we have added a *Label* input directly below that describes each option in more detail. This type of input can be handy when you need to include explicit documentation for specific inputs. 
 
 ### Redd count
 
@@ -323,7 +323,7 @@ The `redd_count` input is another *Text* input with a `Number pad` data entry ke
 
 ### Redd location
 
-The coding for `redd_location` is a bit more complex than other inputs. It is set as *Required* in the example form but your survey protocols may differ. The *Dynamic Value* is set to an empty string `{""}`. This is needed to **make sure** you do not recycle previously used GPS locations. An unfortunate side-effect of the *Location* widget is that it can be *sticky* without any help on your part. 
+The coding for `redd_location` is a bit more complex than other inputs. It is set as *Required* in the example form...though your survey protocols may differ. The *Dynamic Value* is set to an empty string `{""}`. This is needed to **make sure** you do not recycle previously used GPS locations. An unfortunate side-effect of the *Location* widget is that it can be *sticky* without any help on your part. 
 
 The *Condition Value* for `redd_location` is where the complexity enters. We want to hide the input if the *Label* for `observation_type` is either *Live fish* or *Carcass*. And we only want to show the input if we have counted one or more actual redds and the `entry_method` is `realtime`. The full code is: 
 
@@ -346,7 +346,7 @@ Since the *Element Type* is a *Select* we can set the default value to `new_redd
 
 ### Redd fish?  
 
-The `redd_fish?` field is another *gatekeeper* field that asks if you want to record the number of live fish of the same species that was seen at the redd site. The default value is set to `1` for *No*. If you select *Yes* then a new data element will appear that allows the surveyor to enter the number of live fish counted.  
+The `redd_fish?` field is another *gatekeeper* field that asks if you want to record the number of live fish associated with a specific redd. The default value is set to `1` for *No*. If you select *Yes* then a new data element will appear that allows the surveyor to enter the number of live fish counted.  
 
 The *Condition Value* for `redd_fish` is defined as: 
 
@@ -374,21 +374,21 @@ The number of characters required to define such relatively simple logic should 
 
 If the output of the *gatekeeper* `show_fish` field above is `yes` additional data elements needed for counting and sampling fish will be enabled, starting with the `fish_count` element. This is where the three different routes mentioned above converge. Notice that the code needed for the *Condition Value* box can now be condensed down to `species_fish > -1 && show_fish == "yes"`.
 
-The `fish_count` field has been coded as a `Text` field, but with a `Number Pad` keyboard display. The reason for coding this as `Text` rather than `Number` is that text can often be easier to work with. One advantage is that default values can be set to `""`, or blank, rather than initiated to a value such as `0`. If you need to work with the actual numeric values later in logic statements, you can always convert using the JavaScript `Number()` function. Notice that the default *Dynamic Value* has been set to "". 
+The `fish_count` field has been coded as a `Text` field, but with a `Number Pad` keyboard display. The reason for coding this as `Text` rather than `Number` is that text can often be easier to work with. One advantage is that default values can be set to `""`, or blank, rather than initiated to a value such as `0`. If you need to work with the actual numeric values later in logic statements, you can always convert using the JavaScript `Number()` function. Notice that the default *Dynamic Value* has been set to an empty string: `""`. 
 
 ### Carcass sampling note
 
-Directly below the `fish_count` element is a label that will only be visible if `fish_count` is greater than one and `observation_type` is `carcass`. This serves as a reminder to surveyors that if they need to record certain data for individual fish, then they must enter a count of one for `fish_count`. When entering carcass sampling data such as CWT label numbers, scale sample numbers, fish lengths, or other data that are only relevant to individual fish, then the `fish_count` value must be one. 
+Directly below the `fish_count` element is a label that will only be visible if `fish_count` is greater than one and `observation_type` is `carcass`. This serves as a reminder to surveyors that if they need to record certain data for individual fish, then they must enter a count of `1` for `fish_count`. When entering carcass sampling data such as CWT label numbers, scale sample numbers, fish lengths, or other data that are only relevant to individual fish, then the `fish_count` value must be `1`. 
 
 ### Fish location
 
-The next three fields provide surveyors the opportunity to enter GPS coordinates for a single fish or group of fish. The *Condition Value* code `fish_location_yes_no` select element uses both the `show_fish` element and the `Number()` function mentioned above:
+The next three data elements provide surveyors the opportunity to enter GPS coordinates for a single fish or a group of fish. The *Condition Value* code for the `fish_location_yes_no` select element uses both the `show_fish` element and the `Number()` function mentioned above:
 
 ```{js, eval = FALSE}
 if (ZCDisplayValue_observation_type == "Fish redd") {false} else {species_fish > -1 && show_fish == "yes" && entry_method_text == "realtime" && Number(fish_count) > 0}
 ```
 
-The `fish_location_yes_no` select element will only become visible if data are entered real-time in the field, if the logic for the `show_fish` element evaluates to `yes`, and if the number of fish counted is greater than zero. Without the `show_fish` element this set of logic may well have exceeded the 500 character limit and would have been much harder to read. 
+The `fish_location_yes_no` select element will only become visible if data are entered *real-time* in the field, if the logic for the `show_fish` element evaluates to `yes`, and if the number of fish counted is greater than `0`. Without the `show_fish` element this set of logic may well have exceeded the 500 character limit and would have been much harder to read. 
 
 If the surveyor answers `yes` a location widget will become visible allowing automated entry of GPS location data. The next data element then processes this location data and strings together the `latitude` and `longitude` portions of the location...as was seen above with the `redd_coordinates` field. 
 
@@ -404,9 +404,9 @@ The `clip_status` data element provides a good example of using JavaScript code 
 if (ZCDisplayValue_observation_type == "Fish redd" &&  ZCDisplayValue_redd_fish_yes_no == "No") {false} else {Number(fish_count) > 0 && ["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"].contains(species_text)}
 ```
 
-The first half of this statement is logic you have seen previously. The part after the `else` statement, however, adds a new twist by defining an array of species and then testing to see if the array contains the species you selected at the top of the subform in the `species_fish` data element. In JavaScript, arrays can be defined using square brackets. The `species_text` element we defined previously extracted the `Label` portion of the `species_fish` option list. We then define a new JavaScript `contains()` method for arrays to determine if the species array contains the `species_text` element. 
+The first half of this statement is logic you have seen previously. The part after the `else` statement, however, adds a new twist by defining an array of species and then testing to see if the array contains the species you selected at the top of the subform in the `species_fish` data element. In JavaScript, arrays can be defined using square brackets. The `species_text` element was defined previously by extracting the `Label` portion of the `species_fish` option list. We then define a new JavaScript `contains()` method for arrays to determine if the species array *contains* the `species_text` element. 
 
-The array `contains()` method is defined in the page-level JavaScript code window for the parent form. Click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the parent form page. You can also inspect the method definition in Appendix 5.1 at the bottom of this manual. The method allows us to only display the `clip_status` data element if `species_fish` is one of the species listed in the array.
+The new `contains()` method for arrays is defined in the page-level JavaScript code window for the parent form. Click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the parent form page. You can also inspect the method definition in Appendix 5.1 at the bottom of this manual. The `Array.prototype` portion of this code indicates we are defining a new method for arrays. The `contains()` method allows us to only display the `clip_status` data element if `species_fish` is one of the species listed in the array.
 
 ### Spawn condition
 
@@ -428,14 +428,60 @@ Another method to limit visibility of a data element based on `species` is provi
 ZCDisplayValue_observation_type == "Carcass"  && (species_text == "Chinook" || species_text == "Coho") && Number(fish_count) > 0
 ```
 
-Since coded-wire tags are limited to only a few species it is sometimes easier to explicity inspect for species using the `==` comparison operator than to rely on string or array methods. Pay special attention to the parentheses in this case. The `observation_type` must be `carcass` and `fish_count` must be ` > 0`, but `species_text` can be *either* `Chinook` or `Coho`. 
+Since coded-wire tags are limited to only a few species it is sometimes easier to explicity inspect for species using the `==` comparison operator than to rely on string or array methods. Pay special attention to the parentheses in this case. The `observation_type` must be `carcass`, and `fish_count` must be ` > 0`, but `species_text` can be *either* `Chinook` or `Coho`. 
 
 ### Detection method
 
-The `cwt_detect_method` data element should only be visible if a surveyor was actively inspecting fish for coded-wire tags and a determination was recorded. In that case we want to know what method was used to detect the tags. The select option list `key_values` for `cwt_detected` lists the following categories: `did_not_check` `no_beep`, `beep`, `no_head`. We can therefore base the *Condition Value* for the `cwt_detect_method` data element on whether or not the words `beep` or `no_beep` were present in the selected `key_values`:
+The `cwt_detect_method` data element should only be visible if a surveyor was actively inspecting fish for coded-wire tags and a determination was recorded. In that case we want to know what method was used to detect the tags. The `key_values` portion of the option list for `cwt_detected` lists the following categories: `did_not_check` `no_beep`, `beep`, `no_head`. We can therefore base the *Condition Value* for the `cwt_detect_method` data element on whether or not the words `beep` or `no_beep` were present in the selected option list `key_value`:
 
 ```{js, eval = FALSE}
 ZCDisplayKey_cwt_detected == "beep" || ZCDisplayKey_cwt_detected == "no_beep"
 ```
+
+Notice that this data element has been set to `Required`. 
+
+### CWT head label number
+
+If a coded-wire tag is detected we would want to take the head for processing at the CWT tag-lab, and also assign a head label number. The `cwt_label` data element allows you to manually enter the label number. If you are using labels that have a pre-recorded barcode label you could change this element to a *Manatee Works* barcode element instead and simply scan the label rather than enter the data manually. The *Condition Value* for this element specifies that it would only become visible if: `Number(fish_count) == 1 && ZCDisplayKey_cwt_detected == "beep"`.
+
+### Did you take a sample?
+
+The final *gatekeeper* element in our example observations subform relates to carcass sampling. This element allows you to specify either *None*, or alternately, the type of sample you took. In our example form this element has been coded as a *Select* element, meaning only one type of sample, either `otolith`, `tissue`, or `scale` can be selected. If you typically collect more than one type of sample this could also be coded as a *MultiSelect* element. In that case you would need to adjust the *Condition Value* code of the elements below.
+
+### Fish sample text
+
+The `fish_sample_text` is another hidden element that simply pulls out the display value from the `fish_sample` option list above. This display value is subsequently used to control which of the remaining data elements in the subform will be visible. 
+
+### Sample number
+
+If you are collecting `otolith` or `tissue` samples you will also want to record a `sample_number` to uniquely identify the sample. The *Dynamic Value* code constrains this element to only be shown if `fish_sample` is greater than `0`, meaning the `fish_sample` type is something other than *None*. It also requires that `fish_sample_text != "Scale"`. Normally we would want to enter scale card numbers and scale position numbers in their own separate fields. 
+
+### Unique sample number (UUID)
+
+If we want to record a sample number that is virtually guaranteed to be unique, one way to do that would be to use the *Dynamic Value* code in the `sample_number_uuid` data element: 
+
+```{js, eval = FALSE}
+if (fish_sample_text == "None" || fish_sample_text == "Scale") {""} else if (sample_number.length > 0) {sample_number + "_" + generateUUID()} else {generateUUID()}
+```
+
+This element is a hidden field. If the `fish_sample` type is `otolith` or `tissue` it will generate a 36 character long universally unique ID (UUID). If a sample number was manually entered in the `sample_number` field it will attach this number to the front of UUID. Otherwise it will silently generate just a raw UUID.  
+
+### Scale card numbers
+
+The next two data elements, `scale_card_number` and `scale_card_position_number` allows for manual entry of the relevant numbers printed on scale cards. The *Condition Value* code for both elements ensures that these fields will only be visible if `fish_sample_text == "Scale"`. Note also that there is *Client Validation* code for the `scale_card_position_number` that limits the range of values that can be entered. Only values from `1` through `20` are allowed. 
+
+### Length measurement cm
+
+Survey protocols often call for length measurements to be taken if fish are sampled for DNA, otoliths, or scales. The `length_measurement_cm` data element allows lengths to be manually entered. Notice that no *Client Validation* code has been entered. Fat fingered data entry could easily resut in excessively large numbers entered in this field. *Client Validation* code should always be included in cases such as this. As an exercise you can adapt the *Client Validation* code in the `scale_card_position_number` field above to set a range of acceptable values. Make sure and save your changes, then sync your form, and test to see if the validation works as intended. Make sure and include a *Validation message*. 
+
+### Length measurement type
+
+Whenever a length is recorded we also need to know how that length was measured. The option list for the `length_measurement_type` data element provides the four most common options. Other options may be needed depending on your survey protocols. The [*Data dictionary*](https://arestrom.github.io/sgsdd/#fish_length_measurement_type_lut) for the new *spawning_ground* database lists a few additional options. The *Condition Value* code for this element ensures that it will only be visible if an actual measurement is entered: `length_measurement_cm.length > 0`. This code uses the `length()` method for strings to check if a measurement has been entered. 
+
+If you always record length using the same method this data element should be hard-coded as a hidden field. Try to eliminate manual entry of data in the field whenever possible. 
+
+Note also that there is an error in the way the *Dynamic Value* for this field is coded. As an exercise, note how *Dynamic Values* for select elements such as these are typically coded and correct the error. 
+
+
 
 
