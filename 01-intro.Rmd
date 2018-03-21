@@ -22,19 +22,19 @@ Mobile forms avoid the need to transcribe data from a field notebook or write-in
 
 ### Validation
 
-Another advantage of mobile forms is data integrity. Common errors can be automatically detected while still in the field by adding validation code directly into your forms. An unusual value can be flagged and the surveyor immediately asked to verify the suspect value before submitting. Validation code can be as simple or elaborate as needed. It is normal to add additional validation code after you launch a mobile form and you start to notice where errors tend to occur. An especially useful feature of mobile forms is that you can add validation or other features as you progress through the season. There is no need to print new survey forms. Updates to your form will be automatically synced to mobile devices every time the form is opened. 
+Another advantage of mobile forms is data integrity. Common errors can be automatically detected while still in the field by adding validation code directly into your forms. An unusual value can be flagged and the surveyor immediately asked to verify the suspect value before submitting. Validation code can be as simple or elaborate as needed. It is normal to add additional validation code during the testing phase, after you first launch your form and start to notice where errors tend to occur. An especially useful feature of mobile forms is that you can add validation or other features as you progress through your testing phase. There is no need to print new survey forms. Updates to your form will be automatically synced to mobile devices every time the form is opened. Thorough testing is essential, but at the end of the process you should have a form that will be resistant to most common human errors.  
 
 ### Reporting
 
-For biologists, an added bonus of mobile forms is a clean set of data that is housed in a predictable format, and securely backed up. With proper validation on the front-end, data transmitted from mobile form to back-end database is immediately available for reporting and analysis. Clean data, organized in a consistent format can make it easier to produce population estimates and reports. Data requests can typically be handled with a few mouse-clicks to export the relevant data. It is also relatively easy to write scripts that can generate final publication quality escapement reports, complete with figures, and tables, directly from the database. 
+For biologists, an added bonus of mobile forms is a clean set of data that is housed in a predictable format, and securely backed up. With proper validation on the front-end, data transmitted from mobile form to back-end database is immediately available for reporting and analysis. Clean data, organized in a consistent format can make it easier to produce population estimates and reports. Data requests can typically be handled with a few mouse-clicks to export the relevant data. It is also relatively easy for someone familiar with scientific scripting languages such as [R](https://www.r-project.org/) or [Python](https://www.python.org/) to write scripts that can generate final publication quality escapement reports, complete with figures, and tables, directly from the database. 
 
 ## API
 
-As mentioned earlier, a major benefit of using the iFormBuilder platform for building and deploying mobile forms is the *application programming interface*, or API. An API is simply a set of protocols that allows computers to talk to one another. One case where the API can avoid a great deal of pain is in constructing large filtered option lists. The prime example for spawning ground surveys are the drop-down pick-lists for survey start and stop points along a given stream. Lists with thousands of elements can be constructed and uploaded to the iFormBuilder cloud in seconds. The [iformr](https://github.com/arestrom/iformr) package provides a set of functions that allows for using [R](https://www.r-project.org/about.html) scripts to automate many of these types of tasks. Instructions for how to get started can be found in package [GitHub repository](https://github.com/arestrom/iformr).
+As mentioned earlier, a major benefit of using the iFormBuilder platform for building and deploying mobile forms is the *application programming interface*, or API. An API is simply a set of protocols that allows computers to talk to one another. One case where the API can avoid a great deal of pain is in constructing large filtered option lists. The prime example for spawning ground surveys are the drop-down pick-lists for survey start and stop points along a given stream. Lists with thousands of elements can be constructed and uploaded to the iFormBuilder cloud in seconds. The [iformr](https://github.com/arestrom/iformr) package provides a set of functions that allows for using [R](https://www.r-project.org/about.html) scripts to automate many of these types of tasks. Instructions for how to get started can be found in iformr package [GitHub repository](https://github.com/arestrom/iformr).
 
 ## Profiles
 
-Since the source code for this manual is hosted on a public website, I will not go into detail on setting up devices, assigning AppleIDs, Google Play store accounts, or connecting to the WDFW iFormBuider account. The only prerequiste that needs to be stressed here is that you will want to get a separate iFormBuilder **Profile** set up for your workgroup. The main benefit is that it keeps your forms and option lists segregated from other groups, and makes it less likely you will lose data because someone accidentally edited your form...or deleted an option list. Contact me if you need help to get this set up.
+Since the source code for this manual is hosted on a public website, I will not go into detail on setting up devices, assigning AppleIDs, Google Play store accounts, or connecting to the WDFW iFormBuider account. The only prerequiste that needs to be stressed here is that you will want to get a separate iFormBuilder **Profile** set up for your workgroup. The main benefit is that it keeps your forms and option lists segregated from other groups. It makes it less likely you will lose data because someone accidentally edited your form...or deleted an option list. Contact me, or another member of the Fish Program Bio Data Systems team, to get this set up.
 
 ## Useful tips
 
@@ -50,7 +50,7 @@ When adding new data inputs to your form keep in mind that the `data_column` nam
 
 ### Option lists
 
-Always remember that option lists can be shared among different forms that are contained in the same *profile*. This means that whenever you edit an option lists you are editing options for all forms in the profile that share the list. This can cause major problems, including data loss, if you have other mobile forms in your profile and those forms share option lists.
+Always remember that option lists can be shared among different forms that are contained in the same *profile*. This means that whenever you edit an option lists you are editing options for all forms in the profile that share the list. This can cause major problems, including **data loss**, if you have other mobile forms in your profile and those forms share option lists.
 
 ### Save often
 
@@ -61,6 +61,16 @@ knitr::include_graphics("screenshots/actions.png")
 ```
 
 Few things are more annoying than to make a series of changes to a form, then later realize that all your work has dissapeared because you forgot to save. 
+
+### Test thoroughly !!!
+
+Before you put a new mobile form into production you absolutely need to conduct extensive testing to make sure the form behaves as you intend. Train your surveyors on how to use the form and then let them loose to enter test data under realistic conditions. Humans can be extraordinarly creative when interacting with technology. You may find you need to add additional validation code, or restructure the flow of prompts in ways to work more naturally. 
+
+Once you have a form that works well you should **resist** making further changes during the season. Simple changes, such as adding items to an option list *can* be implemented on forms that are in production, but you may risk losing previously entered data if you make any substantive changes to data elements. In the Element Properties box of the form builder application, there is now text in <span style="color:#c60d23; font-size: 1.0em;">red</span> warning you of the dangers. 
+
+```{r echo = FALSE, out.width = "65%"}
+knitr::include_graphics("screenshots/warnings.png")
+```
 
 ## Conventions
 
