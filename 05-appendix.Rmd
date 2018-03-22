@@ -56,9 +56,9 @@ function pad(num) {
 };
 ```
 
-### Extend JavaScript methods for arrays to determine if an array *contains* a specific element
+### Contains() method
 
-This code uses the array property *prototype* to add a new method for JavaScript arrays. It returns a value of `true` if the desired array element exists in the array. For example, if the array consists of: ["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"] and `species` is "Coho" then the statement: 
+This code uses the array property *prototype* to add a new `contains()` method for JavaScript arrays. It returns a value of `true` if the desired array element exists in the array. For example, if the array consists of: ["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"] and `species` is "Coho" then the statement: 
 
 ```{js, eval = FALSE}
 ["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"].contains(species)

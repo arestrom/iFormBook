@@ -319,11 +319,11 @@ Survey type is also a core input element. In the example form it has been coded 
 
 ### Redd count
 
-The `redd_count` input is another *Text* input with a `Number pad` data entry keyboard. The *Condition Value* is defined so that it will only appear if a `species_fish` is selected and the `observation_type` *Key Value* is `fish_redd`. In the *Element Properties* it is set as *Required*. For all practical purposes it will only be required if the `observation_type` is `fish_redd`. Input elements are truly required until they are visible. 
+The `redd_count` input is another *Text* input with a `Number pad` data entry keyboard. The *Condition Value* is defined so that it will only appear if a `species_fish` is selected and the `observation_type` *Key Value* is `fish_redd`. In the *Element Properties* it is set as *Required*. For all practical purposes it will only be required if the `observation_type` is `fish_redd`. Input elements are not truly required until they are visible. 
 
 ### Redd location
 
-The coding for `redd_location` is a bit more complex than other inputs. It is set as *Required* in the example form...though your survey protocols may differ. The *Dynamic Value* is set to an empty string `{""}`. This is needed to **make sure** you do not recycle previously used GPS locations. An unfortunate side-effect of the *Location* widget is that it can be *sticky* without any help on your part. 
+The coding for `redd_location` is a bit more complex than other inputs. In our example form this element is set to *Required*. If your survey protocols do not require that GPS coordinates be recorded for every redd, then you would want to uncheck this box. The *Dynamic Value* is set to an empty string `{""}`. This is needed to **make sure** you do not recycle previously used GPS locations. An unfortunate side-effect of the *Location* widget is that it can be *sticky* without any help on your part. 
 
 The *Condition Value* for `redd_location` is where the complexity enters. We want to hide the input if the *Label* for `observation_type` is either *Live fish* or *Carcass*. And we only want to show the input if we have counted one or more actual redds and the `entry_method` is `realtime`. The full code is: 
 
@@ -368,7 +368,7 @@ For our example survey form there are three separate routes a surveyor might tak
 
 The code snippet above combines logic for all three possible routes to produce a simple `yes` or `no` answer that can then be inserted into the *Condition Value* box of our `fish_count` data element. The `fish_count` data element can be seen directly below *Show fish fields*. Despite the length of the code snippet above, the logic is fairly simple. All it says is that if the `observation_type` is `live_fish` or `carcass` then show the `fish_count` field. But if the `observation_type` is `fish_redd` then only show the `fish_count` field if you answered `yes` when asked if you wanted to enter counts for live fish. 
 
-The number of characters required to define such relatively simple logic should serve as a reminder that one or more hidden *gatekeeper* data elements may often be required to define the behavior of your form. You always have the option to make your logic arbitrarily complex, but you may then need to break that logic up into digestible (and hopefully understandable) > 500 character chunks.  
+The number of characters required to define such relatively simple logic should serve as a reminder that one or more hidden *gatekeeper* data elements may often be required to define the behavior of your form. You always have the option to make your logic arbitrarily complex, but you may then need to break that logic up into digestible (and hopefully understandable) < 500 character chunks. Another option would be to write a JavaScript function to encapsulate the logic into one simple function call. This might be asking too much if you are not a programmer, and are just starting to learn how to design forms. 
 
 ### Number of fish counted
 
@@ -398,7 +398,7 @@ The `sex_maturity` pick list element will only be visible if the `observation_ty
 
 ### Adipose clip status
 
-The `clip_status` data element provides a good example of using JavaScript code to take `species` into account in determining if the field should be displayed or not. The *Condition Value* code in this case is a little more complicated than in previous elements:  
+The `clip_status` data element provides a good example of using JavaScript code to take `species` into account in determining if the element should be displayed or not. The *Condition Value* code in this case is a little more complicated than in previous elements:  
 
 ```{js, eval = FALSE}
 if (ZCDisplayValue_observation_type == "Fish redd" &&  ZCDisplayValue_redd_fish_yes_no == "No") {false} else {Number(fish_count) > 0 && ["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"].contains(species_text)}
@@ -440,7 +440,7 @@ ZCDisplayKey_cwt_detected == "beep" || ZCDisplayKey_cwt_detected == "no_beep"
 
 ### CWT head label number
 
-If a coded-wire tag is detected we would want to send the head for to the WDFW CWT tag-lab for processing. We would also want to record the head label number. The `cwt_label` data element allows you to manually enter the label number. If you are using labels that have a pre-recorded barcode label you could change this element to a *Manatee Works* barcode element instead, and simply scan the label rather than enter the data manually. The *Condition Value* for this element specifies that it would only become visible if: `Number(fish_count) == 1 && ZCDisplayKey_cwt_detected == "beep"`.
+If a coded-wire tag is detected we would want to send the head to the WDFW CWT tag-lab for processing. We would also want to record the head label number. The `cwt_label` data element allows you to manually enter the label number. If you are using labels that have a pre-recorded barcode label you could change this element to a *Manatee Works* barcode element instead, and simply scan the label rather than enter the data manually. The *Condition Value* for this element specifies that it would only become visible if: `Number(fish_count) == 1 && ZCDisplayKey_cwt_detected == "beep"`.
 
 ### Did you take a sample?
 
