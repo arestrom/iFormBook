@@ -1,8 +1,10 @@
 # Appendix
 
+The sections below are intended to provide a quick reference for JavaScript functions, best practices, or useful guidelines you need to keep in mind when building forms. Please consider contributing your own JavaScript functions, or other helpful additions to this appendix. It will be updated regularly as new items are submitted.  
+
 ## JavaScript functions
 
-You can copy and paste these functions directly into the JavaScript panel of your parent form. To access the JavaScript panel click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the Forms page when using the online Form Builder application.
+You can copy and paste any of the functions below directly into the JavaScript panel of your parent form. To access the JavaScript panel click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the Forms page when using the online Form Builder application.
 
 
 ```{r echo = FALSE, out.width = "25%"}
@@ -44,7 +46,7 @@ Date.prototype.fishStatWeek = function () {
 
 ### Pad a number
 
-Pad a number with three leading zeros. For example, change `01` to `0001`, or `2` to `0002`. Author: Jake Shapely.  
+Pad a number with three leading zeros. For example, change `01` to `0001`, or `2` to `0002`. Thanks to Jake Shapely for this function.   
 
 ```{js, eval = FALSE}
 function pad(num) {
@@ -62,7 +64,7 @@ This code uses the array property *prototype* to add a new method for JavaScript
 ["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"].contains(species)
 ```
 
-will return `true`.
+will return `true`. If the species is not listed in the array the function will return `false`. 
 
 ```{js, eval = FALSE}
 Array.prototype.contains = function(element){

@@ -1,6 +1,6 @@
 # Build a form
 
-The sections below use the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) example form to illustrate how to build a mobile form using the iFormBuilder platform. If you have not done so already, please see the instructions in **Chapter 2** to load this package to your profile. Many of the explanation below will not make sense unless you can look at the actual form element definitions in the form builder application. After you have loaded the form package to your profile, open the iFormBuilder web interface, then click on *Forms > Form Builder > spawning_ground_p* to load the example parent form. 
+The sections below use the [*Package_spawning_ground.json*](https://github.com/arestrom/mf4ss) example form to illustrate how to build a mobile form using the iFormBuilder platform. If you have not done so already, please see the instructions in **Chapter 2** to load this package to your profile. Much of the content below will not make sense unless you can look at the actual form element definitions in the *Form Builder* application. After you have loaded the form package to your profile, open the iFormBuilder web interface, then click on *Forms > Form Builder > spawning_ground_p* to load the example parent form. 
 
 ```{r echo = FALSE, fig.align = 'left', out.width = "20%"}
 knitr::include_graphics("screenshots/forms_dropdown.png")
@@ -398,19 +398,19 @@ The `sex_maturity` pick list element will only be visible if the `observation_ty
 
 ### Adipose clip status
 
-The `clip_status` data element provides a good example of using JavaScript code to take `species` into account in determining if the field should be displayed or not. The *Condition Value* code in this case is a little more complicated:  
+The `clip_status` data element provides a good example of using JavaScript code to take `species` into account in determining if the field should be displayed or not. The *Condition Value* code in this case is a little more complicated than in previous elements:  
 
 ```{js, eval = FALSE}
 if (ZCDisplayValue_observation_type == "Fish redd" &&  ZCDisplayValue_redd_fish_yes_no == "No") {false} else {Number(fish_count) > 0 && ["Chinook", "Coho", "Chum", "Sockeye", "Cutthroat", "Steelhead"].contains(species_text)}
 ```
 
-The first half of this statement is logic you have seen previously. The part after the `else` statement, however, adds a new twist by defining an array of species and then testing to see if the array contains the species you selected at the top of the subform in the `species_fish` data element. In JavaScript, arrays can be defined using square brackets. The `species_text` element was defined previously by extracting the `Label` portion of the `species_fish` option list. We then define a new JavaScript `contains()` method for arrays to determine if the species array *contains* the `species_text` element. 
+The first half of this statement is fairly simple. The part after the `else` statement, however, adds a new twist by defining an array of species and then testing to see if the array contains the species you selected at the top of the subform in the `species_fish` data element. In JavaScript, arrays can be defined using square brackets. The `species_text` element was defined previously by extracting the `Label` portion of the `species_fish` option list. We then define a new JavaScript `contains()` method for arrays to determine if the species array *contains* the `species_text` element. 
 
 The new `contains()` method for arrays is defined in the page-level JavaScript code window for the parent form. Click on the curly braces icon <span style="color:#89BD48; font-size: 1.2em;">{}</span> in the top right corner of the parent form page. You can also inspect the method definition in Appendix 5.1 at the bottom of this manual. The `Array.prototype` portion of this code indicates we are defining a new method for arrays. The `contains()` method allows us to only display the `clip_status` data element if `species_fish` is one of the species listed in the array.
 
 ### Spawn condition
 
-The remaining data elements in the subform all require that the `fish_count` element evaluates to `1`, and that the `observation_type` is `carcass`. 
+The remaining data elements in the observations subform all require that the `fish_count` element evaluates to `1`, and that the `observation_type` is `carcass`. 
 
 The *Condition Value* code for the `spawn_condition` element provides another example of using previously entered data in your logic statements. This time we use the `includes()` method for strings to determine if the fish is female. 
 
@@ -418,35 +418,33 @@ The *Condition Value* code for the `spawn_condition` element provides another ex
 Number(fish_count) == 1 && ZCDisplayValue_observation_type == "Carcass"  && ZCDisplayKey_sex_maturity.includes("female")
 ```
 
-Since the `includes()` method is a standard JavaScript [string method](https://www.w3schools.com/jsref/jsref_obj_string.asp) there is no need to insert any new JavaScript code in the page-level JavaScript panel. The *Condition Value* code above simply inspects the `key_value` of the `sex_maturity` option list to determine if the selected value includes the word `female`. If it does then the `spawn_condition` data element will become visible. 
+Since the `includes()` method is a standard JavaScript [string method](https://www.w3schools.com/jsref/jsref_obj_string.asp) there is no need to insert any new JavaScript code in the page-level JavaScript panel. The *Condition Value* code above simply inspects the `key_value` of the `sex_maturity` option list to determine if the selected value includes the word `female`. If it does, then the `spawn_condition` data element will become visible. 
 
 ### CWT detected?  
 
-Another method to limit visibility of a data element based on `species` is provided by the `cwt_detected` data element: 
+Another example of how you can limit visibility of a data element based on `species` is provided by the *Condition Value* code in the `cwt_detected` data element: 
 
 ```{js, eval = FALSE}
 ZCDisplayValue_observation_type == "Carcass"  && (species_text == "Chinook" || species_text == "Coho") && Number(fish_count) > 0
 ```
 
-Since coded-wire tags are limited to only a few species it is sometimes easier to explicity inspect for species using the `==` comparison operator than to rely on string or array methods. Pay special attention to the parentheses in this case. The `observation_type` must be `carcass`, and `fish_count` must be ` > 0`, but `species_text` can be *either* `Chinook` or `Coho`. 
+Since coded-wire tags are only present in a few select species it is sometimes easier to explicity inspect for species using the `==` comparison operator than to rely on string or array methods. Pay special attention to the parentheses in this case. The `observation_type` must be `carcass`, and `fish_count` must be ` > 0`, but `species_text` can be *either* `Chinook` or `Coho`. 
 
 ### Detection method
 
-The `cwt_detect_method` data element should only be visible if a surveyor was actively inspecting fish for coded-wire tags and a determination was recorded. In that case we want to know what method was used to detect the tags. The `key_values` portion of the option list for `cwt_detected` lists the following categories: `did_not_check` `no_beep`, `beep`, `no_head`. We can therefore base the *Condition Value* for the `cwt_detect_method` data element on whether or not the words `beep` or `no_beep` were present in the selected option list `key_value`:
+The `cwt_detect_method` data element should only be visible if a surveyor is actively inspecting fish for coded-wire tags and a determination of presence-absence has been recorded. In that case we would want to know what method was used to detect the tags. The `key_value` portion of the option list for `cwt_detected` includes the following categories: `did_not_check` `no_beep`, `beep`, `no_head`. We can therefore base the *Condition Value* for the `cwt_detect_method` data element on whether or not the words `beep` or `no_beep` were present in the selected option list `key_value`:
 
 ```{js, eval = FALSE}
 ZCDisplayKey_cwt_detected == "beep" || ZCDisplayKey_cwt_detected == "no_beep"
 ```
 
-Notice that this data element has been set to `Required`. 
-
 ### CWT head label number
 
-If a coded-wire tag is detected we would want to take the head for processing at the CWT tag-lab, and also assign a head label number. The `cwt_label` data element allows you to manually enter the label number. If you are using labels that have a pre-recorded barcode label you could change this element to a *Manatee Works* barcode element instead and simply scan the label rather than enter the data manually. The *Condition Value* for this element specifies that it would only become visible if: `Number(fish_count) == 1 && ZCDisplayKey_cwt_detected == "beep"`.
+If a coded-wire tag is detected we would want to send the head for to the WDFW CWT tag-lab for processing. We would also want to record the head label number. The `cwt_label` data element allows you to manually enter the label number. If you are using labels that have a pre-recorded barcode label you could change this element to a *Manatee Works* barcode element instead, and simply scan the label rather than enter the data manually. The *Condition Value* for this element specifies that it would only become visible if: `Number(fish_count) == 1 && ZCDisplayKey_cwt_detected == "beep"`.
 
 ### Did you take a sample?
 
-The final *gatekeeper* element in our example observations subform relates to carcass sampling. This element allows you to specify either *None*, or alternately, the type of sample you took. In our example form this element has been coded as a *Select* element, meaning only one type of sample, either `otolith`, `tissue`, or `scale` can be selected. If you typically collect more than one type of sample this could also be coded as a *MultiSelect* element. In that case you would need to adjust the *Condition Value* code of the elements below.
+The final *gatekeeper* element in our example observations subform relates strictly to carcass sampling. This element allows you to specify the type of sample you took. You can also select *None*. In our example form this element has been coded as a *Select* element, meaning only one type of sample, either `otolith`, `tissue`, or `scale` can be selected. If you typically collect more than one type of sample this could also be coded as a *MultiSelect* element. In that case you would need to adjust the *Condition Value* code of the elements below.
 
 ### Fish sample text
 
@@ -454,7 +452,7 @@ The `fish_sample_text` is another hidden element that simply pulls out the displ
 
 ### Sample number
 
-If you are collecting `otolith` or `tissue` samples you will also want to record a `sample_number` to uniquely identify the sample. The *Dynamic Value* code constrains this element to only be shown if `fish_sample` is greater than `0`, meaning the `fish_sample` type is something other than *None*. It also requires that `fish_sample_text != "Scale"`. Normally we would want to enter scale card numbers and scale position numbers in their own separate fields. 
+If you are collecting `otolith` or `tissue` samples you will also want to record a `sample_number` to uniquely identify the sample. The *Dynamic Value* code constrains this element to only be shown if `fish_sample` is greater than `0`. In other words, `fish_sample` can not be *None*. It also requires that `fish_sample_text != "Scale"`. The reason for this is that we would normally want to enter scale card numbers and scale position numbers in their own separate fields. See the relevant fields below.
 
 ### Unique sample number (UUID)
 
@@ -464,21 +462,25 @@ If we want to record a sample number that is virtually guaranteed to be unique, 
 if (fish_sample_text == "None" || fish_sample_text == "Scale") {""} else if (sample_number.length > 0) {sample_number + "_" + generateUUID()} else {generateUUID()}
 ```
 
-This element is a hidden field. If the `fish_sample` type is `otolith` or `tissue` it will generate a 36 character long universally unique ID (UUID). If a sample number was manually entered in the `sample_number` field it will attach this number to the front of UUID. Otherwise it will silently generate just a raw UUID.  
+This element is a hidden field. If the `fish_sample` type is `otolith` or `tissue` it will generate a 36 character long universally unique ID (UUID). If a sample number was manually entered in the `sample_number` field it will attach this number to the front of UUID, separated from the UUID by an underscore character. Otherwise it will silently generate just a raw UUID.  
 
 ### Scale card numbers
 
 The next two data elements, `scale_card_number` and `scale_card_position_number` allows for manual entry of the relevant numbers printed on scale cards. The *Condition Value* code for both elements ensures that these fields will only be visible if `fish_sample_text == "Scale"`. Note also that there is *Client Validation* code for the `scale_card_position_number` that limits the range of values that can be entered. Only values from `1` through `20` are allowed. 
 
+```{js, eval = FALSE}
+if (fish_sample_text == "Scale") {Number(scale_card_position_number) > 0 && Number(scale_card_position_number) <= 20} else {true}
+```
+
 ### Length measurement cm
 
-Survey protocols often call for length measurements to be taken if fish are sampled for DNA, otoliths, or scales. The `length_measurement_cm` data element allows lengths to be manually entered. Notice that no *Client Validation* code has been entered. Fat fingered data entry could easily resut in excessively large numbers entered in this field. *Client Validation* code should always be included in cases such as this. As an exercise you can adapt the *Client Validation* code in the `scale_card_position_number` field above to set a range of acceptable values. Make sure and save your changes, then sync your form, and test to see if the validation works as intended. Make sure and include a *Validation message*. 
+Survey protocols often call for length measurements to be taken if fish are sampled for DNA, otoliths, or scales. The `length_measurement_cm` data element allows lengths to be manually entered. Notice that no *Client Validation* code has been entered. Fat-fingered data entry could easily result in excessively large numbers being entered in fields such as this. *Client Validation* code should always be included whenever it makes sense to restrict data to a reasonable range. As an exercise you can adapt the *Client Validation* code in the `scale_card_position_number` field above to set a range of acceptable values. Make sure and save your changes, then sync your form, and test to see if the validation works as intended. Make sure and include a *Validation message*. 
 
 ### Length measurement type
 
 Whenever a length is recorded we also need to know how that length was measured. The option list for the `length_measurement_type` data element provides the four most common options. Other options may be needed depending on your survey protocols. The [*Data dictionary*](https://arestrom.github.io/sgsdd/#fish_length_measurement_type_lut) for the new *spawning_ground* database lists a few additional options. The *Condition Value* code for this element ensures that it will only be visible if an actual measurement is entered: `length_measurement_cm.length > 0`. This code uses the `length()` method for strings to check if a measurement has been entered. 
 
-If you always record length using the same method this data element should be hard-coded as a hidden field. Try to eliminate manual entry of data in the field whenever possible. 
+If you always record fish lengths using the same method this data element should be hard-coded as a hidden field. Try to eliminate manual entry of data in the field whenever possible. 
 
 Note also that there is an error in the way the *Dynamic Value* for this field is coded. As an exercise, note how *Dynamic Values* for select elements such as these are typically coded and correct the error. 
 

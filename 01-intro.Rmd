@@ -68,7 +68,7 @@ Before you put a new mobile form into production you absolutely need to conduct 
 
 Once you have a form that works well you should **resist** making further changes during the season. Simple changes, such as adding items to an option list *can* be implemented on forms that are in production, but you may risk losing previously entered data if you make any substantive changes to data elements. In the Element Properties box of the form builder application, there is now text in <span style="color:#c60d23; font-size: 1.0em;">red</span> warning you of the dangers. 
 
-```{r echo = FALSE, out.width = "65%"}
+```{r echo = FALSE, out.width = "50%"}
 knitr::include_graphics("screenshots/warnings.png")
 ```
 
