@@ -198,19 +198,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.2.27" data-path="build-a-form.html"><a href="build-a-form.html#length-measurement-type"><i class="fa fa-check"></i><b>3.2.27</b> Length measurement type</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>4</b> Summary</a><ul>
-<li class="chapter" data-level="4.1" data-path="summary.html"><a href="summary.html#todo"><i class="fa fa-check"></i><b>4.1</b> ToDo</a></li>
-<li class="chapter" data-level="4.2" data-path="summary.html"><a href="summary.html#notes-on-bookdown"><i class="fa fa-check"></i><b>4.2</b> Notes on bookdown</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="summary.html"><a href="summary.html#files-needed-to-build-basic-book"><i class="fa fa-check"></i><b>4.2.1</b> Files needed to build basic book:</a></li>
-<li class="chapter" data-level="4.2.2" data-path="summary.html"><a href="summary.html#building-these-files-generates"><i class="fa fa-check"></i><b>4.2.2</b> Building these files generates:</a></li>
-</ul></li>
+<li class="chapter" data-level="4" data-path="final-notes.html"><a href="final-notes.html"><i class="fa fa-check"></i><b>4</b> Final notes</a><ul>
+<li class="chapter" data-level="4.1" data-path="final-notes.html"><a href="final-notes.html#form-design"><i class="fa fa-check"></i><b>4.1</b> Form design</a></li>
+<li class="chapter" data-level="4.2" data-path="final-notes.html"><a href="final-notes.html#option-lists-1"><i class="fa fa-check"></i><b>4.2</b> Option lists</a></li>
+<li class="chapter" data-level="4.3" data-path="final-notes.html"><a href="final-notes.html#testing"><i class="fa fa-check"></i><b>4.3</b> Testing</a></li>
+<li class="chapter" data-level="4.4" data-path="final-notes.html"><a href="final-notes.html#corrections-and-contributions"><i class="fa fa-check"></i><b>4.4</b> Corrections and contributions</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
 <li class="chapter" data-level="5.1" data-path="appendix.html"><a href="appendix.html#javascript-functions"><i class="fa fa-check"></i><b>5.1</b> JavaScript functions</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="appendix.html"><a href="appendix.html#unique-id-uuid"><i class="fa fa-check"></i><b>5.1.1</b> Unique ID (UUID)</a></li>
 <li class="chapter" data-level="5.1.2" data-path="appendix.html"><a href="appendix.html#statistical-week."><i class="fa fa-check"></i><b>5.1.2</b> Statistical week.</a></li>
 <li class="chapter" data-level="5.1.3" data-path="appendix.html"><a href="appendix.html#pad-a-number"><i class="fa fa-check"></i><b>5.1.3</b> Pad a number</a></li>
-<li class="chapter" data-level="5.1.4" data-path="appendix.html"><a href="appendix.html#extend-javascript-methods-for-arrays-to-determine-if-an-array-contains-a-specific-element"><i class="fa fa-check"></i><b>5.1.4</b> Extend JavaScript methods for arrays to determine if an array <em>contains</em> a specific element</a></li>
+<li class="chapter" data-level="5.1.4" data-path="appendix.html"><a href="appendix.html#contains-method"><i class="fa fa-check"></i><b>5.1.4</b> Contains() method</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="appendix.html"><a href="appendix.html#character-limits"><i class="fa fa-check"></i><b>5.2</b> Character limits</a></li>
 <li class="chapter" data-level="5.3" data-path="appendix.html"><a href="appendix.html#maximum-inputs-per-form"><i class="fa fa-check"></i><b>5.3</b> Maximum inputs per form</a></li>
@@ -235,7 +234,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="get-started" class="section level1">
 <h1><span class="header-section-number">2</span> Get started</h1>
-<p>The aim of this chapter is to provide a visual tour of what a spawning ground form built using the iFormBuilder platform <em>could</em> look like. Feel free to use the example form described below as a starting point that you can edit and adapt to your own protocols. The first section describes how to load the <em>example</em> spawning ground survey form to your profile. Then the following sections provide a guided tour of the parent <em>header</em> form and the <em>observations</em> subform. The focus is on design elements, and what is visible to the surveyor on the device. Technical details on how to build forms will be addressed in chapter 3.</p>
+<p>The aim of this chapter is to provide a visual tour of what a spawning ground form built using the iFormBuilder platform <em>could</em> look like. Feel free to use the example form described below as a starting point that you can edit and adapt to your own protocols. The first section describes how to load the <em>example</em> spawning ground survey form to your profile. Then the following sections provide a guided tour of the parent <em>header</em> form and the <em>observations</em> subform. The focus is on design elements, and what is visible to the surveyor on the device. Technical details on how to build forms will be addressed in Chapter 3.</p>
 <div id="import-example-form" class="section level2">
 <h2><span class="header-section-number">2.1</span> Import example form</h2>
 <p>The quickest way to get started with mobile forms is by example.</p>
@@ -270,7 +269,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="a-brief-tour-parent-form" class="section level2">
 <h2><span class="header-section-number">2.2</span> A brief tour: Parent form</h2>
-<p>The parent form is where you would record information that only needs to be entered once per survey. This is typically the <em>header</em> information you would see at the top of a paper form. Any repeating lines of data (individual observations) will be entered to a subform. The sections below assume that you have a device loaded with the example <em>Spawning Ground</em> form. If not, please do so now, otherwise the remainder of this manual will be close to useless.</p>
+<p>The parent form is where you would record information that only needs to be entered once per survey. This is typically the <em>header</em> information you would see at the top of a paper form. Any repeating lines of data (individual observations) will be entered to a subform. The sections below assume that you have a device loaded with the example <em>Spawning Ground</em> form. If not, please do so now, otherwise you will not be able to follow along with the examples described in the rest of this manual.</p>
 <div id="hiding-questions" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Hiding questions</h3>
 <p>After you have synced the <em>Spawning Ground</em> form to your device, click to launch. You should see a fairly bare form. The only items showing will be some basic header information. Items include a multiselect dropdown widget for <em>Observers</em>, a set of select buttons for <em>Data entry real-time or post-survey</em>, a <em>Survey start date &amp; time</em> widget, a set of <em>Survey method</em> select buttons, a dropdown widget for <em>Stream</em>, and a <em>Done</em> button. The reason that you only see a few input elements at first is that we have hidden the others using conditional logic. Hidden inputs will only be revealed after prerequisite fields have been filled out. Selectively hiding input elements in a form is a highly effective tool for reducing clutter and simplifying form structure.</p>
@@ -307,7 +306,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="survey-comments-and-dynamic-labels" class="section level3">
 <h3><span class="header-section-number">2.2.9</span> Survey comments and dynamic labels</h3>
-<p>In the bottom portion of the parent form you are asked to enter some <em>canned</em> pick-list comments regarding <em>Stream flow, Visibility conditions, and Weather</em>. The new <em>spawning ground</em> database provides many additional options for <em>canned</em> comments adapted from legacy <em>condition codes</em> that you may have used in the past. See the <em>spawning_ground</em> database <a href="https://arestrom.github.io/sgsdd/#survey_comment"><em>Data Dictionary</em></a> for a full list of these comments. Comment descriptions are listed in the look-up tables linked to the survey_comment table.</p>
+<p>In the bottom portion of the parent form you are asked to enter some <em>canned</em> pick-list comments regarding <em>Stream flow, Visibility conditions, and Weather</em>. The new <em>spawning ground</em> database provides many additional options for <em>canned</em> comments adapted from legacy <em>condition codes</em> that you may have used in the past. See the <em>spawning_ground</em> database <a href="https://arestrom.github.io/sgsdd/#survey_comment"><em>Data Dictionary</em></a> for a full list of these comments. Comment descriptions are listed in the look-up tables linked to the <em>survey_comment</em> table.</p>
 <p>You are next asked if the survey was completed. If not, then you are asked to explain why. Toggle between answering <em>Completed survey</em> and any other option. Notice that the label for the <em>Survey comments</em> field will change from <em>(optional)</em> to <em>(required)</em>. In addition, a note will appear reminding you that an explantion is needed. This is a good example of using <em>Dynamic lables</em>. Additional details will be provided in Chapter 3.</p>
 </div>
 <div id="setting-optional-fields-to-required" class="section level3">
@@ -341,7 +340,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">2.3.3</span> Fish redd</h3>
 <p>Click the <em>Done</em> button and cycle back to the top of the subform to enter a new observation. This time select <em>Fish redd</em> as the <em>Observation type</em> and <em>Steelhead</em> as the <em>Species</em>. Once again the first set of questions look similar, but you will now be asked to enter the <em>Number of redds observed</em>. If you enter a count greater than zero, you will also be asked to enter a <em>Redd location</em>. Notice that we have now set the <em>Redd location</em> question to required, as indicated by the asterisk. After you enter the location a hidden field will be generated in the background that will include only the latitude and longitude portions of the location output. For example:</p>
 <pre><code>47.065892: -122.887961</code></pre>
-<p>This is a good example of how you can pull out just the parts you need from a given data input element and combine those parts in arbitrary ways to generate custom data elements. Details on how to create this input element is included in chapter 3.</p>
+<p>This is a good example of how you can pull out just the parts you need from a given data input element and combine those parts in arbitrary ways to generate custom data elements. Details on how to create this input element is included in Chapter 3.</p>
 <p>If you enter a count greater than zero for <em>Number of redds observed</em> you will also be asked about <em>Redd status</em>. The typical options will be listed for selection, but if your protocols require additional categories, those can easily be added.</p>
 <p>You will also be asked if there were <em>Any live Steelhead associated with the redd?</em>. If you answer <em>Yes</em> you will then have the option to enter the number of Steelhead seen, the <em>Sex and maturity</em>, and the <em>Adipose clip status</em> of the live steelhead.</p>
 <p>Unlike the restrictions applied to carcass data, there are no requirements to enter data for redds on an individual basis. However, if you wanted to add questions to your form that typically require individual entries, such as redd shape, tailspill height, or substrate type, then you would need to condition those question on <em>Redd count</em> and only show these question if the count was one.</p>

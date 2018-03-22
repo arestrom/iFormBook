@@ -1,0 +1,35 @@
+# Final notes
+
+## Form design
+
+A common impulse when first starting to design mobile forms is to conjure a vision of the *perfect* form, and then dive right into implementing that vision. Often this involves elaborate flow-charts of how you envision your field staff navigating from parent form, to subform, to multiple nested subforms. Based on painful experience I would recommend the opposite approach. Start simple, and only add complexity once you become personally familiar with the limitations of the technology, and perhaps even more important, with the technical difficulties involved in implementing your vision.  
+
+An evolutionary approach to form design is more likely to be successful. Building forms typically involves a great deal of frustration when you first start. The example form discussed in this manual is freely available [here](https://github.com/arestrom/mf4ss), and can serve as a good starting point. Even if you are not conducting salmon surveys, you may still find it easier to modify the *spawning ground* parent form and observation subform to suit your own needs, rather than to start from scratch. Field surveys typically contain many of the same basic header and repeat elements, such as survey date, survey location, time, surveyors, species, methods, count, and measurement fields. Starting out with simpler forms may help preserve your sanity and reduce the likelihood of revolt among your surveyors. 
+
+An alternative approach would be to adapt forms that have already been successfully field tested by staff conducting similar surveys. A few groups within WDFW now have multiple years of experience with mobile data collection using iFormBuilder. Building on their experience could save considerable time and frustration. Please contact me if you would like more information on groups currently using iFormBuilder successfully.
+
+## Option lists
+
+When building mobile forms for salmon surveys, constructing large option lists can be a major source of frustration. For example, filtered lists of start and stop points for surveys along streams may total many hundreds, or even thousands, of rows. The *key_values* for those rows must all be unique. In addition, conditional logic must be included for each row to filter locations by stream. Building such lists manually using the form builder web-application can pose a serious risk to mental health. The cure for this was alluded to in Chapter 1.2. 
+
+The *application programming interface*, or API is a set of protocols that allows computers to talk to one another. This means that we can use scripts to programmatically build the option lists and then write those list directly to the iFormBuilder cloud. Lists with thousands of elements can be constructed and uploaded to iFormBuilder in seconds. The [iformr](https://github.com/arestrom/iformr) package provides a set of functions that allows for using [R](https://www.r-project.org/about.html) scripts to automate these types of tasks [@R-base]. Instructions for how to get started can be found in iformr package [GitHub repository](https://github.com/arestrom/iformr). If you have some R programming experience, the iformr package includes instructions on how to create and load option lists. If you need help, please contact me. 
+
+## Testing
+
+To repeat from the *Useful tips* section (Chapter 1.4.5), after you have finished building a new form, you **absolutely** need to conduct extensive testing to make sure the form behaves as you intend. Do this **before** you put it into production. Train your surveyors on how to use the form and then let them loose to enter test data under realistic conditions. Humans can be extraordinarly creative when interacting with technology. It is rare that a new mobile form survives the testing phase intact. You will nearly always identify issues that would be difficult to fix later, when you are in the middle of your survey season.  
+
+Once you have a form that works well you should **resist** making further changes during the survey season. Simple changes, such as adding items to an option list *can* be implemented on forms that are in production, but you may risk losing previously entered data if you make any substantive changes to data elements. Training and testing are the two areas of the mobile form workflow that are most commonly short-changed. Resist the temptation. 
+
+## Corrections and contributions
+
+This manual is a work in progress. If you find errors, or you want to contribute text or useful JavaScript code to include in the appendix, you can use the tools in the public [GitHub repository](https://github.com/arestrom/mf4ss) to file an issue or submit a pull request. If you are unfamiliar with GitHub, feel free to contact me directly (Are.Strom@dfw.wa.gov). 
+
+One notable omission in this manual is a section discussing practical issues, extraneous to form design, that may confront field staff when first starting to use mobile forms. Questions may include:
+
+*  What size mobile device works best for different types of surveys?
+*  Are touchscreen sensitive gloves needed when working in wet weather?
+*  What type of GPS accuracy should be expected under trees or in canyons?
+*  What are the optimal settings for field use of integrated barcode readers?
+*  Your question here...
+
+Although there will likely be differing opinions to questions such as these, the collected wisdom of field staff could be very useful to others just starting out. If you have practical field experience along these lines, and are willing to share, please forward them so they can be included in this manual.  
