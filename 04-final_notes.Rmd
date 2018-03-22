@@ -1,0 +1,51 @@
+# Final notes
+
+## What next?
+
+### Form design
+
+A common impulse when first starting to design mobile forms is to conjure a vision of the *perfect* form, and then dive right into implementing that vision. Often this vision involves elaborate flow-charts of how you envision your field staff navigating from parent form, to subform, to multiple nested subforms. Based on painful experience I would recommend the opposite approach. Start simple, and only add complexity once you become personally familiar with the limitations of the technology, and perhaps even more important, with the technical difficulties involved in implementing your vision.  
+
+An evolutionary approach to form design is much more likely to be successful. Building forms typically involves a great deal of frustration when you first start. The example form discussed in this manual, is freely available [here](https://github.com/arestrom/mf4ss), and can serve as a good starting point. Even if you are not conducting salmon surveys, you may still find it easier to modify the *spawning ground* parent form and observation subform to suit your own needs, rather than to start from scratch. Field surveys typically contain many of the same basic header and repeat elements, such as survey date, survey location, time, surveyors, species, methods, count, and measurement fields. Starting out with simpler forms may help preserve your sanity and reduce the likelihood of revolt among your surveyors. 
+
+The other approach would be to adapt forms that have already been successfully field tested by staff conducting similar surveys. A few groups within WDFW now have multiple years of experience with mobile data collection using iFormBuilder. Building on their experience could save considerable time and frustration. Please contact me if you would like more information on groups currently using iFormBuilder successfully.
+
+### Option lists
+
+For salmon surveys, option lists can be another major source of frustration when building mobile forms. The cure for this was alluded to in Chapter 1.2: the API. 
+
+### Testing
+
+Afer you have designed a form.... 
+
+
+### Deploying
+
+
+
+## Where's the data?
+
+
+## Roadmap
+
+
+
+
+
+### Files needed to build basic book:
+
+* .gitignore
+* .Rbuildignore
+* Index and 01-0n.Rmd files
+* _build.sh (enables the build all command)
+* book.bib
+
+### Building these files generates:
+
+* book.bib
+* _book (folder)
+    * .html files (generated from Index and 01-0n.Rmd files)
+    * search_index.json
+    * libs (folder)
+        * gitbook-2.6.7 (folder)
+        * jquery-2.2.3 (folder)
